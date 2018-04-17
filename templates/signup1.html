@@ -1,0 +1,24 @@
+{% extends 'base_account.html' %}
+{% load widget_tweaks %}
+{% block account_content %}
+<div class="register-form">
+	<div class="container">
+    	<h2>Create New Customer Account</h2>
+        <h3>Personal Information</h3>
+        <form method="post" novalidate="">
+        {% csrf_token %}
+       
+        {% include 'include/form.html' %}
+        <div class="check-box">
+        	<input type="checkbox" name="vehicle" value="Bike"><span>Sign Up for Newsletter</span>
+        </div>
+        	<button type="submit" class="btn-left">Create an account</button>
+            <a href="#" class="back-btn"> Back</a>
+          </form>
+            	   
+                     <div class="field">* Required Fields</div>
+
+        
+    </div>
+</div>
+{% endblock %}

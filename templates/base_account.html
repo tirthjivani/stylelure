@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% load static %} 
+{% block stylesheets %}<link href="{% static "css/accounts.css" %}"rel="stylesheet">{% endblock %}
+{% block content %}
+{% block account_content %}
+{% endblock %}
+<section id="newsletter">
+    <div class="container">
+        <div class="page-header page_p">
+            <h1 class="text-white">NEWSLATTER</h1>
+            <div class="about-border"></div>
+            <div class="about-border"></div>
+        </div>
+        <div class="label">Follow a collection of news & promotions</div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="single">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter your email here">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default"><span class="pe-7s-next"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="partner">
+    <div class="container">
+        <div class="page-header">
+            <h1>OUR PARTNER</h1>
+            <div class="about-border"></div>
+            <div class="about-border"></div>
+        </div>
+        <div class="row">
+            <div class="partner_slider">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_01.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_02.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_03.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_06.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_01.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_02.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_03.png" %}" alt="">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <img src="{% static "images/client_06.png" %}" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section id="latest_news">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>LATEST NEWS</h1>
+                    <div class="about-border"></div>
+                    <div class="about-border"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="news-thumbnail text-left">
+                    <div class="news-image">
+                        <img src="{% static "images/Blog_1.png" %}" alt="">
+                    </div>
+                    <div class="news-title">
+                        Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenea
+                    </div>
+                    <p>Nam nec tellus a odio tincidunt auc. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare</p>
+                    <a class="readmore-btn" href="#" title="READ MORE">READ MORE</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="news-thumbnail text-left">
+                    <div class="news-image">
+                        <img src="{% static "images/Blog_2.png" %}" alt="">
+                    </div>
+                    <div class="news-title">
+                        Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenea
+                    </div>
+                    <p>Nam nec tellus a odio tincidunt auc. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare</p>
+                    <a class="readmore-btn" href="#" title="READ MORE">READ MORE</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="news-thumbnail text-left">
+                    <div class="news-image">
+                        <img src="{% static "images/Blog_3.png" %}" alt="">
+                    </div>
+                    <div class="news-title">
+                        Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenea
+                    </div>
+                    <p>Nam nec tellus a odio tincidunt auc. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare</p>
+                    <a class="readmore-btn" href="#" title="READ MORE">READ MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

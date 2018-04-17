@@ -1,0 +1,188 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name = "format-detection" content = "telephone=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>:: Stylelure ::</title>
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- Custom styles-->
+  <link href="{% static "css/docs.css" %}" rel="stylesheet" type="text/css">
+  <link href="{% static "css/font-icon.css" %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+ {% block stylesheets %} {% endblock %}
+<script src="{% static "js/modernizr-2.8.0.min.js" %}"></script>
+
+</head>
+
+<body>
+ <div id="wrapper">
+    <!-- Header Start -->
+  <header id="header">
+       <div class="header-top">
+         <div class="container">
+           <div class="contact">
+              <span class="h_top_list c_l"><i class="pe-7s-call"></i><span class="span-text"> 123-123456789</span>
+             </span>
+             <span class="h_top_list c_l">
+               <a href="mailto:info@ltntcom"><i class="pe-7s-mail"></i><span class="span-text"> info@ltntcom</span></a>
+             </span>
+           </div>
+           <div class="account hidden-xs">
+             <span class="h_top_list a_l">
+               <a href="#myaccount">My Account</a>
+             </span>
+             <span class="h_top_list a_l">
+               <a href="#wishlist"> Wishlist</a>
+             </span>
+             <span class="h_top_list a_l">
+               <a href="#cart"> Cart</a>
+             </span>
+             <span class="h_top_list a_l">
+               <a href="#checkout">Checkout</a>
+             </span>
+             <span class="h_top_list a_l">
+               <ul>
+                <li class="lock"><i class="pe-7s-lock"></i></li>
+                <li><a href="{% url 'login' %}" title="Login">Login</a></li>
+                <li>/</li>
+                <li><a href="{% url 'signup' %}" title="Register">Register</a></li>
+               </ul>
+             </span>
+           </div>
+         </div>
+
+       </div>
+    <nav class="navbar ">
+      <div class="container">
+         <div class="navbar-header">
+           <a class="navbar-brand col-sm-12" href="{% url 'index' %}"><img src="{% static "images/rsz_stylelure.png" %}" alt="">
+           </a>
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav navbar-right ul_cart ">
+              <li class="search"><a href="#" class="bd"><i class="pe-7s-search"></i></a></li>
+              <li class="search"><a href="#" class="bd"><i class="pe-7s-user-female"></i></a></li>
+              <li>
+                  <span class="h_top_list cart">CART - $0</span>
+              </li>
+            </ul>
+           </div>
+           <ul class="nav navbar-nav pull-right hidden-xs">
+             <li class="search">
+               <a href="#" class="bd"><i class="pe-7s-search"></i></a>
+             </li>
+             <li> <span class="h_top_list cart_l">
+                <p class="cart">CART - $0</p>
+              </span>
+            </li>
+           </ul>
+
+         <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav_list nav navbar-nav ">
+             <li class="active"><a href="#">Home</a></li>
+             <li><a href="#about">ABOUT US</a></li>
+             <li><a href="#contact">PAGE</a></li>
+             <li><a href="#SHOP">SHOP</a></li>
+             <li><a href="#BLOG">BLOG</a></li>
+             <li><a href="#contact">CONTACT US</a></li>
+           </ul>
+         </div>
+      </div>
+    </nav>
+
+  </header>
+  {% block content %}
+   
+  {% endblock %}
+<section id="get-in-touch">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header">
+             <h1>GET IN TOUCH</h1>
+             <div class="about-border"></div>
+             <div class="about-border"></div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="left-column">
+            <div class="title">Style<span class="text-white">lure</span></div>
+            <div class="subtitle text-white ">We’d love To Meet You In Person Or Via The Web!</div>
+            <p class="text-white font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel nulla sapien. Class aptent tacitiaptent taciti sociosqu ad lit himenaeos. Suspendisse massa urna, luctus ut vestibulum necs et, vulputate quis urna. Donec at commodo erat.</p>
+            <div class="contact-info">
+              <p><strong>Main Office</strong>: 123 Elm St. New York City, NY</p>
+              <p><strong>Phone</strong>: <a class="text-white" href="tel:1.555.555.5555">1.555.555.5555</a></p>
+              <p><strong>Email</strong>: <a class="text-white" href="mailto:info@yourdomain.com">info@yourdomain.com</a></p>
+            </div>
+            <div class="social-info mt-3">
+              <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-github"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="contact-form">
+            <form>
+              <div class="row">
+                <div class="col-lg-6 col-md-12">
+                  <input type="text" name="name" placeholder="Your Name">
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <input type="email" name="email" placeholder="Your Email">
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <input type="tel" name="tel" placeholder="Phone">
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <input type="text" name="subject" placeholder="Subject">
+                </div>
+                <div class="col-md-12">
+                  <textarea type="message" name="message" placeholder="Your Message..."></textarea>
+                </div>
+                <div class="col-md-12">
+                  <input type="submit" value="SEND">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+    <!-- Footer Start -->
+    <footer id="footer">
+
+    </footer>
+  </div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
+    <!-- JavaScript files -->
+
+    <!-- Bootstrap core JavaScript -->
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+    <!-- Custom JavaScript -->
+<script src="{% static "js/custom.js" %}"></script>
+</body>
+</html>

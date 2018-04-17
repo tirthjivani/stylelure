@@ -1,0 +1,109 @@
+{% extends 'base_account.html' %} {% load widget_tweaks %} {% block account_content %}
+<div class="register-form">
+    <div class="container">
+        <h2>Create New Customer Account</h2>
+        <h3>Personal Information</h3>
+        <form method="post" novalidate="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.first_name.label_tag }} <span> * </span> 
+                        {% if form.is_bound %} 
+                            {% if form.first_name.errors %} 
+                                {% render_field form.first_name class="form-control is-invalid" %} 
+                                {% for error in form.first_name.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %} 
+                            {% else %} {% render_field form.first_name class="form-control is-valid" %} {% endif %} 
+                        {% else %} {% render_field form.first_name class="form-control" %} {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.last_name.label_tag }} <span> * </span> {% if form.is_bound %} {% if form.last_name.errors %} {% render_field form.last_name class="form-control is-invalid" %} {% for error in form.last_name.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {% render_field form.last_name class="form-control is-valid" %} {% endif %} {% else %} {% render_field form.last_name class="form-control" %} {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.phone_number.label_tag }} <span> * </span> {% if form.is_bound %} {% if form.phone_number.errors %} {% render_field form.phone_number class="form-control is-invalid" %} {% for error in form.phone_number.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {% render_field form.phone_number class="form-control is-valid" %} {% endif %} {% else %} {% render_field form.phone_number class="form-control" %} {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.email.label_tag }} <span> * </span> {% if form.is_bound %} {% if form.email.errors %} {% render_field form.email class="form-control is-invalid" %} {% for error in form.email.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {% render_field form.email class="form-control is-valid" %} {% endif %} {% else %} {% render_field form.email class="form-control" %} {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        {{ form.date_of_birth.label_tag }} <span> * </span> {% render_field form.date_of_birth class="form-control width_auo" %} {% for error in form.date_of_birth.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    {{ form.gender.label_tag }} {% render_field form.gender class="form-control width_auto" %} {% for error in form.gender.errors %}
+                    <div class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.password1.label_tag }} <span> * </span> {% if form.is_bound %} {% if form.password1.errors %} {% render_field form.password1 class="form-control is-invalid" %} {% for error in form.password1.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {% render_field form.password1 class="form-control is-valid" %} {% endif %} {% else %} {% render_field form.password1 class="form-control" %} {% endif %} {% if form.password1.help_text %}
+                        <small class="form-text text-muted">
+                      {{ form.password1.help_text|safe }}
+                    </small> {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form.password2.label_tag }} <span> * </span> {% if form.is_bound %} {% if form.password2.errors %} {% render_field form.password2 class="form-control is-invalid" %} {% for error in form.password2.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {% render_field form.password2 class="form-control is-valid" %} {% endif %} {% else %} {% render_field form.password2 class="form-control" %} {% endif %} {% if form.password2.help_text %}
+                        <small class="form-text text-muted">
+                      {{ form.password2.help_text|safe }}
+                    </small> {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form_label">
+                {{form.receive_newsletter}} <span>    {{form.receive_newsletter.label_tag}}</span>
+            </div>
+            <button type="submit" class="btn-left">Create an account</button>
+            <a href="{% url 'index' %}" class="back-btn"> Back</a>
+        </form>
+
+        <div class="field">* Required Fields</div>
+    </div>
+</div>
+{% endblock %}
