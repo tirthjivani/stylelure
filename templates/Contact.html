@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="contact-us">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="row">
+            <div class="col-sm-8">
+            	 <form method="post" novalidate>
+                        {% csrf_token %}           
+                        {% include 'includes/contact_form.html' %}
+                      <button type="submit" class="btn-left">SEND</button>
+                    <div class="field">* Required Fields</div>
+                    </form> 
+           
+            </div>
+            <div class="col-sm-4">
+                <div class="side-bar">
+                    <div class="cright-side">
+                        <div class="name">
+                            <div class="icon">
+                                <i class="pe-7s-global"></i>
+                            </div>
+                            <div class="info">
+                                <h4>ADDRESS</h4>
+                                <P>Brandenburgische Str. 64 72144 Dußlingen, Germany</P>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cright-side">
+                        <div class="name">
+                            <div class="icon">
+                                <i class="fa fa-envelope-o"></i>
+                            </div>
+                            <div class="info">
+                                <h4>E-Mail</h4>
+                                <P>support@superhope.com info@superhope.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cright-side">
+                        <div class="name">
+                            <div class="icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="info">
+                                <h4>PHONE</h4>
+                                <P>+49 07072 88 65 75
+                                    <br>+49 06224 19 40 08</P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="google-map">
+    <img src="{% static " images/map2.png " %}" atl="responcive">
+</div>
+
+{% endblock content%}
