@@ -77,6 +77,10 @@ WSGI_APPLICATION = 'stylelure.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'index'
+
+LOGOUT_REDIRECT_URL = 'index'
+
+LOGIN_URL = 'login'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

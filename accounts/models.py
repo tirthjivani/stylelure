@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, full_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
         if not email:
@@ -13,9 +14,9 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError("Users must have a password")
         user = self.model(
-            email = self.normalize_email(email),            
+            email=self.normalize_email(email),
         )
-        user.set_password(password) # change user password
+        user.set_password(password)  # change user password
         user.staff = is_staff
         user.admin = is_admin
         user.is_active = is_active
@@ -24,29 +25,30 @@ class UserManager(BaseUserManager):
 
     def create_staffuser(self, email, password=None):
         user = self.create_user(
-                email,            
-                password=password,
-                is_staff=True
+            email,
+            password=password,
+            is_staff=True
         )
         return user
 
     def create_superuser(self, email, password=None):
         user = self.create_user(
-                email,               
-                password=password,
-                is_staff=True,
-                is_admin=True
+            email,
+            password=password,
+            is_staff=True,
+            is_admin=True
         )
         return user
 
+
 class User(AbstractBaseUser):
-    email       = models.EmailField(max_length=255, unique=True)
-    first_name = models.CharField( max_length=30)
-    last_name = models.CharField( max_length=30)
+    email = models.EmailField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
     # full_name   = models.CharField(max_length=255, blank=True, null=True)
-    is_active   = models.BooleanField(default=True) # can login 
-    staff       = models.BooleanField(default=False) # staff user non superuser
-    admin       = models.BooleanField(default=False) # superuser 
+    is_active = models.BooleanField(default=True)  # can login
+    staff = models.BooleanField(default=False)  # staff user non superuser
+    admin = models.BooleanField(default=False)  # superuser
     date_joined = models.DateTimeField(default=timezone.now, editable=False)
     gender_choices = (
         ('M', 'Male'),
@@ -55,9 +57,9 @@ class User(AbstractBaseUser):
     date_of_birth = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=15)
 
-    USERNAME_FIELD = 'email' #username
+    USERNAME_FIELD = 'email'  # username
     # USERNAME_FIELD and password are required by default
-    REQUIRED_FIELDS = [] 
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
@@ -67,7 +69,6 @@ class User(AbstractBaseUser):
     def get_full_name(self):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
-
 
     def get_short_name(self):
         return self.email

@@ -1,4 +1,3 @@
-
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -6,10 +5,11 @@ from .forms import ContactForm
 
 
 def index(request):
-	return render(request,'index.html',{})
+    return render(request, 'index.html', {})
+
 
 def login(request):
-	return render(request,'login.html',{})
+    return render(request, 'login.html', {})
 
 
 def emailView(request):
@@ -27,6 +27,7 @@ def emailView(request):
                 return HttpResponse('Invalid header found.')
             return redirect('success')
     return render(request, "Contact.html", {'form': form})
+
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
