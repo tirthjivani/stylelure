@@ -103,3 +103,50 @@
 	  infinite: true,
 	  asNavFor: '.slider-big'
 	});
+
+
+    /* ---- For Mobile Menu Dropdown JS Start ---- */
+      $('#menu span.opener').on("click", function() {
+        if ($(this).hasClass("plus")) {
+          $(this).parent().find('.mobile-sub-menu').slideDown();
+          $(this).removeClass('plus');
+          $(this).addClass('minus');
+        }
+        else
+        {
+          $(this).parent().find('.mobile-sub-menu').slideUp();
+          $(this).removeClass('minus');
+          $(this).addClass('plus');
+        }
+        return false;
+      });
+    /* ---- For Mobile Menu Dropdown JS End ---- */
+
+    /*---Mobile menu icon Start---*/
+    var navbar_toggle = $('.navbar-toggle i');
+    var menu_var = $('#menu');
+    $('.navbar-toggle').on("click", function(){
+      
+      if(menu_var.hasClass('menu-open')){
+        menu_var.removeClass('menu-open');
+        navbar_toggle.removeClass('fa-close');
+        navbar_toggle.addClass('fa-bars');
+      }else{
+        menu_var.addClass('menu-open');
+        navbar_toggle.addClass('fa-close');
+        navbar_toggle.removeClass('fa-bars');
+      }
+      return false;
+    });
+    /*---Mobile menu icon End---*/
+
+/* ------------ Account Tab JS Start ------------ */
+    $('.account-tab-stap').on('click', 'li', function() {
+        $('.account-tab-stap li').removeClass('active');
+        $(this).addClass('active');
+        
+        $(".account-content").fadeOut();
+        var currentLiID = $(this).attr('id');
+        $("#data-"+currentLiID).fadeIn();
+        return false;
+    });

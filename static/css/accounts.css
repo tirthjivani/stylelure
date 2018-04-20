@@ -1,9 +1,29 @@
+.checkout-section .input-box {
+  margin-bottom: 23px;
+}
+.checkout-section{
+line-height: 24px;
+}
+
 .width_auo{
     width: 50% ;
 }
 .width_auto{
     width: auto ;
 }
+
+.main-form textarea {
+  max-width: 100%;
+}
+
+.main-form input, .main-form textarea, .main-form select {
+  background: #fff;
+  padding: 8px 15px;
+  width: 100%;
+  border: 1px solid #eeeeee;
+  min-height: 40px;
+}
+
 .form_label {
     font-size: 14px;
     line-height: 26px;
@@ -348,4 +368,174 @@
 
 .register-form .select-box {
     width: 100%;
+}
+
+/* Account Page CSS Start */
+
+
+.checkout-section a,.checkout-section a:focus,
+.checkout-section a:active,.checkout-section a:link,.checkout-section img {
+  outline: none;
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
+.account-tab > .tab-title-bg {
+  display: inline-block;
+  padding: 10px 15px;
+  width: 100%;
+}
+.account-tab > span .sub-title {
+  font-size: 18px;
+}
+.account-sidebar .sub-title span {
+  background: url("../images/sprite.png") no-repeat scroll -97px -456px;
+  display: inline-block;
+  height: 21px;
+  margin-bottom: -5px;
+  width: 21px;
+}
+.account-sidebar.account-tab .account-tab-inner {
+  padding: 0px;
+  background: #f0f0f0 none repeat scroll 0 0;
+}
+.account-sidebar.account-tab > .tab-title-bg {
+  padding: 12px 15px;
+}
+.account-sidebar ul {
+  width: 100%;
+}
+.account-sidebar ul li {
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+}
+.account-sidebar ul li:last-child {
+  border-bottom: none;
+}
+.account-sidebar ul li a {
+  padding: 8px 15px;
+  display: inline-block;
+  width: 100%;
+}
+.account-sidebar ul li a .fa {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+}
+
+.account-sidebar ul li.active a, .account-sidebar ul li:hover a {
+  color: #fff;
+  background: #3bd0ad none repeat scroll 0 0
+}
+.account-sidebar ul li.active a .fa, .account-sidebar ul li:hover a .fa {
+  color: #fff;
+  right: 0px;
+}
+.account-sidebar ul li.active a::after, .account-sidebar ul li:hover a::after {
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #3bd0ad;
+  border-style: solid;
+  border-width: 20px 22px 20px 15px;
+  top: 0px;
+  content: "";
+  right: -36px;
+  position: absolute;
+}
+.account-content { 
+  padding: 0px 30px;
+}
+.account-content .heading-section {
+  display: inline-block;
+  width: 100%;
+}
+.account-content .heading-section .heading {
+  padding: 2px 0px;
+}
+.account-content .heading-section .common-btn {
+  margin-top: -4px;
+}
+.account-content p, .address-box p {
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+.account-content hr {
+  margin-top: 5px;
+}
+.address-box .inner-heading {
+  margin-bottom: 10px;
+}
+
+.banner {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: -1px;
+}
+
+.banner-detail {
+    left: 0;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+
+.inner-banner1 {
+  background: url(../images/inner-banner1.jpg) no-repeat scroll center center;
+  padding: 70px 0 60px;
+}
+
+.inner-banner1 .banner-detail {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0 !important;
+}
+.inner-banner1 .banner-detail h1 {
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.ui-selectmenu-menu .ui-state-hover, .ui-selectmenu-menu .ui-widget-content .ui-state-hover, 
+.ui-selectmenu-menu .ui-widget-header .ui-state-hover, .ui-selectmenu-menu .ui-state-focus, 
+.ui-selectmenu-menu .ui-widget-content .ui-state-focus, .ui-selectmenu-menu .ui-widget-header .ui-state-focus {
+  color: #3bd0ad;
+  font-weight: 400;
+  background: #ebebeb;
+}
+/* Account Page CSS end */
+
+@media (min-width: 1199px ){
+
+.ma-0{
+  margin: 0px;
+}
+
+}
+
+@media(max-width: 991px){
+
+  .checkout-step ul li .step .line {
+  display: none;
+}
+
+.account-content {
+  padding: 0;
+}
+.account-sidebar ul li.active a::after, .account-sidebar ul li:hover a::after {
+  border-width: 0px;
+}
+.account-sidebar ul li.active a .fa, .account-sidebar ul li:hover a .fa {
+  right: 15px;
+}
+
+
 }

@@ -5,8 +5,20 @@ from django.contrib.auth.models import (
 )
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django_countries.fields import CountryField
 
+# class Address(models.Model): 
+#     street_address_1 = models.CharField(max_length=256, blank=True)
+#     street_address_2 = models.CharField(max_length=256, blank=True)
+#     city = models.CharField(max_length=256, blank=True)
+#     state = models.CharField(max_length=128, blank=True)
+#     postal_code = models.CharField(max_length=20, blank=True)
+#     country = models.CharField(max_length=20, blank=True)
 
+#     def __str__(self):
+        # return self.email
+
+        
 class UserManager(BaseUserManager):
     def create_user(self, email, full_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
         if not email:
@@ -56,6 +68,12 @@ class User(AbstractBaseUser):
     gender = models.CharField(max_length=1, choices=gender_choices, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     phone_number = models.CharField(max_length=15)
+    street_address_1 = models.CharField(max_length=256, blank=True)
+    street_address_2 = models.CharField(max_length=256, blank=True)
+    city = models.CharField(max_length=256, blank=True)
+    state = models.CharField(max_length=128, blank=True)
+    postal_code = models.CharField(max_length=20, blank=True)
+    country = CountryField()
 
     USERNAME_FIELD = 'email'  # username
     # USERNAME_FIELD and password are required by default

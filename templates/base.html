@@ -39,7 +39,7 @@
             {% if user.is_authenticated %}
            <div class="account justify-content-center">
              <span class="h_top_list a_l">
-               <a href="#myaccount">My Account</a>
+               <a href="{% url 'my_account' %}">My Account</a>
              </span>
              <span class="h_top_list a_l">
                <a href="#wishlist"> Wishlist</a>

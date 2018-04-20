@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, get_user_model
+from localflavor.in_.forms import INStateSelect,INStateField,INAadhaarNumberField,INZipCodeField
+from django_countries.fields import CountryField
 
 User = get_user_model()
 
@@ -37,6 +39,33 @@ class SignUpForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'phone_number', 'email',
                   'gender', 'date_of_birth', 'password1', 'password2']
 
+
+
+class AddressForm(forms.ModelForm):
+    """docstring for AddressForm"""
+    phone_number = forms.RegexField(
+        regex='^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6-9]\d{9}$')
+    state=INStateField(widget=INStateSelect())
+    street_address_1=forms.CharField(widget=forms.Textarea(
+            attrs={'rows': 3}),max_length=100, help_text='Please provide the number and street.')
+    street_address_2=forms.CharField(widget=forms.Textarea(
+            attrs={'rows': 1}),max_length=100, help_text='Please include landmark' 
+        '(e.g : Opposite Bank) as the carrier service may find it easier to locate your address.')
+    # aadhaar=INAadhaarNumberField()
+    postal_code=INZipCodeField()
+    # country=CountryField()
+
+    class Meta:
+        model= User
+        fields=['first_name', 'last_name', 'phone_number', 'email',
+                'street_address_1','street_address_2','country','state','postal_code'
+                  ]
+
+
+        # def __init__(self, *args, **kw):            
+        #     super(AddressForm, self).__init__(*args, **kw)
+            
+    
     # class Meta:
     #     model = User
     #     fields = ('full_name', 'email',) #'full_name',)
@@ -75,3 +104,4 @@ class SignUpForm(UserCreationForm):
 #         model = User
 #         unique_together = ('email',)
 #         fields = ('first','last','phone','email','date','gender', 'password1', 'password2')
+

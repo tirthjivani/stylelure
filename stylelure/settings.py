@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'shop',
-    'widget_tweaks'
+    'widget_tweaks',
+    'django_countries',
+    'localflavor',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

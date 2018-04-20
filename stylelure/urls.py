@@ -24,6 +24,12 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/$', auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name='login.html'), name='login'),
     url(r'^signup/', accounts_views.signup, name='signup'),
+    url(r'^myaccount/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+    url(r'^settings/password/$', auth_views.PasswordChangeView.as_view(template_name='my_account.html'),
+    name='password_change'),
+    url(r'^settings/password/done/$', 
+    auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
+    name='password_change_done'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='Logout'),
     url(r'^reset/$', auth_views.PasswordResetView.as_view(
         template_name='password_reset.html',
