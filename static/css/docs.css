@@ -10,7 +10,7 @@
      font-family: 'Open Sans', sans-serif;
      font-size: 14px;
      color: #0f0101;
-    /* line-height: 20px;*/
+/*     line-height: 20px;*/
      letter-spacing: 1px;
 }
  a {
@@ -56,6 +56,14 @@
 }
  .mt-3{
      margin-top: 1rem !important;
+}
+
+.mt-5{
+     margin-top: 3rem !important;
+}
+
+.mb-5{
+     margin-bottom: 3rem !important;
 }
  .plr-20 {
      padding-left: 10px !important;
@@ -133,6 +141,7 @@
 /* Body End -------------------------------------------------- */
 /* header Start -------------------------------------------------- */
  #header {
+     line-height: 20px;
 }
  .header-top{
      background-color: #19bb9b;
@@ -684,6 +693,26 @@
      color: #222;
      background: #0fb7a4;
 }
+
+.input-text.qty {
+     border: 1px solid #dedede;
+     border-radius: 5px;
+     max-width: 50px;
+     padding: 4px 13px;
+     float: left;
+     text-align: center;
+     margin: 0 5px;
+}
+
+.product-qty {
+     float: left;
+     margin-right: 20px;
+     margin-top: 10px;
+}
+
+.custom-qty {
+     display: inline-flex;
+}
 /* navbar End -------------------------------------------------- */
 /* content Start -------------------------------------------------- */
  #content {
@@ -1056,6 +1085,12 @@
  .h-100{
      height: 100%;
 }
+
+ .w-100 button.google{
+     vertical-align: middle;
+     /*width: 100%;*/
+}
+
  #best_seller{
      width: 100%;
      background-color: #e9effd;

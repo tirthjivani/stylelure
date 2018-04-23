@@ -1,3 +1,15 @@
+.new-customers button.github{
+  background-color: #484848;
+}
+
+.new-customers button.google:hover,.new-customers button.github:hover {
+  background-color: #46bfa9;
+}
+
+.new-customers button.google{
+  background-color: #ED4240;
+}
+
 .checkout-section .input-box {
   margin-bottom: 23px;
 }
@@ -242,7 +254,7 @@ line-height: 24px;
     font-size: 16px;
     padding: 0px 21px 0px 21px;
     border: none;
-    margin-bottom: 324px;
+    margin-bottom: 22px;
 }
 
 .register-form h2 {

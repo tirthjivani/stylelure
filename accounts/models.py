@@ -20,7 +20,7 @@ from django_countries.fields import CountryField
 
         
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
+    def create_user(self, email,username=None, full_name=None, password='&btCqv"}@,4TWd6A', is_active=True, is_staff=False, is_admin=False):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:

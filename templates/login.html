@@ -18,7 +18,20 @@
                     <div class="field">* Required Fields</div>
                 </div>
             </div>
-            <div class="col-md-6">
+              <div class="col-md-6">
+                            <div class="new-customers">
+                                <h3>Login</h3>
+                                <div class="row mt-5 mb-5" align='center' onloadedmetadata="">
+                                <a href="{% url 'social:begin' 'google-oauth2' %}"><button type="submit" class="google btn-left ">
+                                  <i class="fa fa-google-plus" aria-hidden="true"></i> | Sign in with Google+</button></a>
+                              </div>
+                              <div class="row" align='center' onloadedmetadata="">
+                             <a href="{% url 'social:begin' 'google-oauth2' %}"><button type="submit" class="github btn-left ">
+                               <i class="fa fa-github" aria-hidden="true"></i> | Sign in with GitHub</button></a>
+                           </div>
+                            </div>
+                    </div>
+            <div class="col-md-12" align="center" >
                 <div class="new-customers">
                     <form action="{% url 'signup' %}">
                     <h3>New Customers</h3>

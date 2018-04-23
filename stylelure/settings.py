@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_countries',
     'localflavor',
+    'social_django',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+# SOCIAL_AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'stylelure.urls'
@@ -69,10 +73,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'stylelure.wsgi.application'
 
@@ -83,6 +98,15 @@ LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
 LOGIN_URL = 'login'
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '725353649489-r24t2b33faehnvla32k0t8i85f7p1180.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'WiYP9onzUdOm_GPwPnf-uCUp'
+
+
+SOCIAL_AUTH_GITHUB_KEY = '7a693ef1e124c41437d0'
+
+SOCIAL_AUTH_GITHUB_SECRET = 'cb640d129c297781f9068ff3a5f045c7aefbeb6c'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
