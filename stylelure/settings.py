@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'shop',
+    'Products',
     'widget_tweaks',
     'django_countries',
     'localflavor',
     'social_django',
+    'colorfield'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -163,3 +165,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

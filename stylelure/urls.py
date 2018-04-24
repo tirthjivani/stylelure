@@ -19,6 +19,7 @@ from shop import views
 from accounts import views as accounts_views
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
@@ -48,4 +49,5 @@ urlpatterns = [
         name='password_reset_complete'),
     url(r'^contact/$', views.emailView, name='contact'),
     url(r'^contact/success$', views.successView, name='success'),
+    url(r'^product/',include('Products.urls'))
 ]
