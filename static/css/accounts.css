@@ -480,41 +480,7 @@ line-height: 24px;
   margin-bottom: 10px;
 }
 
-.banner {
-  overflow: hidden;
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-bottom: -1px;
-}
 
-.banner-detail {
-    left: 0;
-    position: absolute;
-    top: 30%;
-    width: 100%;
-}
-
-.inner-banner1 {
-  background: url(../images/inner-banner1.jpg) no-repeat scroll center center;
-  padding: 70px 0 60px;
-}
-
-.inner-banner1 .banner-detail {
-    display: inline-block;
-    position: relative;
-    left: 0;
-    top: 0 !important;
-}
-.inner-banner1 .banner-detail h1 {
-    display: inline-block;
-    color: #fff;
-    font-weight: 600;
-    font-size: 22px;
-    letter-spacing: 1px;
-    margin-bottom: 0;
-    text-align: left;
-}
 
 .ui-selectmenu-menu .ui-state-hover, .ui-selectmenu-menu .ui-widget-content .ui-state-hover, 
 .ui-selectmenu-menu .ui-widget-header .ui-state-hover, .ui-selectmenu-menu .ui-state-focus, 

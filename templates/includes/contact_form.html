@@ -11,7 +11,7 @@
  {% for field in form %}
  <div class="form-btn  {% if forloop.counter|divisibleby:2 %}row {% endif %}">
 
-    <div class="{% if  field.field.widget.input_type == None %} col-sm-12 {% else %}col-sm-6 {% endif %}">
+  <div class="{% if  field.field.widget.input_type == None %} col-sm-12 {% else %}col-sm-6 {% endif %}">
       <div class="form-group">
 
       {{ field.label_tag }} <span> * </span>

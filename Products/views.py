@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product,ProductImages
 
 def index(request):
 	list_1=Product.objects.all()
-	context={'list_1':list_1}
+	
+	context={'list_1':list_1 }
 
 	return render(request,'products/product_list.html',context)
 
