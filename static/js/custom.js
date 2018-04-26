@@ -86,6 +86,25 @@
           ]
       	});
 
+$('.slider-for').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.pro-slider-nav'
+});
+
+$('.pro-slider-nav').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for',
+  dots: false,
+  centerMode: true,
+  focusOnSelect: true,
+  centerPadding: '80px',
+   prevArrow: '<button class="slick-prev" aria-label="Previous" type="button"><i class="fa fa-angle-left"></i></button>',
+  nextArrow: '<button class="slick-next" aria-label="Next" type="button"><i class="fa fa-angle-right"></i></button>',
+});
       $('.slider-big').slick({
 	  slidesToShow: 1,
 	  slidesToScroll: 1,
@@ -151,7 +170,13 @@
         return false;
     });
 
-
+  $(".tab-menu ul li a").click(function(){
+  var opne_id = $(this).attr("id");
+  $(".tab-menu ul li").removeClass("active");
+  $(this).parent("li").addClass("active");
+  $(".tab-detalis").slideUp();
+  $("." + opne_id + "-box").slideDown();
+});
      /* Price-range Js Start */
  
       $( "#slider-range" ).slider({
@@ -166,3 +191,4 @@
       $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
  
   /* Price-range Js End */
+

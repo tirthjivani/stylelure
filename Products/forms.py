@@ -13,7 +13,7 @@ available_size_choices = (
 
 class ProductForm(ModelForm):
 
-    available_size  = forms.MultipleChoiceField( choices = available_size_choices)
+    available_size  = forms.MultipleChoiceField( choices = available_size_choices,required=False)
 
     class Meta:
         model = Product

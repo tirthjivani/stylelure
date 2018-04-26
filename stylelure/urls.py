@@ -52,7 +52,7 @@ urlpatterns = [
         name='password_reset_complete'),
     url(r'^contact/$', views.emailView, name='contact'),
     url(r'^contact/success$', views.successView, name='success'),
-    url(r'^product/',include('Products.urls'))
+    url(r'^product/',include('Products.urls',namespace='Products'))
 ]
 
 

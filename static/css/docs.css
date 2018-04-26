@@ -736,6 +736,9 @@
 .custom-qty {
      display: inline-flex;
 }
+.product_caption a{
+     color: white;
+}
 /* navbar End -------------------------------------------------- */
 /* Sidebar CSS Start */
 .gray-box {

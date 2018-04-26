@@ -1,8 +1,201 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block stylesheets %}
+<link href="{% static "css/product_detail.css" %}"rel="stylesheet">{% endblock %}
 {% block content %}
-<h1>a</h1>
-{{list_1}}
-{{list_1.title}}
-{{list_1.image}}
+<div class="details-product">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="slider slider-for">
+        {% for j in "xx" %}
+      	{% for i in object.images.all|slice:"3:6:-1" %}            
+        
+          <div><img src="{{ i.image.url }}" alt="logo image"></div>
+        {% endfor %}
+       {% endfor %}
+       
+       
+      </div>
+      <div class="slider pro-slider-nav">
+      	{% for j in "xx" %}
+      	{% for i in object.images.all|slice:":3:-1" %}            
+        <div class="slick-slide">
+          <div class="img"><img src="{{ i.image.url }}" alt="logo image"></div>
+        </div>
+        {% endfor %}
+       {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="page-title">
+        <div class="title-page">{{ object.title }}</div>
+        <div class="active-page">
+          <div class="sale">SALE</div>
+          <div class="middle-star">
+          <div class="middle-box">
+            <div class="fill" style="width: 70%"></div>
+          </div>
+          </div>
+          <!-- <div class="last-box"><i class="fa fa-pencil-square-o"></i></div>-->
+        </div>
+      </div>
+      <div class="in-stock">
+        <div class="title-center">{{ object.discounted_price }}$<span>{{ object.price }}$</span> 
+        	{% if object.active == True %}
+        	<i class="fa fa-check-circle"><span>in stock</span></i>{% endif %}</div>
+      </div>
+      <div class="center-text">
+        <p>{{ object.short_description }} </p>
+      </div>
+      <div class="bottom-text">
+        <div class="text-1">
+          <p>The model is wearing size: <span>S</span></p>
+          | </div>
+        <div class="text-2">
+          <p> Model height: <span>170 cm</span></p>
+        </div>
+      </div>
+      <div class="color-btn">
+        <div class="btn-btn">
+          <h3> Color</h3>
+          <div class="main-box">
+          	{% for  color in object.colors.all %}
+            <div class="red-box" style="background-color:{{color.available_color}}"></div>         
+            {% endfor %}
+          </div>
+        </div>
+        <div class="center-btn">
+          <h3>Select size <span>size guide</span></h3>
+          <div class="main-box">
+            <div class="box active {% if 'small' not in object_size %} disable {% endif %}">S</div>
+            <div class="box {% if 'medium' not in object_size %} disable {%else%}haa {% endif %}">M</div>
+            <div class="box {% if 'large' not in object_size %} disable{%else%}disable {% endif %}">L</div>
+            <div class="box {% if 'extraLarge' not in object_size %} disable {% endif %}">XL</div>
+          </div>
+        </div>
+      </div>
+      <div class="Categories-box">
+        <div class="address">
+          <label>SKU :</label>
+          <span>A487-V</span></div>
+        <div class="address">
+          <label>Categories :</label>
+          <span>Women</span></div>
+        <div class="address">
+          <label>tags : </label>
+          <span>Tops</span></div>
+        <div class="address">
+          <label>share : </label>
+          <div class="social-media">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+              <li  class="active"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="button-cart"> <a  href="#" class="btn-left">add to cart</a> <a href="#"><i class="fa fa-heart-o"></i></a> </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="description-box">
+<div class="container">
+  <div class="tab-menu">
+    <ul>
+      <li class="active"><a href="javascript:void(0);" id="description">Description</a></li>
+      <li><a href="javascript:void(0);" id="review">reviews (3)</a>
+    </ul>
+  </div>
+  <div class="description-box tab-detalis">
+
+	<div class="upper-details">
+		 <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<p>{{object.description }}</p>
+	</div>
+	<div class="more-information">
+		<label>More Information</label>
+	</div>
+	<div class="information-box">
+		<div class="information active"><label>Manufacturer</label><span>{{object.Manufacturer}}</span></div>
+		<div class="information"><label>Occassion</label><span>{{object.Occassion}}</span></div>
+		<div class="information active"><label>Gender</label><span>{{object.Gender}}</span></div>
+		<div class="information "><label>Season</label><span>{{object.Season}}</span></div>
+	</div>
+ </div>
+  <div class="review-box tab-detalis">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="review-slide">
+         <div class="image-box"> <img src="{% static "images/review_1.png" %}" alt="logo image"> </div>
+          <div class="right-box">
+            <label>
+            Richard L. Purdy
+            <div class="star-box">
+              <div class="fill" style="width: 70%"></div>
+            </div>
+            </label>
+            <span>Nov 12, 2017, at 09:00</span>
+            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="image-box"> <img src="{% static "images/review_2.png" %}" alt="logo image"></div>
+          <div class="right-box">
+            <label>
+            Richard L. Purdy
+            <div class="star-box">
+              <div class="fill" style="width: 70%"></div>
+            </div>
+            </label>
+            <span>Nov 12, 2017, at 09:00</span>
+            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+        <div class="review-slide">
+         <div class="image-box"> <img src="{% static "images/review_3.png" %}" alt="logo image"> </div>
+          <div class="right-box">
+            <label>
+            Richard L. Purdy
+            <div class="star-box">
+              <div class="fill" style="width: 70%"></div>
+            </div>
+            </label>
+            <span>Nov 12, 2017, at 09:00</span>
+            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="email">First  Name <span> * </span></label>
+          <input type="email" class="form-control" id="exampleInputEmaill" aria-describedby="emailHelp" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Phone <span> * </span></label>
+          <input type="email" class="form-control" id="exampleInputEmaill" aria-describedby="emailHelp" placeholder="info@account.com">
+        </div>
+        <div class="form-group">
+          <label for="email">Message <span> * </span></label>
+          <textarea class="form-control" rows="9" id="comment" placeholder="Type your message here.."></textarea>
+        </div>
+        <div class="button-btn-box btn-star-box">
+          <div class="rate">
+            <label>Your rating:</label>
+            <div class="star-box">
+              <div class="fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-left">SUBMIT</a> </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
 {% endblock %}

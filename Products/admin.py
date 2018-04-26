@@ -10,9 +10,11 @@ admin.site.register(Category, CategoryAdmin)
 
 class ProductImageInline(admin.StackedInline):
     model = ProductImages
+    extra = 1
 
 class ProductColorsInline(admin.StackedInline):
     model = ProductColors
+    extra = 0
 
 class ProductAdmin(admin.ModelAdmin):
     # list_display = ['title', 'slug', 'category', 'price', 'stock', 'active', 'created', 'updated']
