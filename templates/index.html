@@ -73,11 +73,14 @@
             <div class="about-border"></div>
         </div>
         <div class="coll_items col-lg-3 col-md-6 col-sm-6">
+            {% for product in featured_product|slice:"1:2" %}
             <div class="product_image">
-                <img src="{% static "images/Product_1.png" %}" alt="">
+                <img src="{{ product.images.first.image.url }}" alt="">
                 <div class="product_caption">
-                    <div class="pc_1">BLUE SHIRT</div>
-                    <div class="pc_2">26$</div>
+                    <a href="{{product.get_absolute_url}}">
+                    <div class="pc_1">{{product.title|truncatechars:15}}</div>
+                    <div class="pc_2">${{ product.price|floatformat }}</div>
+                    </a>
                 </div>
                 <div class="overlay-div text-center">
                     <div class="overlay-content">
@@ -92,6 +95,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
         <div class="coll_items col-lg-3 col-md-6 col-sm-6">
             <div class="product_image">
@@ -166,12 +170,13 @@
             <div class="about-border"></div>
         </div>
         <div class="row">
+            {% for product in featured_product %}
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="product_image">
-                    <img src="{% static "images/Product_5.png" %}" class="figure-img w-100 m-0 rounded" alt="">
+                 <a href="{{product.get_absolute_url}}" ><img src="{{ product.images.first.image.url }}" class="figure-img w-100 m-0 rounded" alt=""></a>
                     <div class="product_caption">
-                        <span class="pc_1">Blue Tshirt</span>
-                        <span class="pc_2">$26</span>
+                        <span class="pc_1">{{product.title|truncatechars:15}}</span>
+                        <span class="pc_2">${{ product.price|floatformat }}</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left  ">new</span>
@@ -180,6 +185,7 @@
 
                 </div>
             </div>
+            {% endfor %}
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="product_image">
 
@@ -209,21 +215,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="product_image">
-
-                    <img src="{% static "images/Product_8.png" %}" class="figure-img w-100 m-0 rounded" alt="">
-                    <div class="product_caption">
-                        <span class="pc_1">Cool lingerie</span>
-                        <span class="pc_2">$56</span>
-                    </div>
-                    <div class="cloth-up">
-                        <span class="cloth_tag red pull-right  ">sale</span>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+                       <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="product_image">
 
                     <img src="{% static "images/Product_9.png" %}" class="figure-img w-100 m-0 rounded" alt="">
@@ -266,20 +258,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="product_image">
-
-                    <img src="{% static "images/Product_12.png" %}" class="figure-img w-100 m-0 rounded" alt="">
-                    <div class="product_caption">
-                        <span class="pc_1">Cool lingerie</span>
-                        <span class="pc_2">$56</span>
-                    </div>
-                    <div class="cloth-up">
-                        <span class="cloth_tag red pull-right  ">sale</span>
-                    </div>
-
-                </div>
-            </div>
+            
         </div>
     </div>
 </section>

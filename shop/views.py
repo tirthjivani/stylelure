@@ -2,14 +2,16 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
+from Products.models import Product
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    featured_product = Product.objects.all().featured()
+    context={
+    "featured_product":featured_product
+    }
 
-
-def login(request):
-    return render(request, 'login.html', {})
+    return render(request, 'index.html', context)
 
 
 def emailView(request):

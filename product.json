@@ -1,0 +1,335 @@
+[
+{
+  "model": "Products.category",
+  "pk": 7,
+  "fields": {
+    "Category_name": "Clothing",
+    "slug": "clothing"
+  }
+},
+{
+  "model": "Products.category",
+  "pk": 8,
+  "fields": {
+    "Category_name": "Shoes",
+    "slug": "shoes"
+  }
+},
+{
+  "model": "Products.category",
+  "pk": 9,
+  "fields": {
+    "Category_name": "Jewellery",
+    "slug": "jewellery"
+  }
+},
+{
+  "model": "Products.category",
+  "pk": 10,
+  "fields": {
+    "Category_name": "Accessories",
+    "slug": "accessories"
+  }
+},
+{
+  "model": "Products.category",
+  "pk": 11,
+  "fields": {
+    "Category_name": "Bags",
+    "slug": "bags"
+  }
+},
+{
+  "model": "Products.model_category",
+  "pk": 1,
+  "fields": {
+    "Model_Category_name": "Men",
+    "slug": "men"
+  }
+},
+{
+  "model": "Products.model_category",
+  "pk": 2,
+  "fields": {
+    "Model_Category_name": "Women",
+    "slug": "women"
+  }
+},
+{
+  "model": "Products.model_category",
+  "pk": 3,
+  "fields": {
+    "Model_Category_name": "Kids",
+    "slug": "kids"
+  }
+},
+{
+  "model": "Products.product",
+  "pk": 4,
+  "fields": {
+    "title": "Cotton dress with embroidery",
+    "slug": "cotton-dress-embroidery",
+    "category": 7,
+    "model_category": 2,
+    "price": "40.00",
+    "discounted_price": "39.99",
+    "short_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's type and scrambled leap into electronic typesetting, remaining essentiallyit to make a type specimen book.",
+    "description": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "featured": true,
+    "new_collection": true,
+    "stock": 2,
+    "Manufacturer": "USA",
+    "Occassion": "Casual",
+    "Season": "Winter/Autumn",
+    "Gender": "Women\u2019s",
+    "available_size": "['small', 'medium', 'large', 'extraLarge']",
+    "active": true,
+    "created": "2018-04-25T07:01:27.061Z",
+    "updated": "2018-04-27T06:41:31.386Z",
+    "sku": "A487-V"
+  }
+},
+{
+  "model": "Products.product",
+  "pk": 5,
+  "fields": {
+    "title": "Cotton Blue Shirt",
+    "slug": "cotton-blue-shirt",
+    "category": 7,
+    "model_category": 1,
+    "price": "50.00",
+    "discounted_price": "39.99",
+    "short_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "featured": true,
+    "new_collection": true,
+    "stock": 3,
+    "Manufacturer": "INDIA",
+    "Occassion": "Casual",
+    "Season": "Winter/Autumn",
+    "Gender": "Men",
+    "available_size": "['small', 'medium', 'large', 'extraLarge']",
+    "active": true,
+    "created": "2018-04-27T05:21:15.307Z",
+    "updated": "2018-04-27T06:41:46.263Z",
+    "sku": "A400-V"
+  }
+},
+{
+  "model": "Products.product",
+  "pk": 6,
+  "fields": {
+    "title": "Linen Sneakers",
+    "slug": "linen-sneakers",
+    "category": 8,
+    "model_category": 1,
+    "price": "30.00",
+    "discounted_price": "20.00",
+    "short_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+    "featured": true,
+    "new_collection": true,
+    "stock": 2,
+    "Manufacturer": "CHINA",
+    "Occassion": "Casual",
+    "Season": "Summer",
+    "Gender": "Unisex",
+    "available_size": "[]",
+    "active": true,
+    "created": "2018-04-27T08:47:40.916Z",
+    "updated": "2018-04-27T08:59:20.481Z",
+    "sku": "A200-V"
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 16,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/Product_2.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 17,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/large_1.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 18,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/large_2.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 19,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/large_3.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 20,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/thumb_1.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 21,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/thumb_2.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 22,
+  "fields": {
+    "product": 4,
+    "image": "products/2018/04/26/thumb_3.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 28,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/Product_5_RTksJm3.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 29,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/blue_shirt_l.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 30,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/2.resized_6GiyV18.jpg",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 31,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/blue_shirt__l.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 32,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/blue_shirt_thumb_uOWKsAs.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 33,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/2_thumb_b9hYMlh.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 34,
+  "fields": {
+    "product": 5,
+    "image": "products/2018/04/27/blue_shirt_2_thumb_dnwsXwe.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productimages",
+  "pk": 35,
+  "fields": {
+    "product": 6,
+    "image": "products/2018/04/27/Product_12.png",
+    "name": null
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 1,
+  "fields": {
+    "product": 4,
+    "available_color": "#FF5B66"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 2,
+  "fields": {
+    "product": 4,
+    "available_color": "#5A607E"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 3,
+  "fields": {
+    "product": 4,
+    "available_color": "#46DD8C"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 13,
+  "fields": {
+    "product": 5,
+    "available_color": "#3029FF"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 14,
+  "fields": {
+    "product": 5,
+    "available_color": "#5C61FF"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 15,
+  "fields": {
+    "product": 6,
+    "available_color": "#45FFE6"
+  }
+},
+{
+  "model": "Products.productcolors",
+  "pk": 16,
+  "fields": {
+    "product": 6,
+    "available_color": "#FF681C"
+  }
+}
+]

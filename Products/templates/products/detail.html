@@ -7,9 +7,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+       {% if object.images.count == 1 %}
+
+         <img src="{{object.images.first.image.url}}" class="pd_75" align='center'>
+        {% else %}
       <div class="slider slider-for">
         {% for j in "xx" %}
-      	{% for i in object.images.all|slice:"3:6:-1" %}            
+      	{% for i in object.images.all|slice:"1:4" %}            
         
           <div><img src="{{ i.image.url }}" alt="logo image"></div>
         {% endfor %}
@@ -19,13 +23,14 @@
       </div>
       <div class="slider pro-slider-nav">
       	{% for j in "xx" %}
-      	{% for i in object.images.all|slice:":3:-1" %}            
+      	{% for i in object.images.all|slice:"4:7" %}            
         <div class="slick-slide">
           <div class="img"><img src="{{ i.image.url }}" alt="logo image"></div>
         </div>
         {% endfor %}
        {% endfor %}
       </div>
+       {% endif%}
     </div>
     <div class="col-md-6">
       <div class="page-title">
@@ -41,7 +46,7 @@
         </div>
       </div>
       <div class="in-stock">
-        <div class="title-center">{{ object.discounted_price }}$<span>{{ object.price }}$</span> 
+        <div class="title-center">${{ object.discounted_price }}<span>${{ object.price }}</span> 
         	{% if object.active == True %}
         	<i class="fa fa-check-circle"><span>in stock</span></i>{% endif %}</div>
       </div>
@@ -78,13 +83,13 @@
       <div class="Categories-box">
         <div class="address">
           <label>SKU :</label>
-          <span>A487-V</span></div>
+          <span>{{object.sku}}</span></div>
         <div class="address">
           <label>Categories :</label>
-          <span>Women</span></div>
+          <span>{{object.model_category}}</span></div>
         <div class="address">
           <label>tags : </label>
-          <span>Tops</span></div>
+          <span>{{object.category}}</span></div>
         <div class="address">
           <label>share : </label>
           <div class="social-media">
@@ -99,7 +104,7 @@
           </div>
         </div>
       </div>
-      <div class="button-cart"> <a  href="#" class="btn-left">add to cart</a> <a href="#"><i class="fa fa-heart-o"></i></a> </div>
+      <div class="button-cart"> <a href="#" class="btn-left">add to cart</a> <a href="#"><i class="fa fa-heart-o"></i></a> </div>
     </div>
   </div>
 </div>

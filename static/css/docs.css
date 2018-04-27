@@ -77,6 +77,10 @@
      padding-top: 95px;
      padding-bottom: 95px;
 }
+
+.pd_75{
+     padding: 75px;
+}
  .pt-95 {
      padding-top: 95px;
 }
@@ -890,7 +894,7 @@
 }
 
 .inner-banner1 {
-  background: url(../images/inner-banner1.jpg) no-repeat scroll center center;
+  background: url(../images/inner-banner.jpg) no-repeat scroll center center;
   padding: 70px 0 60px;
 }
 

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'localflavor',
     'social_django',
     'colorfield',
-    'webcolors'
+
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

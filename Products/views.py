@@ -1,14 +1,17 @@
-from django.shortcuts import render
-from .models import Product,ProductImages
+from django.shortcuts import render,get_object_or_404
+from .models import Product,ProductImages,Category
 from django.http import Http404
 
 
-def product_list(request):
-	list_1=Product.objects.all()
-	
-	context={'list_1':list_1 }
-
-	return render(request,'products/product_list.html',context)
+def product_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products_list = Product.objects.filter(active=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products_list = products_list.filter(category=category)
+    context= {'category': category,'products_list':products_list,'categories': categories }
+    return render(request,'products/product_list.html',context)
 
 
 def product_detail(request,id, slug):
@@ -23,3 +26,5 @@ def product_detail(request,id, slug):
     }
     return render(request, "products/detail.html", context)
 # Create your views here.
+
+

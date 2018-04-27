@@ -29,6 +29,25 @@ class Category(models.Model):
         return reverse('Products:product_list_by_category', args=[self.slug])
 
 
+
+class Model_Category(models.Model):
+    Model_Category_name  = models.CharField(max_length=200)
+    slug  = models.SlugField(max_length=200,unique=True)
+
+
+    class Meta:
+        # ordering = ('name',)
+        verbose_name = 'model_category'
+        verbose_name_plural = 'model_categories'
+
+
+    def __str__(self):
+        return self.Model_Category_name
+
+    def get_absolute_url(self):
+        return reverse('Products:product_list_by_Model_category', args=[self.slug])
+
+
 class ProductQuerySet(models.query.QuerySet):
     def active(self):
         return self.filter(active=True)
@@ -68,6 +87,7 @@ class Product(models.Model):
     title            = models.CharField(max_length=30, db_index=True)
     slug             = models.SlugField(blank=True, db_index=True )
     category         = models.ForeignKey(Category, related_name='products',default='Other')
+    model_category   = models.ForeignKey(Model_Category, related_name='model_products')
     price            = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     discounted_price = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     # image         = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -96,6 +116,8 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    def product_count(self):
+        return Product.category.objects.count()
 
     def get_absolute_url(self):
         # print(reverse('Products:product_detail', args=[self.id, self.slug]))

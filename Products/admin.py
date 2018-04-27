@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product,Category,ProductImages,ProductColors
+from .models import Product,Category,ProductImages,ProductColors,Model_Category
 
 from .forms import ProductForm
 
@@ -7,6 +7,11 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['Category_name', 'slug']
     prepopulated_fields = {'slug': ('Category_name',)}
 admin.site.register(Category, CategoryAdmin)
+
+class Model_CategoryAdmin(admin.ModelAdmin):
+    list_display = ['Model_Category_name', 'slug']
+    prepopulated_fields = {'slug': ('Model_Category_name',)}
+admin.site.register(Model_Category, Model_CategoryAdmin)
 
 class ProductImageInline(admin.StackedInline):
     model = ProductImages

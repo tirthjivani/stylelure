@@ -5,11 +5,11 @@
 <div class="banner inner-banner1 ">
   <div class="container">
     <section class="banner-detail center-xs">
-      <h1 class="banner-title">Women</h1>
+      <h1 class="banner-title">{% if category == None %} Women {% else %}{{category}} {%endif%}</h1>
       <div class="bread-crumb right-side float-none-xs">
         <ul>
           <li><a href="index.html">Home</a>/</li>
-          <li><span>Women</span></li>
+          <li><span>{% if category == None %} Women {% else %}{{category}} {%endif%}</span></li>
         </ul>
       </div>
     </section>
@@ -28,12 +28,10 @@
             </div>
             <div class="sidebar-contant">
               <ul>
-                <li><a href="#">Clothing <span>(21)</span></a></li>
-                <li><a href="#">Shoes <span>(05)</span></a></li>
-                <li><a href="#">Jewellery <span>(10)</span></a></li>
-                <li><a href="#">Furniture <span>(12)</span></a></li>
-                <li><a href="#">Bags <span>(18)</span></a></li>
-                <li><a href="#">Accessories <span>(70)</span></a></li>
+              {% for category in categories %}
+              <li><a href="{{category.get_absolute_url }}">{{category.Category_name}}<span></span></a></li>
+              {% endfor %}
+                
               </ul>
             </div>
           </div>
@@ -126,15 +124,16 @@
       <div class="product-listing">
         <div class="inner-listing">
           <div class="row">
+             {% for product in products_list %} 
             <div class="col-md-4 col-6 mb-30">
              <div class="product_image">
-              {% for a in list_1 %} 
              
-            <img src="{{ a.images.first.image.url }}" alt='a'/>             
+             
+            <img src="{{ product.images.first.image.url }}" alt='a'/>             
               <div class="product_caption">
-                <a href="{{a.get_absolute_url}}" >
-                <div class="pc_1">{{a.title|truncatechars:15}}</div>
-                <div class="pc_2">{{ a.price|floatformat }}$</div>
+                <a href="{{product.get_absolute_url}}" >
+                <div class="pc_1">{{product.title|truncatechars:15}}</div>
+                <div class="pc_2">${{ product.price|floatformat }}</div>
                 </a>
               </div>
               
@@ -154,8 +153,9 @@
               </div>
               
             </div>
-            {% endfor %}
+            
           </div>
+          {% endfor %}
           <div class="col-md-4 col-6 mb-30">
             <div class="product-item">
               <div class="product_image">
