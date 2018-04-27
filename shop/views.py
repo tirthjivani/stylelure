@@ -13,6 +13,8 @@ def index(request):
 
     return render(request, 'index.html', context)
 
+def cart(request):
+    return render(request,'cart.html')
 
 def emailView(request):
     if request.method == 'GET':
