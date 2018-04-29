@@ -1,3 +1,4 @@
+$(document).ready(function(){
 
      $('.sslider').slick({
        dots: false,
@@ -86,6 +87,7 @@
           ]
       	});
 
+
 $('.slider-for').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -123,6 +125,37 @@ $('.pro-slider-nav').slick({
 	  asNavFor: '.slider-big'
 	});
 
+     var searchForm = $(".search-form")
+     var searchInput = searchForm.find("[name='q']") // input name='q'
+     var typingTimer;
+     var typingInterval = 500 // .5 seconds
+     var searchBtn = searchForm.find("[type='submit']")
+     searchInput.keyup(function(event){
+       // key released
+       clearTimeout(typingTimer)
+
+       typingTimer = setTimeout(perfomSearch, typingInterval)
+     })
+
+     searchInput.keydown(function(event){
+       // key pressed
+       clearTimeout(typingTimer)
+     })
+
+     function displaySearching(){
+       searchBtn.addClass("disabled")
+       searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...")
+     }
+
+     function perfomSearch(){
+       displaySearching()
+       var query = searchInput.val()
+       setTimeout(function(){
+         window.location.href='/search/?q=' + query
+       }, 1000)
+
+     }
+
 
     /* ---- For Mobile Menu Dropdown JS Start ---- */
       $('#menu span.opener').on("click", function() {
@@ -145,7 +178,7 @@ $('.pro-slider-nav').slick({
     var navbar_toggle = $('.navbar-toggle i');
     var menu_var = $('#menu');
     $('.navbar-toggle').on("click", function(){
-      
+
       if(menu_var.hasClass('menu-open')){
         menu_var.removeClass('menu-open');
         navbar_toggle.removeClass('fa-close');
@@ -163,7 +196,7 @@ $('.pro-slider-nav').slick({
     $('.account-tab-stap').on('click', 'li', function() {
         $('.account-tab-stap li').removeClass('active');
         $(this).addClass('active');
-        
+
         $(".account-content").fadeOut();
         var currentLiID = $(this).attr('id');
         $("#data-"+currentLiID).fadeIn();
@@ -178,7 +211,7 @@ $('.pro-slider-nav').slick({
   $("." + opne_id + "-box").slideDown();
 });
      /* Price-range Js Start */
- 
+
       $( "#slider-range" ).slider({
         range: true,
         min: 0,
@@ -189,6 +222,7 @@ $('.pro-slider-nav').slick({
         }
       });
       $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
- 
+
   /* Price-range Js End */
 
+})

@@ -1,0 +1,56 @@
+{% extends 'base_product.html' %}
+{% load static %}
+
+{% block  bread-crumb-block %}
+<div class="banner inner-banner1 ">
+  <div class="container">
+    <section class="banner-detail center-xs">
+      <h1 class="banner-title">{% if category == None %} Search {% else %}{{category}} {%endif%}</h1>
+      <div class="bread-crumb right-side float-none-xs">
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a>/</li>
+          <li><span>{% if category == None %} Search {% else %}{{category}} {%endif%}</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+          {% block product__list %}
+          <div class="row">
+             {% for product in search %}
+            <div class="col-md-4 col-6 mb-30">
+             <div class="product_image">
+
+
+            <img src="{{ product.images.first.image.url }}" alt='a'/>
+              <div class="product_caption">
+                <a href="{{product.get_absolute_url}}" >
+                <div class="pc_1">{{product.title|truncatechars:15}}</div>
+                <div class="pc_2">${{ product.price|floatformat }}</div>
+                </a>
+              </div>
+
+              <div class="overlay-div text-center">
+                <div class="overlay-content">
+
+                  <div class="button_block">
+                    <a href="#"><i class="pe-7s-like"></i></a>
+                    <a href="#"><i class="pe-7s-shuffle"></i></a>
+                    <a href="#"><i class="pe-7s-clock"></i></a>
+                  </div>
+                  <div class="add_to_cart">
+                    <i class="pe-7s-cart"></i> ADD TO CART
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+    {% endblock product__list %}

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% block  bread-crumb-block %}
+<div class="banner inner-banner1 ">
+  <div class="container">
+    <section class="banner-detail center-xs">
+      <h1 class="banner-title">{% if category == None %} Women {% else %}{{category}} {%endif%}</h1>
+      <div class="bread-crumb right-side float-none-xs">
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a>/</li>
+          <li><span>{% if category == None %} Women {% else %}{{category}} {%endif%}</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+<section class="ptb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 mb-sm-30">
+        <div class="sidebar-block">
+          <div class="sidebar-box listing-box mb-40"> <span class="opener plus"></span>
+            <div class="sidebar-title">
+              <h3><span>Categories</span></h3>
+            </div>
+            <div class="sidebar-contant">
+              <ul>
+              {% for category in categories %}
+              <li><a href="{{category.get_absolute_url }}">{{category.Category_name}}<span></span></a></li>
+              {% endfor %}
+
+              </ul>
+            </div>
+          </div>
+          <div class="sidebar-box mb-40"> <span class="opener plus"></span>
+            <div class="sidebar-title">
+              <h3><span>Shop by</span></h3>
+            </div>
+            <div class="sidebar-contant">
+              <div class="price-range mb-30">
+                <div class="inner-title">Price range</div>
+                <input class="price-txt" type="text" id="amount">
+                <div id="slider-range"></div>
+              </div>
+              <div class="size mb-20">
+                <div class="inner-title">Size</div>
+                <ul >
+                  <li><a href="#">S (10)</a></li>
+                  <li><a href="#">M (05)</a></li>
+                  <li><a href="#">L (10)</a></li>
+                  <li><a href="#">XL (08)</a></li>
+                  <li><a href="#">XXL (05)</a></li>
+                </ul>
+              </div>
+              <div class="mb-20">
+                <div class="inner-title">Color</div>
+                <ul>
+                  <li><a href="#">Black <span>(0)</span></a></li>
+                  <li><a href="#">Blue <span>(05)</span></a></li>
+                  <li><a href="#">Brown <span>(10)</span></a></li>
+                </ul>
+              </div>
+              <div class="mb-20">
+
+              </div>
+              <a href="#" class="btn btn-color">Refine</a> </div>
+            </div>
+            <div class="sidebar-box mb-40 d-none d-lg-block">
+              <a href="#">
+                <img src="images/left-banner.jpg" alt="Stylelure">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="shorting mb-30">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="view">
+                  <div class="list-types grid active "> <a href="#">
+                    <div class="grid-icon list-types-icon"></div>
+                  </a>
+                </div>
+                <div class="list-types list"> <a href="#">
+                  <div class="list-icon list-types-icon"></div>
+                </a>
+              </div>
+            </div>
+            <div class="short-by float-right-sm"> <span>Sort By :</span>
+              <div class="select-item select-dropdown">
+                <fieldset>
+                  <select  name="speed" id="sort-price" class="option-drop">
+                    <option value="" selected="selected">Name (A to Z)</option>
+                    <option value="">Name(Z - A)</option>
+                    <option value="">price(low&gt;high)</option>
+                    <option value="">price(high &gt; low)</option>
+                    <option value="">rating(highest)</option>
+                    <option value="">rating(lowest)</option>
+                  </select>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="show-item right-side float-left-sm"> <span>Show :</span>
+              <div class="select-item select-dropdown">
+                <fieldset>
+                  <select  name="speed" id="show-item" class="option-drop">
+                    <option value="" selected="selected">24</option>
+                    <option value="">12</option>
+                    <option value="">6</option>
+                  </select>
+                </fieldset>
+              </div>
+              <span>Per Page</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-listing">
+        <div class="inner-listing">
+{% block product__list %}
+{% endblock product__list%}
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

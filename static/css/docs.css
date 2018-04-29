@@ -1,4 +1,4 @@
-/* Body and General Styles Start -------------------------------------------------- */
+﻿/* Body and General Styles Start -------------------------------------------------- */
  @font-face {
      font-family: 'FontAwesome';
      src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -22,7 +22,7 @@
      text-decoration: none;
      transition: all ease .3s;
      -webkit-transition: all ease .3s;
-     -o-transition: all ease .3s;
+
      -ms-transition: all ease .3s;
 }
  a:hover {
@@ -31,7 +31,7 @@
      transition: all 0.25s ease 0s;
      -moz-transition: all 0.25s ease 0s;
      -webkit-transition: all 0.25s ease 0s;
-     -o-transition: all 0.25s ease 0s;
+
 }
  ul {
      list-style: none;
@@ -159,7 +159,7 @@
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    -o-border-radius: 50%;
+
     z-index: 1;
 }
 .sale-label {
@@ -167,7 +167,7 @@
     left: 10px;
     color: #1b2839;
 }*/
-/* Body End -------------------------------------------------- */
+/* gexu@ethersportz.info Body End -------------------------------------------------- */
 /* header Start -------------------------------------------------- */
  #header {
      line-height: 20px;
@@ -301,7 +301,7 @@
      border-radius: 0px;
      -moz-border-radius: 0px;
      -webkit-border-radius: 0px;
-     -o-border-radius: 0px;
+
 }
  header#navbar {
      background: #fff;
@@ -313,7 +313,7 @@
     /*transition: all 0.4s ease 0s;
      -moz-transition: all 0.4s ease 0s;
      -webkit-transition: all 0.4s ease 0s;
-     -o-transition: all 0.4s ease 0s;
+
     */
 }
  header#navbar.header-fixed {
@@ -365,7 +365,7 @@
      transition: all 0.4s ease 0s;
      -moz-transition: all 0.4s ease 0s;
      -webkit-transition: all 0.4s ease 0s;
-     -o-transition: all 0.4s ease 0s;
+
 }
  .search-box:hover input.input-text, .search-box input.input-text:focus {
      width: 250px;
@@ -400,7 +400,7 @@
      transition: all 0.4s ease 0s;
      -moz-transition: all 0.4s ease 0s;
      -webkit-transition: all 0.4s ease 0s;
-     -o-transition: all 0.4s ease 0s;
+
 }
  .header-right-link ul li.search-box > a span {
      background-position: -11px -89px;
@@ -427,7 +427,7 @@
      border-radius: 50%;
      -moz-border-radius: 50%;
      -webkit-border-radius: 50%;
-     -o-border-radius: 50%;
+
      height: 15px;
      line-height: 13px;
      position: absolute;
@@ -488,7 +488,7 @@
      transition: all 0.4s ease-in-out 0s;
      -webkit-transition: all 0.4s ease-in-out 0s;
      -moz-transition: all 0.4s ease-in-out 0s;
-     -o-transition: all 0.4s ease-in-out 0s;
+
      z-index: 3;
 }
  .header-fixed .header-link-dropdown {
@@ -615,7 +615,7 @@
      transition: all 0.4s ease 0s;
      -moz-transition: all 0.4s ease 0s;
      -webkit-transition: all 0.4s ease 0s;
-     -o-transition: all 0.4s ease 0s;
+
 }
  .megamenu.full {
      left: 0;
@@ -675,11 +675,11 @@
      transition: all 0.3s ease 0s;
      -moz-transition: all 0.3s ease 0s;
      -webkit-transition: all 0.3s ease 0s;
-     -o-transition: all 0.3s ease 0s;
+
      border-radius: 5px;
      -moz-border-radius: 5px;
      -webkit-border-radius: 5px;
-     -o-border-radius: 5px;
+
 }
  .btn.full {
      width: 100%;
@@ -774,7 +774,7 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 0;
-    line-height: 32px;   
+    line-height: 32px;
 }
 
 .listing-box ul li {
@@ -793,7 +793,7 @@
 }
 
 .listing-box ul li a:hover{
-     color:#1abc9c; 
+     color:#1abc9c;
 
 }
 .listing-box ul li:first-child a {
@@ -821,12 +821,12 @@
 }
 
 .sidebar-contant  a {
-     color:#6d6d6d; 
+     color:#6d6d6d;
 
 }
 
 .sidebar-contant  a:hover{
-     color:#1abc9c; 
+     color:#1abc9c;
 }
 
 /* Sorting CSS Start */
@@ -1614,7 +1614,7 @@
      cursor: pointer;
      transition: all ease .3s;
      -webkit-transition: all ease .3s;
-     -o-transition: all ease .3s;
+
      -ms-transition: all ease .3s;
 }
  .contact-form input[type="submit"]:hover {
@@ -1644,6 +1644,11 @@
  .social-info ul li a:hover {
      background-color: #1abc9c;
      border-color: #1abc9c;
+}
+.checkout-section .check-box input[type="checkbox"] {
+	margin: 5px 0 0;
+	min-height: 1px;
+	display: none;
 }
 .btn-left{font-size:14px; line-height:24px; width:150px; height:50px; background-color:#46bfa9; border:none; color:#fff; border-radius:5px;}
 /* content End -------------------------------------------------- */
@@ -1703,14 +1708,14 @@
   padding-left: 15px;
 }
 /* footer End -------------------------------------------------- */
-/* xyz inner page Start -------------------------------------------------- */
+
 
 .contact-us {padding-bottom:68px;}
 .contact-us h2{font-size:24px; font-weight:bold; text-transform:uppercase; line-height:64px; padding-top:23px; position:relative; margin:0px; }
 .contact-us  h2:after {position: absolute; bottom: 0px; left: 0px; width: 100px; height: 3px; background: #4ec6ab; content: "";}
 .contact-us .form-group label { display: inline-block; font-weight:normal;  padding-top: 28px; line-height:32px; color:#a09f9f; font-size:14px;}
-.contact-us .form-group {margin:0px;} 
-.contact-us .form-group span{color:#ff0101;} 
+.contact-us .form-group {margin:0px;}
+.contact-us .form-group span{color:#ff0101;}
 .contact-us .form-group input{height:49px; margin:0px;}
 .contact-us .btn-left{width:auto; line-height:30px; padding:10px 30px 10px 30px; font-size:16px; margin-top:30px; background-color:#1abc9c;}
 .contact-us .btn-left:hover{background-color:#51545a;}
@@ -1725,7 +1730,85 @@
 .contact-us .name{width:100%; display:inline-block;}
 .contact-us .side-bar{padding-top:66px;}
 .google-map img{width:100%;}
-/* xyz inner page End -------------------------------------------------- * 
+
+
+.checkout-step {
+	display: inline-block;
+	width: 100%;
+}
+.checkout-step ul {
+	display: table;
+	margin: 0px auto 25px;
+}
+.checkout-step ul li {
+	float: left;
+	font-size: 15px;
+	color: #3bd0ad;
+	cursor: pointer;
+}
+.checkout-step ul li .step {
+	float: left;
+}
+.checkout-step ul li .step .circle {
+	background: #3bd0ad;
+	color: #fff;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	padding: 3px 11px;
+	font-weight: 500;
+	font-size: 16px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+
+	border-radius: 50%;
+}
+.checkout-step ul li .step .line {
+	background: #3bd0ad none repeat scroll 0 0;
+	float: left;
+	height: 7px;
+	margin: 12px -1px 12px 0;
+	width: 65px;
+}
+.checkout-step ul li:first-child .step .line {
+	-webkit-border-radius: 3px 0px 0px 3px;
+	-moz-border-radius: 3px 0px 0px 3px;
+
+	border-radius: 3px 0px 0px 3px;
+	width: 65px;
+}
+.checkout-step ul li:last-child .step .line {
+	-webkit-border-radius: 0px 3px 3px 0px;
+	-moz-border-radius: 0px 3px 3px 0px;
+
+	border-radius: 0px 3px 3px 0px;
+	width: 65px;
+	background: #222;
+}
+.checkout-step ul li span {
+	color: #3bd0ad;
+	display: inline-block;
+	padding: 6px 15px 6px 6px;
+	line-height: 20px;
+}
+.checkout-step ul li.step-done {
+	color: #26537f;
+}
+.checkout-step ul li.active {
+	color: #3bd0ad;
+}
+.checkout-step ul li.step-done .step .circle, .checkout-step ul li.step-done .step .line {
+	background: #26537f;
+}
+.checkout-step ul li.active .step .circle, .checkout-step ul li.active .step .line {
+	background: #3bd0ad;
+}
+.checkout-step li.active + li .circle, .checkout-step li.active + li + li .circle, .checkout-step li.active + li + li + li .circle, .checkout-step li.active + li .line, .checkout-step li.active + li + li .line, .checkout-step li.active + li + li + li .line {
+	background: #222;
+}
+.checkout-step li.active + li span, .checkout-step li.active + li + li span, .checkout-step li.active + li + li + li span {
+	color: #222;
+}
 /* Responsive Style Start -------------------------------------------------- */
  @media (min-width: 1400px) {
     /* .navbar-nav{
@@ -1828,7 +1911,7 @@
          transition: all 0.4s ease 0s;
          -moz-transition: all 0.4s ease 0s;
          -webkit-transition: all 0.4s ease 0s;
-         -o-transition: all 0.4s ease 0s;
+
     }
      .navbar-collapse.menu-open {
          left: 0;
@@ -1953,7 +2036,7 @@
          transition: none 0s ease 0s;
          -moz-transition: none 0s ease 0s;
          -webkit-transition: none 0s ease 0s;
-         -o-transition: none 0s ease 0s;
+
     }
      .megamenu .container {
          width: 100%;
@@ -2128,7 +2211,7 @@
 
      .page-header h1{
      font-size: 42px;
-     
+
 }
  #sale h2 {
      font-size: 52px;
@@ -2136,7 +2219,7 @@
 }
 #sale h3 {
      font-size: 30px;
-     
+
 }
  #newsletter .label {
     font-size:13px;
@@ -2241,7 +2324,7 @@
          transform: translateX(28%);
          -ms-transform: translateX(28%);
          -webkit-transform: translateX(28%);
-         -o-transform: translateX(28%);
+
     }
 }
  @-moz-document url-prefix() {
@@ -2301,4 +2384,3 @@
 }*/
 
 /* Responsive Style End -------------------------------------------------- */
- 

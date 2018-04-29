@@ -1,0 +1,6 @@
+<form class="search-form" action="{% url 'search:query' %}" method="GET">
+  <div class="search-box- header-link-dropdown">
+    <input type="search" class="form-control" name="search-input" placeholder="Search..." value="{{ request.GET.q }}">
+    <button class="btn btn-color btn-outline-success" type="submit">Search</button>
+  </div>
+</form>

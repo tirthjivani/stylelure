@@ -10,11 +10,24 @@ def index(request):
     context={
     "featured_product":featured_product
     }
-
+    if request.method == 'POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        tel=request.POST.get('tel')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
+        try:
+            send_mail(subject, message, email, ['admin@example.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return redirect('success')
     return render(request, 'index.html', context)
 
 def cart(request):
     return render(request,'cart.html')
+
+def checkout(request):
+    return render(request,'checkout.html')
 
 def emailView(request):
     if request.method == 'GET':

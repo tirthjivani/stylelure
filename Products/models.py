@@ -56,7 +56,7 @@ class ProductQuerySet(models.query.QuerySet):
         return self.filter(featured=True, active=True)
 
     def search(self, query):
-        lookups = (Q(title__icontains=query) | 
+        lookups = (Q(title__icontains=query) |
                   Q(description__icontains=query) |
                   Q(price__icontains=query) |
                   Q(tag__title__icontains=query)
@@ -71,7 +71,7 @@ class ProductManager(models.Manager):
     def all(self):
         return self.get_queryset().active()
 
-    def featured(self): #Product.objects.featured() 
+    def featured(self): #Product.objects.featured()
         return self.get_queryset().featured()
 
     def get_by_id(self, id):
