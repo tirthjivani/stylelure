@@ -64,7 +64,7 @@
       <div class="color-btn">
         <div class="btn-btn">
           <h3> Color</h3>
-          <div class="main-box">
+          <div class="main-box-color">
           	{% for  color in object.colors.all %}
             <div class="red-box" style="background-color:{{color.available_color}}"></div>         
             {% endfor %}
@@ -74,8 +74,8 @@
           <h3>Select size <span>size guide</span></h3>
           <div class="main-box">
             <div class="box active {% if 'small' not in object_size %} disable {% endif %}">S</div>
-            <div class="box {% if 'medium' not in object_size %} disable {%else%}haa {% endif %}">M</div>
-            <div class="box {% if 'large' not in object_size %} disable{%else%}disable {% endif %}">L</div>
+            <div class="box {% if 'medium' not in object_size %} disable {%else%} {% endif %}">M</div>
+            <div class="box {% if 'large' not in object_size %} disable{%else%} {% endif %}">L</div>
             <div class="box {% if 'extraLarge' not in object_size %} disable {% endif %}">XL</div>
           </div>
         </div>
@@ -104,7 +104,22 @@
           </div>
         </div>
       </div>
-      <div class="button-cart"> <a href="#" class="btn-left">add to cart</a> <a href="#"><i class="fa fa-heart-o"></i></a> </div>
+      <form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
+          <input type='hidden' name='product_id' value='{{ object.id }}' />
+          <input type='hidden' id='color' name='selected_color' value="" />
+          <input type='hidden' id='size' name='selected_size' value="" />
+          <div class="button-cart">
+          {% if object in cart_obj.products.all %}
+            <a href="" class="btn-left">In cart</a> 
+          <button type='submit' class='btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
+          {% else %}
+               <button type='submit'  class='btn btn-left btn-success'>ADD TO CART</button>
+              
+          {% endif %}
+          <a href="#"><i class="fa fa-heart-o"></i></a>
+          </div>
+      </form>
+      
     </div>
   </div>
 </div>

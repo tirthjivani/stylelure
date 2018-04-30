@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Product,ProductImages,Category
+from cart.models import Cart
 from django.http import Http404
 
 
@@ -16,14 +17,18 @@ def product_list(request, category_slug=None):
 
 def product_detail(request,id, slug):
     instance = Product.objects.get_by_id(id)
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
     size = instance.available_size
     if instance is None:
         raise Http404("Product doesn't exist")
 
     context = {
+        'cart_obj':cart_obj,
         'object': instance,
-        'obejct_size': size
+        'object_size': size
     }
+
+    print(size)
     return render(request, "products/detail.html", context)
 # Create your views here.
 

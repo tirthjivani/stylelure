@@ -33,24 +33,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {% for product in cart.products.all %}
+                  <tr>             
                     <td>
-                      <a href="product-page.html">
+                      <a href="{{product.get_absolute_url}}">
                         <div class="product-image">
-                          <img alt="Stylelure" src="{% static "images/1.jpg" %}">
+                          <img alt="Stylelure" src="{{ product.images.first.image.url }}">
                         </div>
                       </a>
                     </td>
                     <td>
                       <div class="product-title">
-                        <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
+                        <a href="{{product.get_absolute_url}}">{{product.title|truncatechars:25}}</a>
                       </div>
                     </td>
                     <td>
                       <ul>
                         <li>
                           <div class="base-price price-box">
-                            <span class="price">$80.00</span>
+                            <span class="price">${{ product.price|floatformat }}</span>
                           </div>
                         </li>
                       </ul>
@@ -73,9 +74,14 @@
                       </div>
                     </td>
                     <td>
-                      <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
+                    <form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
+                      <input type='hidden' name='product_id' value='{{ product.id }}' />
+                      
+                    <button type='submit' class='btn btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
+                      </form>
                     </td>
                   </tr>
+                  {% endfor %}
                   <tr>
                     <td>
                       <a href="product-page.html">

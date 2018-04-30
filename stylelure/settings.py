@@ -117,9 +117,13 @@ SOCIAL_AUTH_GITHUB_SECRET = 'cb640d129c297781f9068ff3a5f045c7aefbeb6c'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-  'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   'default': {
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME': 'stylelure_db',
+        'USER': 'adarsh',
+        'PASSWORD':'password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
