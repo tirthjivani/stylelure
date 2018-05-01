@@ -309,7 +309,7 @@ button.slick-prev.slick-arrow:hover {
     padding-bottom: 13px;
 }
 
-.btn-btn .red-box {
+.red-box {
     background-color: #fc6464;
     width: 30px;
     height: 30px;
@@ -318,23 +318,7 @@ button.slick-prev.slick-arrow:hover {
     margin-right: 11px;
 }
 
-.btn-btn .blue-box {
-    background-color: #5b5f81;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 11px;
-}
 
-.btn-btn .green-box {
-    background-color: #6fdc84;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 11px;
-}
 
 .btn-btn {
     display: inline-block;

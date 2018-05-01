@@ -227,7 +227,9 @@ $(document).ready(function() {
         $('.main-box div').removeClass('active');
         $(this).addClass('active');
         var selected_size  = $(this).html()
+       
         $('#size').val(selected_size)
+
 
     });
 

@@ -879,6 +879,39 @@
      float: left;
      margin: 5px 10px 3px;
 }
+
+.main-price{
+    color: #b8b8b8;
+    text-decoration: line-through;
+}
+
+.cart-red-box {
+   
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 11px;
+}
+.cart-center-btn .box {
+    background-color: #e9f0fd;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    padding-left: 9px;
+    margin-right: 10px;
+}
+
+.cart-main-box-color{
+     float: left
+}
+
 /* content Start -------------------------------------------------- */
 .banner {
   overflow: hidden;

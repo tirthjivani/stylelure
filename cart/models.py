@@ -30,11 +30,17 @@ class CartManager(models.Manager):
                 user_obj = user
         return self.model.objects.create(user=user_obj)
 
+    product_list=[]
+    def item_list(self,id):        
+        item_count = Cart.objects.filter(id=4).first().items.all().count()
+        for i in range(item_count):
+            product_list.append(Cart.objects.filter(id=4).first().items.all()[i].product_id)
+        return product_list
+
+
 class Cart(models.Model):
     user           = models.ForeignKey(User, null=True, blank=True)
-    products       = models.ManyToManyField(Product, blank=True)
-    selected_color = ColorField(default='#FF0000')
-    selected_size  = models.CharField(max_length=30,null=True,blank=True)
+    #products       = models.ManyToManyField(Product, blank=True)
     subtotal       = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     total          = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     updated        = models.DateTimeField(auto_now=True)
@@ -45,18 +51,35 @@ class Cart(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def get_total_cost(self):
+        return sum(item.get_cost() for item in self.items.all())
+    
 
-def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
-    if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
-        products = instance.products.all()
-        total = 0
-        for x in products:
-            total += x.price
-        if instance.subtotal != total:
-            instance.subtotal = total
-            instance.save()
+class CartItem(models.Model):
+    product = models.ForeignKey(Product,related_name='products')
+    cart = models.ForeignKey(Cart,related_name='items',null=True)
+    selected_color = ColorField(default=None)
+    quantity = models.PositiveIntegerField(default=1)
+    selected_size  = models.CharField(max_length=30)
 
-m2m_changed.connect(m2m_changed_cart_receiver, sender=Cart.products.through)
+    def __str__(self):
+        return '{}'.format(self.id)
+
+    def get_cost(self):
+        return self.product.discounted_price * self.quantity
+
+
+# def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
+#     if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
+#         products = instance.products.all()
+#         total = 0
+#         for x in products:
+#             total += x.price
+#         if instance.subtotal != total:
+#             instance.subtotal = total
+#             instance.save()
+
+# m2m_changed.connect(m2m_changed_cart_receiver, sender=Cart.products.through)
 
 
 def pre_save_cart_receiver(sender, instance, *args, **kwargs):
