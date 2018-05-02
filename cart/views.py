@@ -11,7 +11,7 @@ def cart_home(request):
     return render(request,'cart/cart.html',{"cart": cart_obj})
 
 def cart_add(request):
-    cart_obj, new_obj = Cart.objects.new_or_get(request)
+   # cart_obj, new_obj = Cart.objects.new_or_get(request)
    # print(cart_obj)
     product_id = request.POST.get('product_id')
     selected_color = request.POST.get('selected_color')

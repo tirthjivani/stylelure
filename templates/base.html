@@ -18,6 +18,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.css" %}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
  {% block stylesheets %} {% endblock %}
 <script src="{% static "js/modernizr-2.8.0.min.js" %}"></script>
@@ -94,15 +95,17 @@
                        </div>
                      </form>
                    </li>
-                  <li class="cart-icon">
+                 <li class="cart-icon">
                     {% if user.is_authenticated %}
-                   <a href="#"> <span> <small class="cart-notification">2</small> </span> </a>
+                   <a href="{% url "cart:cart" %}"> <span> <small class="cart-notification">{{cart.items.count}}</small> </span> </a>
                      <div class="cart-dropdown header-link-dropdown">
                        <ul class="cart-list link-dropdown-list">
+                        {% for item in cart.items.all %}
                          <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                           <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{% static 'images/1.jpg' %}"></a>
-                             <div class="media-body"> <span><a>Black African Print Skirt</a></span>
-                               <p class="cart-price">$14.99</p>
+                           <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{{ item.product.images.first.image.url }}"></a>
+                             <div class="media-body"> <span>
+                              <a href="{{item.product.get_absolute_url}}">{{item.product.title|truncatechars:25}}</a></span>
+                            <p class="cart-price">${{ item.product.discounted_price|floatformat }}</p>
                                <div class="product-qty">
                                  <label>Qty:</label>
                                  <div class="custom-qty">
@@ -112,6 +115,7 @@
                              </div>
                            </div>
                          </li>
+                         {% endfor %}
                          <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
                            <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{% static 'images/2.jpg' %}"></a>
                              <div class="media-body"> <span><a>Black African Print Skirt</a></span>
@@ -364,6 +368,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
     <!-- JavaScript files -->

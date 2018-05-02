@@ -3,12 +3,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 from Products.models import Product
+from cart.models import Cart
 
 
 def index(request):
     featured_product = Product.objects.all().featured()
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
     context={
-    "featured_product":featured_product
+    "featured_product":featured_product,
+    "cart":cart_obj
     }
     if request.method == 'POST':
         name=request.POST.get('name')

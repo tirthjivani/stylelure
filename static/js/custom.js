@@ -237,9 +237,31 @@ $(document).ready(function() {
         $('.main-box-color div').removeClass('active');
         $(this).addClass('active');
         var selected_color = $(this).css("background-color")
-        $('#color').val(selected_color)      
+        $('#color').val(selected_color)  
 
     });
 
+  
+     $('#add_cart_form').submit(function(event){
+
+     if($('#color').val() != '' && $('#size').val() != '' ){      
+       return;  
+    }   
+    if($('#color').val() == ''){
+    $.alert({
+            title: "Oops!",
+            content: "You Forgot to Select Color",
+            theme: "supervan",
+          })
+      }
+      if($('#size').val() == ''){
+    $.alert({
+            title: "Oops!",
+            content: "You Forgot to Select Size",
+            theme: "modern",
+          })
+     }
+    event.preventDefault();
+   });
 
 })

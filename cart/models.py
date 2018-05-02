@@ -9,19 +9,57 @@ User = settings.AUTH_USER_MODEL
 
 class CartManager(models.Manager):
     def new_or_get(self, request):
-        cart_id = request.session.get("cart_id", None)
-        qs = self.get_queryset().filter(id=cart_id)
-        if qs.count() == 1:
+        user = request.user
+        #cart_id = request.session.get("cart_id", None)
+        if request.user.id == None:
+            user=None
+        qs = Cart.objects.filter(user=user)    
+        # cart_id = request.session.get("cart_id", None)
+        # asp = Cart.objects.filter(id=cart_id)   
+        if qs.count() > 0:
             new_obj = False
             cart_obj = qs.first()
+            print(cart_obj)
+            request.session['cart_id'] = cart_obj.id
             if request.user.is_authenticated() and cart_obj.user is None:
                 cart_obj.user = request.user
                 cart_obj.save()
+        # elif asp.count() == 1:
+        #     new_obj = False
+        #     cart_obj = qs.first()
+        #     print(cart_obj)
+        #     request.session['cart_id'] = cart_obj.id
+        #     if request.user.is_authenticated() and cart_obj.user is None:
+        #         cart_obj.user = request.user
+        #         cart_obj.save()
+        # # cart_id = request.session.get("cart_id", None)
+        # qs = self.get_queryset().filter(id=cart_id)
+        # print(cart_id,'qs',qs)
+        # if qs.count() == 1:
+        #     new_obj = False
+        #     cart_obj = qs.first()
+        #     if request.user.is_authenticated() and cart_obj.user is None:
+        #         cart_obj.user = request.user
+        #         cart_obj.save()
         else:
             cart_obj = Cart.objects.new(user=request.user)
             new_obj = True
             request.session['cart_id'] = cart_obj.id
         return cart_obj, new_obj
+    # def new_or_get(self, request):
+    #     cart_id = request.session.get("cart_id", None)
+    #     qs = self.get_queryset().filter(id=cart_id)
+    #     if qs.count() == 1:
+    #         new_obj = False
+    #         cart_obj = qs.first()
+    #         if request.user.is_authenticated() and cart_obj.user is None:
+    #             cart_obj.user = request.user
+    #             cart_obj.save()
+    #     else:
+    #         cart_obj = Cart.objects.new(user=request.user)
+    #         new_obj = True
+    #         request.session['cart_id'] = cart_obj.id
+    #     return cart_obj, new_obj
 
     def new(self, user=None):
         user_obj = None
@@ -30,12 +68,12 @@ class CartManager(models.Manager):
                 user_obj = user
         return self.model.objects.create(user=user_obj)
 
-    product_list=[]
-    def item_list(self,id):        
-        item_count = Cart.objects.filter(id=4).first().items.all().count()
-        for i in range(item_count):
-            product_list.append(Cart.objects.filter(id=4).first().items.all()[i].product_id)
-        return product_list
+    # product_list=[]
+    # def item_list(self,id):        
+    #     item_count = Cart.objects.filter(id=4).first().items.all().count()
+    #     for i in range(item_count):
+    #         product_list.append(Cart.objects.filter(id=4).first().items.all()[i].product_id)
+    #     return product_list
 
 
 class Cart(models.Model):
