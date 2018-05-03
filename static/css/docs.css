@@ -1679,9 +1679,10 @@
      border-color: #1abc9c;
 }
 .checkout-section .check-box input[type="checkbox"] {
-	margin: 5px 0 0;
+	margin: 15px 0 0;
 	min-height: 1px;
-	display: none;
+	width: auto;
+     display: inherit;
 }
 .btn-left{font-size:14px; line-height:24px; width:150px; height:50px; background-color:#46bfa9; border:none; color:#fff; border-radius:5px;}
 /* content End -------------------------------------------------- */

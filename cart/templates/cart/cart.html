@@ -154,7 +154,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mt-30">
-              <a href="shop.html" class="btn btn-color">
+              <a href="{% url 'Products:product_list' %}" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>
                 Continue Shopping
               </a>
@@ -219,7 +219,7 @@
         <div class="row">
           <div class="col-12">
             <div class="right-side float-none-xs">
-              <a href="checkout.html" class="btn btn-color">Proceed to checkout
+              <a href="{% url 'overview' %}" class="btn btn-color">Proceed to checkout
                 <span><i class="fa fa-angle-right"></i></span>
               </a>
             </div>

@@ -105,3 +105,6 @@ class AddressForm(forms.ModelForm):
 #         unique_together = ('email',)
 #         fields = ('first','last','phone','email','date','gender', 'password1', 'password2')
 
+
+class GuestForm(forms.Form):
+    email    = forms.EmailField()

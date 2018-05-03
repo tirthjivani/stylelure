@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from Products.models import Product
 from cart.models import Cart
+from accounts.forms import AddressForm
 
 
 def index(request):
@@ -30,7 +31,8 @@ def cart(request):
     return render(request,'cart.html')
 
 def checkout(request):
-    return render(request,'checkout.html')
+    form=AddressForm
+    return render(request,'checkout.html',{'form':form})
 
 def emailView(request):
     if request.method == 'GET':

@@ -20,8 +20,9 @@ from accounts import views as accounts_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
-
-
+from addresses.views import checkout_address_create_view
+from orders.views import overview
+from cart.views import checkout_home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -51,7 +52,8 @@ urlpatterns = [
             template_name='password_reset_complete.html'),
         name='password_reset_complete'),
     url(r'^contact/$', views.emailView, name='contact'),
-    url(r'^checkout/$', views.checkout, name='checkout'),
+    url(r'^checkout/$', checkout_address_create_view, name='checkout'),
+    url(r'^order/overview$', checkout_home, name='overview'),
     url(r'^contact/success$', views.successView, name='success'),
     url(r'^product/',include('Products.urls',namespace='Products')),
     url(r'^search/',include('search.urls',namespace='search')),

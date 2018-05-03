@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'cart',
+    'orders',
+    'billing',
+    'addresses',
     'tags',
     'search',
     'Products',
@@ -87,12 +90,11 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     # 'social_core.backends.twitter.TwitterOAuth',
-
-    # 'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+    # 'social_core.backends.facebook.FacebookOAuth2',   
 )
 
 WSGI_APPLICATION = 'stylelure.wsgi.application'
