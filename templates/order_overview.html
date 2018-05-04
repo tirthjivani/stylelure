@@ -24,7 +24,7 @@
           <div class="checkout-step mb-40">
             <ul>
               <li> 
-                  <a href="checkout.html">
+                  <a href="{% url 'address' %}">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
@@ -137,6 +137,11 @@
                     </table>
                   </div>
                 </div>
+                <div> <form action="{% url "apply" %}" method="post">
+        {{ coupon_apply_form }}
+        <input type="submit" class="btn " value="Apply"></input> 
+        {% csrf_token %}
+    </form></div>
                 <div class="cart-total-table commun-table mb-30">
                   <div class="table-responsive">
                     <table class="table">
@@ -148,7 +153,7 @@
                       <tbody>
                         <tr>
                           <td>Item(s) Subtotal</td>
-                          <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">{{object.get_total}}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Shipping</td>
@@ -156,7 +161,7 @@
                         </tr>
                         <tr>
                           <td><b>Amount Payable</b></td>
-                          <td><div class="price-box"> <span class="price"><b>$160.00</b></span> </div></td>
+                          <td><div class="price-box"> <span class="price"><b>{{object.get_total_price_after_discount}}</b></span> </div></td>
                         </tr>
                       </tbody>
                     </table>
@@ -166,8 +171,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                {{billing_profile}}
-                {{ billing_profile.user.get_full_name }}
+                {{address_qs}}
                 {# {% for  address in %} #}
                 <div class="cart-total-table address-box commun-table mb-30">
                   <div class="table-responsive">
@@ -181,7 +185,7 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{ object.shipping_address.get_full_name }}</b> </li>
                               <li>
                                  {{ object.shipping_address.get_address|slice:":30" }}
                               </li>
@@ -202,7 +206,7 @@
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
-                        <tr>
+                        <tr>{{ object.billing_address.id }}
                           <th>Billing Address</th>
                         </tr>
                       </thead>
@@ -210,7 +214,7 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{ object.billing_address.get_full_name }}</b> </li>
                                  <li>
                                  {{ object.billing_address.get_address|slice:":30" }}
                               </li>

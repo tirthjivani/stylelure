@@ -23,6 +23,13 @@ class Address(models.Model):
     def __str__(self):
         return str(self.billing_profile)
 
+    def get_id(self):
+        return self.id
+
+    def get_full_name(self):
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
+
     def get_address(self):
         return "{line1}\n{line2}\n{city}\n{state}, {postal}\n{country}".format(
                 line1 = self.address_line_1,

@@ -168,10 +168,15 @@
         </div>
       </div>
       <hr>
+        
       <div class="mtb-30">
         <div class="row">
           <div class="col-md-6 mb-xs-40">
-
+           <form action="{% url "apply" %}" method="post">
+        {{ coupon_apply_form }}
+        <input type="submit" value="">
+        {% csrf_token %}
+    </form>
           </div>
           <div class="col-md-6">
             <div class="cart-total-table commun-table">

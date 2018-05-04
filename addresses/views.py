@@ -1,13 +1,13 @@
 from django.shortcuts import render,redirect
 from .models import Address
-
+from django.forms import ModelForm
 from billing.models import BillingProfile
 from .forms import AddressForm
 from django.http import Http404
 
 
 def checkout_address_create_view(request):
-
+       
     if request.method == 'POST':
         form1 = AddressForm(request.POST,prefix='form1')
         form2 = AddressForm(request.POST,prefix='form2')  
@@ -51,3 +51,31 @@ def checkout_address_create_view(request):
         form1 = AddressForm(prefix='form1')
         form2 = AddressForm(prefix='form2')
     return render(request,"checkout.html",{"form1":form1,"form2":form2}) 
+
+
+def address_update(request):   
+    # billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+    # print(billing_profile)
+    # address_qs = None
+    # if billing_profile is not None:
+    #     if request.user.is_authenticated():
+    #         address_qs = Address.objects.filter(billing_profile=billing_profile) 
+    #     try:
+    #         shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
+    #     except Address.DoesNotExist:
+    #         print("Show message to user, Address is gone?")
+    #         return redirect("cart:cart")
+    #     try:   
+    #         billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
+    #     except Address.DoesNotExist:
+    #         print(" Address is gone?")
+    #         return redirect("cart:cart")
+    # print(shipping_address)
+    # print(shipping_address)
+    shipping_address = Address.objects.get(id=27)
+    
+    form1=ModelForm(instance=shipping_address)
+    
+    return render(request,'checkout.html',{'form1':form1})  
+ 
+    

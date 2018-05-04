@@ -2,8 +2,9 @@ from decimal import Decimal
 from django.db import models
 from django.conf import settings
 from Products.models import Product
-from django.db.models.signals import pre_save, post_save, m2m_changed
+from django.db.models.signals import pre_save, post_save, m2m_changed,post_delete
 from colorfield.fields import ColorField
+from datetime import datetime
 
 User = settings.AUTH_USER_MODEL
 
@@ -21,6 +22,7 @@ class CartManager(models.Manager):
             cart_obj = qs.first()
             print(cart_obj)
             request.session['cart_id'] = cart_obj.id
+
             if request.user.is_authenticated() and cart_obj.user is None:
                 cart_obj.user = request.user
                 cart_obj.save()
@@ -78,11 +80,13 @@ class CartManager(models.Manager):
 
 class Cart(models.Model):
     user           = models.ForeignKey(User, null=True, blank=True)
-    #products       = models.ManyToManyField(Product, blank=True)
+    #products      = models.ManyToManyField(Product, blank=True)
     subtotal       = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     total          = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     updated        = models.DateTimeField(auto_now=True)
     created_date   = models.DateTimeField(auto_now_add=True)
+    count          = models.PositiveIntegerField(default=0)
+
 
     objects = CartManager()
 
@@ -91,11 +95,12 @@ class Cart(models.Model):
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
-    
+
+
 
 class CartItem(models.Model):
-    product = models.ForeignKey(Product,related_name='products')
-    cart = models.ForeignKey(Cart,related_name='items',null=True)
+    product = models.ForeignKey(Product,related_name='products',on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart,related_name='items',null=True,on_delete=models.CASCADE)
     selected_color = ColorField(default=None)
     quantity = models.PositiveIntegerField(default=1)
     selected_size  = models.CharField(max_length=30)
@@ -106,6 +111,21 @@ class CartItem(models.Model):
     def get_cost(self):
         return self.product.discounted_price * self.quantity
 
+    def save(self, *args, **kwargs):
+        self.cart.subtotal += self.quantity * self.product.discounted_price
+        self.cart.count += self.quantity
+        self.cart.updated = datetime.now()
+        self.cart.save()
+        # import pdb; pdb.set_trace()
+        super(CartItem, self).save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     self.cart.subtotal += self.quantity * self.product.discounted_price
+    #     self.cart.count += self.quantity
+    #     self.cart.updated = datetime.now()
+    #     self.cart.save()
+    #     import pdb; pdb.set_trace()
+    #     super(CartItem, self).save(*args, **kwargs)
 
 # def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
 #     if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
@@ -127,3 +147,24 @@ def pre_save_cart_receiver(sender, instance, *args, **kwargs):
         instance.total = 0.00
 
 pre_save.connect(pre_save_cart_receiver, sender=Cart)
+
+# def post_delete_cart_item_receiver(sender, instance, using,**kwargs):
+#     line_cost = instance.quantity * instance.product.discounted_price
+#     instance.cart.subtotal += line_cost
+#     instance.cart.count += instance.quantity
+#     instance.cart.updated = datetime.now()
+#     instance.cart.save()   
+
+# post_delete.connect(post_delete_cart_item_receiver, sender=CartItem)
+
+
+def post_save_update_cart(sender, instance,created,*args, **kwargs):
+    if created:
+        line_cost = instance.quantity * instance.product.discounted_price
+        instance.cart.subtotal += line_cost
+        instance.cart.count += instance.quantity
+        instance.cart.updated = datetime.now()
+        
+        print(instance.cart.subtotal)
+        # import pdb; pdb.set_trace()
+post_save.connect(post_save_update_cart, sender=CartItem)

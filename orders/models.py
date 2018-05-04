@@ -3,8 +3,11 @@ from django.db.models.signals import pre_save, post_save
 from addresses.models import Address
 from billing.models import BillingProfile
 from cart.models import Cart
-
+import math
+from decimal import Decimal
+from coupons.models import Coupon
 from stylelure.utils import unique_order_id_generator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 ORDER_STATUS_CHOICES = (
@@ -43,6 +46,8 @@ class Order(models.Model):
     shipping_total      = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
     total               = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     active              = models.BooleanField(default=True)
+    coupon              = models.ForeignKey(Coupon,related_name='orders', null=True,blank=True)
+    discount = models.IntegerField(default=0,validators=[MinValueValidator(0),MaxValueValidator(100)])
 
     def __str__(self):
         return self.order_id
@@ -57,6 +62,25 @@ class Order(models.Model):
         self.total = formatted_total
         self.save()
         return new_total
+
+    
+    def get_coupon(self):
+        # coupon_id = request.session.get('coupon_id')
+        if self.coupon:
+            return Coupon.objects.get(id=self.coupon.id)
+        return None
+
+    def get_total(self):
+        return self.total
+
+    def get_discount(self):
+        
+        if self.coupon:
+            return (self.coupon.discount / Decimal('100')) * self.get_total()
+        return Decimal('0')
+
+    def get_total_price_after_discount(self):
+        return self.get_total() - self.get_discount()
 
 
 def pre_save_create_order_id(sender, instance, *args, **kwargs):
@@ -78,15 +102,12 @@ def post_save_cart_total(sender, instance, created, *args, **kwargs):
         if qs.count() == 1:
             order_obj = qs.first()
             order_obj.update_total()
-
+            # import pdb; pdb.set_trace()
 post_save.connect(post_save_cart_total, sender=Cart)
 
 
 def post_save_order(sender, instance, created, *args, **kwargs):
-    print("running")
     if created:
-        print("Updating... first")
         instance.update_total()
-
 
 post_save.connect(post_save_order, sender=Order)

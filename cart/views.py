@@ -6,6 +6,7 @@ from accounts.models import GuestEmail
 from accounts.forms import GuestForm
 from addresses.models import Address
 from orders.models import Order
+from coupons.forms import CouponApplyForm
 
 def wishlist(request):
     return render(request,'cart/wishlist.html')
@@ -13,6 +14,8 @@ def wishlist(request):
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
     print(request.session.get('cart_id'))
+    # coupon_apply_form = CouponApplyForm()
+
     return render(request,'cart/cart.html',{"cart": cart_obj})
 
 def cart_add(request):
@@ -43,7 +46,8 @@ def cart_add(request):
         #     CartItem.objects.get(product_obj)
         # else:
         CartItem.objects.create(product=product_obj,cart=cart_obj,
-            selected_color=selected_color,selected_size=selected_size)        
+            selected_color=selected_color,selected_size=selected_size)
+
         # return redirect(product_obj.get_absolute_url())
     return redirect("cart:cart")
 
@@ -69,7 +73,7 @@ def cart_remove(request):
     # print(product_id)
     # import pdb; pdb.set_trace()
     if product_id in item_list(id=cart_id): 
-        CartItem.objects.filter(id=cart_item_id).delete()    
+        CartItem.objects.filter(id=cart_item_id).all().delete()   
     return redirect('cart:cart')
 
 product_list=[]
@@ -91,7 +95,7 @@ def checkout_home(request):
         return redirect("cart:cart")  
     
     guest_form = GuestForm()
-
+    coupon_apply_form = CouponApplyForm()
 
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     print(billing_profile)
@@ -112,9 +116,11 @@ def checkout_home(request):
             return redirect("cart:cart")
         if order_obj.billing_address or order_obj.shipping_address:
             order_obj.save()
+    
 
     # print(order_obj.billing_address)
     context = {
+          'coupon_apply_form':coupon_apply_form,
         "object": order_obj,
         "billing_profile": billing_profile,
         "guest_form": guest_form,

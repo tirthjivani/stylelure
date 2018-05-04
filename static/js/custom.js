@@ -128,7 +128,7 @@ $(document).ready(function() {
     var searchForm = $(".search-form")
     var searchInput = searchForm.find("[name='q']") 
     var typingTimer;
-    var typingInterval = 10000 
+    var typingInterval = 500
     var searchBtn = searchForm.find("[type='submit']")
     searchInput.keyup(function(event) {
         // key released
@@ -152,7 +152,7 @@ $(document).ready(function() {
         var query = searchInput.val()
         setTimeout(function() {
             window.location.href = '/search/?q=' + query
-        }, 10000)
+        }, 500)
 
     }
 
