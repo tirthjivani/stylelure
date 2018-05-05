@@ -14,9 +14,9 @@ class CartManager(models.Manager):
         #cart_id = request.session.get("cart_id", None)
         if request.user.id == None:
             user=None
-        qs = Cart.objects.filter(user=user)    
+        qs = Cart.objects.filter(user=user)
         # cart_id = request.session.get("cart_id", None)
-        # asp = Cart.objects.filter(id=cart_id)   
+        # asp = Cart.objects.filter(id=cart_id)
         if qs.count() > 0:
             new_obj = False
             cart_obj = qs.first()
@@ -71,7 +71,7 @@ class CartManager(models.Manager):
         return self.model.objects.create(user=user_obj)
 
     # product_list=[]
-    # def item_list(self,id):        
+    # def item_list(self,id):
     #     item_count = Cart.objects.filter(id=4).first().items.all().count()
     #     for i in range(item_count):
     #         product_list.append(Cart.objects.filter(id=4).first().items.all()[i].product_id)
@@ -111,13 +111,13 @@ class CartItem(models.Model):
     def get_cost(self):
         return self.product.discounted_price * self.quantity
 
-    def save(self, *args, **kwargs):
-        self.cart.subtotal += self.quantity * self.product.discounted_price
-        self.cart.count += self.quantity
-        self.cart.updated = datetime.now()
-        self.cart.save()
-        # import pdb; pdb.set_trace()
-        super(CartItem, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.cart.subtotal += self.quantity * self.product.discounted_price
+    #     self.cart.count += self.quantity
+    #     self.cart.updated = datetime.now()
+    #     self.cart.save()
+    #     # import pdb; pdb.set_trace()
+    #     super(CartItem, self).save(*args, **kwargs)
 
     # def delete(self, *args, **kwargs):
     #     self.cart.subtotal += self.quantity * self.product.discounted_price
@@ -142,20 +142,32 @@ class CartItem(models.Model):
 
 def pre_save_cart_receiver(sender, instance, *args, **kwargs):
     if instance.subtotal > 0:
-        instance.total = Decimal(instance.subtotal) * Decimal(1.08) 
+        instance.total = Decimal(instance.subtotal) * Decimal(1.08)
     else:
         instance.total = 0.00
 
 pre_save.connect(pre_save_cart_receiver, sender=Cart)
 
-# def post_delete_cart_item_receiver(sender, instance, using,**kwargs):
-#     line_cost = instance.quantity * instance.product.discounted_price
-#     instance.cart.subtotal += line_cost
-#     instance.cart.count += instance.quantity
-#     instance.cart.updated = datetime.now()
-#     instance.cart.save()   
+# def pre_save_cart_item_receiver(sender, instance, *args, **kwargs):
+#     qs = CartItem.objects.get(cart=instance.cart,
+#                product=instance.product,selected_color=instance.selected_color,
+#                selected_size=instance.selected_size)
+#     if qs:
+#         qs.quantity += 1
+#         qs.save()
+#         return
 
-# post_delete.connect(post_delete_cart_item_receiver, sender=CartItem)
+
+# pre_save.connect(pre_save_cart_item_receiver, sender=CartItem)
+
+def post_delete_cart_item_receiver(sender, instance, using,**kwargs):
+    line_cost = instance.quantity * instance.product.discounted_price
+    instance.cart.subtotal -= line_cost
+    instance.cart.count -= instance.quantity
+    instance.cart.updated = datetime.now()
+    instance.cart.save()
+
+post_delete.connect(post_delete_cart_item_receiver, sender=CartItem)
 
 
 def post_save_update_cart(sender, instance,created,*args, **kwargs):
@@ -164,7 +176,7 @@ def post_save_update_cart(sender, instance,created,*args, **kwargs):
         instance.cart.subtotal += line_cost
         instance.cart.count += instance.quantity
         instance.cart.updated = datetime.now()
-        
+        instance.cart.save()
         print(instance.cart.subtotal)
         # import pdb; pdb.set_trace()
 post_save.connect(post_save_update_cart, sender=CartItem)

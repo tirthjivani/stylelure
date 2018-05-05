@@ -25,6 +25,7 @@ from orders.views import overview
 from cart.views import checkout_home
 from coupons.views import coupon_apply
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
@@ -57,6 +58,8 @@ urlpatterns = [
     url(r'^address/update$', address_update, name='address_update'),
     url(r'^order/overview$', checkout_home, name='overview'),
     url(r'^apply/$',coupon_apply, name='apply'),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^payment/',include('billing.urls',namespace='payment')),
     url(r'^contact/success$', views.successView, name='success'),
     url(r'^product/',include('Products.urls',namespace='Products')),
     url(r'^search/',include('search.urls',namespace='search')),

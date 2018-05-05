@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'localflavor',
     'social_django',
     'colorfield',
-
+    'paypal.standard.ipn',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     # 'social_core.backends.twitter.TwitterOAuth',
-    # 'social_core.backends.facebook.FacebookOAuth2',   
+    # 'social_core.backends.facebook.FacebookOAuth2',
 )
 
 WSGI_APPLICATION = 'stylelure.wsgi.application'
@@ -170,6 +170,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+PAYPAL_RECEIVER_EMAIL = 'dev.asp.myyoga@gmail.com'
+PAYPAL_TEST = True
+
 
 STATIC_URL = '/static/'
 

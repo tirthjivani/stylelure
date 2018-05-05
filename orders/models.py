@@ -21,16 +21,16 @@ class OrderManager(models.Manager):
     def new_or_get(self, billing_profile, cart_obj):
         created = False
         qs = self.get_queryset().filter(
-                billing_profile=billing_profile, 
-                cart=cart_obj, 
-                active=True, 
+                billing_profile=billing_profile,
+                cart=cart_obj,
+                active=True,
                 status='created'
             )
         if qs.count() == 1:
             obj = qs.first()
         else:
             obj = self.model.objects.create(
-                    billing_profile=billing_profile, 
+                    billing_profile=billing_profile,
                     cart=cart_obj)
             created = True
         return obj, created
@@ -38,7 +38,7 @@ class OrderManager(models.Manager):
 
 class Order(models.Model):
     billing_profile     = models.ForeignKey(BillingProfile, null=True, blank=True)
-    order_id            = models.CharField(max_length=120, blank=True) 
+    order_id            = models.CharField(max_length=120, blank=True)
     shipping_address    = models.ForeignKey(Address, related_name="shipping_address",null=True, blank=True)
     billing_address     = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True)
     cart                = models.ForeignKey(Cart,related_name='cart')
@@ -47,6 +47,8 @@ class Order(models.Model):
     total               = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     active              = models.BooleanField(default=True)
     coupon              = models.ForeignKey(Coupon,related_name='orders', null=True,blank=True)
+    updated        = models.DateTimeField(auto_now=True)
+    created_date   = models.DateTimeField(auto_now_add=True)
     discount = models.IntegerField(default=0,validators=[MinValueValidator(0),MaxValueValidator(100)])
 
     def __str__(self):
@@ -63,7 +65,7 @@ class Order(models.Model):
         self.save()
         return new_total
 
-    
+
     def get_coupon(self):
         # coupon_id = request.session.get('coupon_id')
         if self.coupon:
@@ -74,7 +76,7 @@ class Order(models.Model):
         return self.total
 
     def get_discount(self):
-        
+
         if self.coupon:
             return (self.coupon.discount / Decimal('100')) * self.get_total()
         return Decimal('0')
