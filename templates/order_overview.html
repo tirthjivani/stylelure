@@ -23,41 +23,41 @@
         <div class="col-12">
           <div class="checkout-step mb-40">
             <ul>
-              <li> 
+              <li>
                   <a href="{% url 'address' %}">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
                   </div>
-                  <span>Shipping</span> 
-                </a> 
+                  <span>Shipping</span>
+                </a>
               </li>
-              <li class="active"> 
+              <li class="active">
                 <a href="order-overview.html">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
                   </div>
-                  <span>Order Overview</span> 
-                </a> 
+                  <span>Order Overview</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="payment.html">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
                   </div>
-                  <span>Payment</span> 
-                </a> 
+                  <span>Payment</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="order-complete.html">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
                   </div>
-                  <span>Order Complete</span> 
-                </a> 
+                  <span>Order Complete</span>
+                </a>
               </li>
               <li>
                 <div class="step">
@@ -88,9 +88,9 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>                        
+                      <tbody>
                         {% for item in object.cart.items.all %}
-                        
+
                         <tr>
                           <td>
                             <a href="{{item.product.get_absolute_url}}">
@@ -112,17 +112,17 @@
                             </div>
                             <div class="color-btn">
                                 {% if item.selected_color %}
-                              <div class="btn-btn">         
-                                <div class="cart-main-box-color">          
+                              <div class="btn-btn">
+                                <div class="cart-main-box-color">
                                   <div class="cart-red-box" style="background-color:{{item.selected_color}}"></div>
                                 </div>
                               </div>
                               {%endif%}
-                              
+
                               {% if item.selected_size %}
-                              <div class="cart-center-btn">          
+                              <div class="cart-center-btn">
                                 <div class="main-box">
-                                  <div class="box">{{item.selected_size}}</div>          
+                                  <div class="box">{{item.selected_size}}</div>
                                 </div>
                               </div>
                               {%endif%}
@@ -132,14 +132,14 @@
                           <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
                         </tr>
                         {% endfor %}
-                    
+
                       </tbody>
                     </table>
                   </div>
                 </div>
                 <div> <form action="{% url "apply" %}" method="post">
         {{ coupon_apply_form }}
-        <input type="submit" class="btn " value="Apply"></input> 
+        <input type="submit" class="btn " value="Apply"></input>
         {% csrf_token %}
     </form></div>
                 <div class="cart-total-table commun-table mb-30">
@@ -167,11 +167,11 @@
                     </table>
                   </div>
                 </div>
-                <div class="right-side float-none-xs"> <a href="payment.html" class="btn btn-color">Next</a> 
+                <div class="right-side float-none-xs"> <a href="payment.html" class="btn btn-color">Next</a>
                 </div>
               </div>
               <div class="col-md-4">
-                {{address_qs}}
+
                 {# {% for  address in %} #}
                 <div class="cart-total-table address-box commun-table mb-30">
                   <div class="table-responsive">
@@ -206,7 +206,7 @@
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
-                        <tr>{{ object.billing_address.id }}
+                        <tr>
                           <th>Billing Address</th>
                         </tr>
                       </thead>

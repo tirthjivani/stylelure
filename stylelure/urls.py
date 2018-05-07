@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name='login.html'), name='login'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^signup/', accounts_views.signup, name='signup'),
-    url(r'^myaccount/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+    url(r'^myaccount/$', accounts_views.account_view, name='my_account'),
     url(r'^myaccount/#data-step4/$', auth_views.PasswordChangeView.as_view(template_name='my_account.html'),
     name='password_change'),
     url(r'^settings/password/done/$',
@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^contact/success$', views.successView, name='success'),
     url(r'^product/',include('Products.urls',namespace='Products')),
     url(r'^search/',include('search.urls',namespace='search')),
+    url(r'^review/', include('review.urls')),
     url(r'^cart/',include('cart.urls',namespace='cart')),
 ]
 

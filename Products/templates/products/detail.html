@@ -13,17 +13,17 @@
         {% else %}
       <div class="slider slider-for">
         {% for j in "xx" %}
-      	{% for i in object.images.all|slice:"1:4" %}            
-        
+      	{% for i in object.images.all|slice:"1:4" %}
+
           <div><img src="{{ i.image.url }}" alt="logo image"></div>
         {% endfor %}
        {% endfor %}
-       
-       
+
+
       </div>
       <div class="slider pro-slider-nav">
       	{% for j in "xx" %}
-      	{% for i in object.images.all|slice:"4:7" %}            
+      	{% for i in object.images.all|slice:"4:7" %}
         <div class="slick-slide">
           <div class="img"><img src="{{ i.image.url }}" alt="logo image"></div>
         </div>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="in-stock">
-        <div class="title-center">${{ object.discounted_price }}<span>${{ object.price }}</span> 
+        <div class="title-center">${{ object.discounted_price }}<span>${{ object.price }}</span>
         	{% if object.active == True %}
         	<i class="fa fa-check-circle"><span>in stock</span></i>{% endif %}</div>
       </div>
@@ -66,7 +66,7 @@
           <h3> Color</h3>
           <div class="main-box-color">
           	{% for  color in object.colors.all %}
-            <div class="red-box" style="background-color:{{color.available_color}}"></div>         
+            <div class="red-box" style="background-color:{{color.available_color}}"></div>
             {% endfor %}
           </div>
         </div>
@@ -110,16 +110,16 @@
           <input type='hidden' id='size' name='selected_size' value="" />
           <div class="button-cart">
           {% if object in cart_obj.products.all %}
-            <a href="" class="btn-left">In cart</a> 
+            <a href="" class="btn-left">In cart</a>
           <button type='submit' class='btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
           {% else %}
                <button type='submit'  class='btn btn-left btn-success'>ADD TO CART</button>
-              
+
           {% endif %}
           <a href="#"><i class="fa fa-heart-o"></i></a>
           </div>
       </form>
-      
+
     </div>
   </div>
 </div>
@@ -137,6 +137,9 @@
 	<div class="upper-details">
 		 <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 		<p>{{object.description }}</p>
+
+
+
 	</div>
 	<div class="more-information">
 		<label>More Information</label>

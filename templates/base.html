@@ -32,10 +32,10 @@
        <div class="header-top">
          <div class="container">
            <div class="contact">
-              <span class="h_top_list c_l"><i class="pe-7s-call"></i><span class="span-text"> 123-123456789</span>
+              <span class="h_top_list c_l"><i class="pe-7s-call"></i><span class="span-text"> +91 9913010700</span>
              </span>
              <span class="h_top_list c_l">
-               <a href="mailto:info@ltntcom"><i class="pe-7s-mail"></i><span class="span-text"> info@ltntcom</span></a>
+               <a href="mailto:info@stylelure.com"><i class="pe-7s-mail"></i><span class="span-text"> info@stylelure.com</span></a>
              </span>
            </div>
             {% if user.is_authenticated %}
@@ -105,7 +105,7 @@
                            <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{{ item.product.images.first.image.url }}"></a>
                              <div class="media-body"> <span>
                               <a href="{{item.product.get_absolute_url}}">{{item.product.title|truncatechars:25}}</a></span>
-                            <p class="cart-price">${{ item.product.discounted_price|floatformat }}</p>
+                            <p class="cart-price">₹{{ item.product.discounted_price|floatformat }}</p>
                                <div class="product-qty">
                                  <label>Qty:</label>
                                  <div class="custom-qty">
@@ -119,7 +119,7 @@
                          <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
                            <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{% static 'images/2.jpg' %}"></a>
                              <div class="media-body"> <span><a>Black African Print Skirt</a></span>
-                               <p class="cart-price">$14.99</p>
+                               <p class="cart-price">₹14.99</p>
                                <div class="product-qty">
                                  <label>Qty:</label>
                                  <div class="custom-qty">
@@ -130,7 +130,7 @@
                            </div>
                          </li>
                        </ul>
-                       <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">$29.98</strong></span> </p>
+                       <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">₹29.98</strong></span> </p>
                        <div class="clearfix"></div>
                        <div class="mt-20"> <a href="{% url 'cart:cart' %}" class="btn-color btn">Cart</a> <a href="#checkout" class="btn-color btn right-side">Checkout</a> </div>
                      </div>
@@ -267,23 +267,8 @@
                        </div>
                      </li>
                      <li class="level"><a href="{% url 'Products:product_list' %}" class="page-scroll">Baby <div class="menu-label"><span class="new-menu"> New </span></div></a></li>
-                     <li class="level dropdown"> <span class="opener plus"></span> <a class="page-scroll">Pages</a>
-                       <div class="megamenu mobile-sub-menu">
-                         <div class="megamenu-inner-top">
-                           <ul class="sub-menu-level1">
-                             <li class="level2">
-                               <ul class="sub-menu-level2 ">
-                                 <li class="level3"><a href="about.html"><span>■</span>About Us</a></li>
-                                 <li class="level3"><a href="{% url 'contact' %}"><span>■</span>Contact</a></li>
-                                 <li class="level3"><a href="404.html"><span>■</span>404 Error</a></li>
-                                 <li class="level3"><a href="blog.html"><span>■</span>Blog</a></li>
-                                 <li class="level3"><a href="single-blog.html"><span>■</span>Single Blog</a></li>
-                               </ul>
-                             </li>
-                           </ul>
-                         </div>
-                       </div>
-                     </li>
+                     <li class="level"><a href="{% url 'contact' %}" class="page-scroll">Contact</a></li>
+
                    </ul>
                  </div>
                </div>
@@ -313,9 +298,9 @@
             <div class="subtitle text-white ">We’d love To Meet You In Person Or Via The Web!</div>
             <p class="text-white font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel nulla sapien. Class aptent tacitiaptent taciti sociosqu ad lit himenaeos. Suspendisse massa urna, luctus ut vestibulum necs et, vulputate quis urna. Donec at commodo erat.</p>
             <div class="contact-info">
-              <p><strong>Main Office</strong>: 123 Elm St. New York City, NY</p>
-              <p><strong>Phone</strong>: <a class="text-white" href="tel:1.555.555.5555">1.555.555.5555</a></p>
-              <p><strong>Email</strong>: <a class="text-white" href="mailto:info@yourdomain.com">info@yourdomain.com</a></p>
+              <p><strong>Main Office</strong>: Sola Rd, Thaltej, Ahmedabad, Gujarat 380059</p>
+              <p><strong>Phone</strong>: <a class="text-white" href="tel:099797 76283">099797 76283</a></p>
+              <p><strong>Email</strong>: <a class="text-white" href="mailto:info@yourdomain.com">info@stylelure.com</a></p>
             </div>
             <div class="social-info mt-3">
               <ul>

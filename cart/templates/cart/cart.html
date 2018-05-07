@@ -33,8 +33,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for item in cart.items.all %}                  
-                  <tr>             
+                  {% for item in cart.items.all %}
+                  <tr>
                     <td>
                       <a href="{{item.product.get_absolute_url}}">
                         <div class="product-image">
@@ -48,17 +48,17 @@
                       </div>
                     <div class="color-btn">
                       {% if item.selected_color %}
-                    <div class="btn-btn">         
-                      <div class="cart-main-box-color">          
+                    <div class="btn-btn">
+                      <div class="cart-main-box-color">
                         <div class="cart-red-box" style="background-color:{{item.selected_color}}"></div>
                       </div>
                     </div>
                     {%endif%}
-                    
+
                     {% if item.selected_size %}
-                    <div class="cart-center-btn">          
+                    <div class="cart-center-btn">
                       <div class="main-box">
-                        <div class="box">{{item.selected_size}}</div>          
+                        <div class="box">{{item.selected_size}}</div>
                       </div>
                     </div>
                     {%endif%}
@@ -91,59 +91,17 @@
                       </div>
                     </td>
                     <td>
-                      {{item.id}}
+
                     <form method='POST' action='{% url "cart:delate" %}' class="form"> {% csrf_token %}
                       <input type='hidden' name='product_id' value='{{ item.product.id }}' />
                       <input type='hidden' name='cart_item_id' value='{{ item.id }}' />
-                      
+
                     <button type='submit' class='btn btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
                       </form>
                     </td>
                   </tr>
                   {% endfor %}
-                  <tr>
-                    <td>
-                      <a href="product-page.html">
-                        <div class="product-image">
-                          <img alt="Stylelure" src="{% static "images/2.jpg" %}">
-                        </div>
-                      </a>
-                    </td>
-                    <td>
-                      <div class="product-title">
-                        <a href="product-page.html">Defyant Reversible Dot Shorts</a>
-                      </div>
-                    </td>
-                    <td>
-                      <ul>
-                        <li>
-                          <div class="base-price price-box">
-                            <span class="price">$80.00</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </td>
-                    <td>
-                      <div class="input-box select-dropdown">
-                        <fieldset>
-                          <select data-id="100" class="quantity_cart option-drop" name="quantity_cart">
-                            <option selected="" value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="total-price price-box">
-                        <span class="price">$80.00</span>
-                      </div>
-                    </td>
-                    <td>
-                      <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
-                    </td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>
@@ -160,23 +118,15 @@
               </a>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="mt-30 right-side float-none-xs">
-              <a class="btn btn-color">Update Cart</a>
-            </div>
-          </div>
+
         </div>
       </div>
       <hr>
-        
+
       <div class="mtb-30">
         <div class="row">
           <div class="col-md-6 mb-xs-40">
-           <form action="{% url "apply" %}" method="post">
-        {{ coupon_apply_form }}
-        <input type="submit" value="">
-        {% csrf_token %}
-    </form>
+
           </div>
           <div class="col-md-6">
             <div class="cart-total-table commun-table">
@@ -192,7 +142,7 @@
                       <td>Item(s) Subtotal</td>
                       <td>
                         <div class="price-box">
-                          <span class="price">$160.00</span>
+                          <span class="price">$59.99</span>
                         </div>
                       </td>
                     </tr>

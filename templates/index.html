@@ -79,7 +79,7 @@
                 <div class="product_caption">
                     <a href="{{product.get_absolute_url}}">
                     <div class="pc_1">{{product.title|truncatechars:15}}</div>
-                    <div class="pc_2">${{ product.price|floatformat }}</div>
+                    <div class="pc_2">₹{{ product.price|floatformat }}</div>
                     </a>
                 </div>
                 <div class="overlay-div text-center">
@@ -102,7 +102,7 @@
                 <img src="{% static "images/Product_2.png" %}" alt="">
                 <div class="product_caption">
                     <div class="pc_1">Woman Shirt</div>
-                    <div class="pc_2">31$</div>
+                    <div class="pc_2">31₹</div>
                 </div>
                 <div class="overlay-div text-center">
                     <div class="overlay-content">
@@ -123,7 +123,7 @@
                 <img src="{% static "images/Product_3.png" %}" alt="">
                 <div class="product_caption">
                     <div class="pc_1">Yellow Shirt</div>
-                    <div class="pc_2">21$</div>
+                    <div class="pc_2">21₹</div>
                 </div>
                 <div class="overlay-div text-center">
                     <div class="overlay-content">
@@ -144,7 +144,7 @@
                 <img src="{% static "images/Product_4.png" %}" alt="">
                 <div class="product_caption">
                     <div class="pc_1">Cool Lingerie</div>
-                    <div class="pc_2">56$</div>
+                    <div class="pc_2">56₹</div>
                 </div>
                 <div class="overlay-div text-center">
                     <div class="overlay-content">
@@ -176,7 +176,7 @@
                  <a href="{{product.get_absolute_url}}" ><img src="{{ product.images.first.image.url }}" class="figure-img w-100 m-0 rounded" alt=""></a>
                     <div class="product_caption">
                         <span class="pc_1">{{product.title|truncatechars:15}}</span>
-                        <span class="pc_2">${{ product.price|floatformat }}</span>
+                        <span class="pc_2">₹{{ product.price|floatformat }}</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left  ">new</span>
@@ -192,7 +192,7 @@
                     <img src="{% static "images/Product_6.png" %}" class="figure-img w-100 m-0 rounded" alt="">
                     <div class="product_caption">
                         <span class="pc_1">Woman Tshirt</span>
-                        <span class="pc_2">$31</span>
+                        <span class="pc_2">₹31</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left  ">new</span>
@@ -206,7 +206,7 @@
                     <img src="{% static "images/Product_7.png" %}" class="figure-img w-100 m-0 rounded" alt="">
                     <div class="product_caption">
                         <span class="pc_1">Yellow Tshirt</span>
-                        <span class="pc_2">$21</span>
+                        <span class="pc_2">₹21</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left  ">new</span>
@@ -221,7 +221,7 @@
                     <img src="{% static "images/Product_9.png" %}" class="figure-img w-100 m-0 rounded" alt="">
                     <div class="product_caption">
                         <span class="pc_1">Blue Tshirt</span>
-                        <span class="pc_2">$26</span>
+                        <span class="pc_2">₹26</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left  ">new</span>
@@ -236,7 +236,7 @@
                     <img src="{% static "images/Product_10.png" %}" class="figure-img w-100 m-0 rounded" alt="">
                     <div class="product_caption">
                         <span class="pc_1">Woman Tshirt</span>
-                        <span class="pc_2">$31</span>
+                        <span class="pc_2">₹31</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag red pull-right  ">sale</span>
@@ -250,7 +250,7 @@
                     <img src="{% static "images/Product_11.png" %}" class="figure-img w-100 m-0 rounded" alt="">
                     <div class="product_caption">
                         <span class="pc_1">Yellow Tshirt</span>
-                        <span class="pc_2">$21</span>
+                        <span class="pc_2">₹21</span>
                     </div>
                     <div class="cloth-up">
                         <span class="cloth_tag pull-left ">new</span>
@@ -258,7 +258,7 @@
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -292,7 +292,7 @@
                         <img src="{% static "images/Product_1.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">BLUE SHIRT</div>
-                            <div class="pc_2">26$</div>
+                            <div class="pc_2">26₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -313,7 +313,7 @@
                         <img src="{% static "images/Product_2.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Woman Shirt</div>
-                            <div class="pc_2">31$</div>
+                            <div class="pc_2">31₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -334,7 +334,7 @@
                         <img src="{% static "images/Product_3.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Yellow Shirt</div>
-                            <div class="pc_2">21$</div>
+                            <div class="pc_2">21₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -355,7 +355,7 @@
                         <img src="{% static "images/Product_4.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Cool Lingerie</div>
-                            <div class="pc_2">56$</div>
+                            <div class="pc_2">56₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -376,7 +376,7 @@
                         <img src="{% static "images/Product_1.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">BLUE SHIRT</div>
-                            <div class="pc_2">26$</div>
+                            <div class="pc_2">26₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -397,7 +397,7 @@
                         <img src="{% static "images/Product_2.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Woman Shirt</div>
-                            <div class="pc_2">31$</div>
+                            <div class="pc_2">31₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -418,7 +418,7 @@
                         <img src="{% static "images/Product_3.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Yellow Shirt</div>
-                            <div class="pc_2">21$</div>
+                            <div class="pc_2">21₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
@@ -439,7 +439,7 @@
                         <img src="{% static "images/Product_4.png" %}" alt="">
                         <div class="product_caption">
                             <div class="pc_1">Cool Lingerie</div>
-                            <div class="pc_2">56$</div>
+                            <div class="pc_2">56₹</div>
                         </div>
                         <div class="overlay-div text-center">
                             <div class="overlay-content">
