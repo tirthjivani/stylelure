@@ -18,6 +18,8 @@
   <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.css" %}"/>
+  <link rel="stylesheet" href="{% static "css/fontawesome-stars-o.css" %}">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
  {% block stylesheets %} {% endblock %}
@@ -32,6 +34,13 @@
        <div class="header-top">
          <div class="container">
            <div class="contact">
+            <select id="example">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
               <span class="h_top_list c_l"><i class="pe-7s-call"></i><span class="span-text"> +91 9913010700</span>
              </span>
              <span class="h_top_list c_l">
@@ -41,7 +50,7 @@
             {% if user.is_authenticated %}
            <div class="account justify-content-center">
              <span class="h_top_list a_l">
-               <a href="{% url 'my_account' %}">My Account</a>
+               <a href="{% url 'accounts:my_account' %}">My Account</a>
              </span>
              <span class="h_top_list a_l">
                <a href="#wishlist"> Wishlist</a>
@@ -55,7 +64,7 @@
              <span class="h_top_list a_l">
                <ul>
                 <li class="lock"><i class="pe-7s-lock"></i></li>
-                <li><a href="{% url 'Logout' %}" title="Logout">Logout</a></li>
+                <li><a href="{% url 'accounts:Logout' %}" title="Logout">Logout</a></li>
                </ul>
              </span>
            </div>
@@ -65,9 +74,9 @@
              <span class="h_top_list a_l">
                <ul>
                 <li class="lock"><i class="pe-7s-unlock"></i></li>
-                <li><a href="{% url 'login' %}" title="Login">Login</a></li>
+                <li><a href="{% url 'accounts:login' %}" title="Login">Login</a></li>
                 <li>/</li>
-                <li><a href="{% url 'signup' %}" title="Register">Register</a></li>
+                <li><a href="{% url 'accounts:signup' %}" title="Register">Register</a></li>
                </ul>
              </span>
            </div>
@@ -105,7 +114,7 @@
                            <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{{ item.product.images.first.image.url }}"></a>
                              <div class="media-body"> <span>
                               <a href="{{item.product.get_absolute_url}}">{{item.product.title|truncatechars:25}}</a></span>
-                            <p class="cart-price">₹{{ item.product.discounted_price|floatformat }}</p>
+                            <p class="cart-price">₹{{ item.product.discounted_price }}</p>
                                <div class="product-qty">
                                  <label>Qty:</label>
                                  <div class="custom-qty">
@@ -116,21 +125,9 @@
                            </div>
                          </li>
                          {% endfor %}
-                         <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                           <div class="media"> <a class="pull-left"> <img alt="Stylelure" src="{% static 'images/2.jpg' %}"></a>
-                             <div class="media-body"> <span><a>Black African Print Skirt</a></span>
-                               <p class="cart-price">₹14.99</p>
-                               <div class="product-qty">
-                                 <label>Qty:</label>
-                                 <div class="custom-qty">
-                                   <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                                 </div>
-                               </div>
-                             </div>
-                           </div>
-                         </li>
+                        
                        </ul>
-                       <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">₹29.98</strong></span> </p>
+                       <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">{{ cart.get_total_cost}}</strong></span> </p>
                        <div class="clearfix"></div>
                        <div class="mt-20"> <a href="{% url 'cart:cart' %}" class="btn-color btn">Cart</a> <a href="#checkout" class="btn-color btn right-side">Checkout</a> </div>
                      </div>
@@ -356,6 +353,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery-ui.min.js" %}"></script>
+<script src="{% static "js/jquery.barrating.min.js" %}"></script>
     <!-- JavaScript files -->
 
     <!-- Bootstrap core JavaScript -->

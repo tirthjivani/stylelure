@@ -4,7 +4,7 @@
 
           {% block product__list %}
           <div class="row">
-             {% for product in products_list %}
+             {% for product in topics %}
             <div class="col-md-4 col-6 mb-30">
              <div class="product_image">
 
@@ -21,14 +21,20 @@
                 <div class="overlay-content">
 
                   <div class="button_block">
-                    <a href="#"><i class="pe-7s-like"></i></a>
-                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                    <a href="#"><i class="pe-7s-clock"></i></a>
+                    
+                    
                   </div>
-                  <div class="add_to_cart">
-                    <i class="pe-7s-cart"></i> ADD TO CART
-                  </div>
+                   <form method='POST' action='{% url "cart:add" %}' class="form" id="direct_add_cart_form"> {% csrf_token %}
+          <input type='hidden' name='product_id' value='{{ product.id }}' />
+          <input type='hidden' id='color' name='selected_color' value="" />
+          <input type='hidden' id='size' name='selected_size' value="" />
 
+              
+      
+                  <button type="submit" class=""><div class="add_to_cart"> 
+                    <i class="pe-7s-cart"></i> ADD TO CART
+                  </div></button>
+</form>
                 </div>
               </div>
 
@@ -36,326 +42,47 @@
 
           </div>
           {% endfor %}
-          <div class="col-md-4 col-6 mb-30">
-            <div class="product-item">
-              <div class="product_image">
-                <img src="{% static "images/Product_1.png" %}" alt="">
-                <div class="product_caption">
-                  <div class="pc_1">BLUE SHIRT</div>
-                  <div class="pc_2">26$</div>
-                </div>
-                <div class="overlay-div text-center">
-                  <div class="overlay-content">
-                    <div class="button_block">
-                      <a href="#"><i class="pe-7s-like"></i></a>
-                      <a href="#"><i class="pe-7s-shuffle"></i></a>
-                      <a href="#"><i class="pe-7s-clock"></i></a>
-                    </div>
-                    <div class="add_to_cart">
-                      <i class="pe-7s-cart"></i> ADD TO CART
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-6 mb-30">
-            <div class="product-item">
-              <div class="product_image">
-                <img src="{% static "images/Product_3.png" %}" alt="">
-                <div class="product_caption">
-                  <div class="pc_1">Yellow Shirt</div>
-                  <div class="pc_2">21$</div>
-                </div>
-                <div class="overlay-div text-center">
-                  <div class="overlay-content">
-                    <div class="button_block">
-                      <a href="#"><i class="pe-7s-like"></i></a>
-                      <a href="#"><i class="pe-7s-shuffle"></i></a>
-                      <a href="#"><i class="pe-7s-clock"></i></a>
-                    </div>
-                    <div class="add_to_cart">
-                      <i class="pe-7s-cart"></i> ADD TO CART
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-6 mb-30">
-            <div class="product-item">
-              <div class="product_image">
-                <img src="{% static "images/Product_4.png" %}" alt="">
-                <div class="product_caption">
-                  <div class="pc_1">Cool Lingerie</div>
-                  <div class="pc_2">56$</div>
-                </div>
-                <div class="overlay-div text-center">
-                  <div class="overlay-content">
-                    <div class="button_block">
-                      <a href="#"><i class="pe-7s-like"></i></a>
-                      <a href="#"><i class="pe-7s-shuffle"></i></a>
-                      <a href="#"><i class="pe-7s-clock"></i></a>
-                    </div>
-                    <div class="add_to_cart">
-                      <i class="pe-7s-cart"></i> ADD TO CART
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-6 mb-30">
-            <div class="product-item">
-              <div class="product_image">
-                <img src="{% static "images/Product_4.png" %}" alt="">
-                <div class="product_caption">
-                  <div class="pc_1">Cool Lingerie</div>
-                  <div class="pc_2">56$</div>
-                </div>
-                <div class="overlay-div text-center">
-                  <div class="overlay-content">
-                    <div class="button_block">
-                      <a href="#"><i class="pe-7s-like"></i></a>
-                      <a href="#"><i class="pe-7s-shuffle"></i></a>
-                      <a href="#"><i class="pe-7s-clock"></i></a>
-                    </div>
-                    <div class="add_to_cart">
-                      <i class="pe-7s-cart"></i> ADD TO CART
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-6 mb-30">
-           <div class="product_image">
-            <img src="{% static "images/Product_2.png" %}" alt="">
-            <div class="product_caption">
-              <div class="pc_1">Woman Shirt</div>
-              <div class="pc_2">31$</div>
-            </div>
-            <div class="overlay-div text-center">
-              <div class="overlay-content">
-                <div class="button_block">
-                  <a href="#"><i class="pe-7s-like"></i></a>
-                  <a href="#"><i class="pe-7s-shuffle"></i></a>
-                  <a href="#"><i class="pe-7s-clock"></i></a>
-                </div>
-                <div class="add_to_cart">
-                  <i class="pe-7s-cart"></i> ADD TO CART
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-30">
-          <div class="product-item">
-            <div class="product_image">
-              <img src="{% static "images/Product_1.png" %}" alt="">
-              <div class="product_caption">
-                <div class="pc_1">BLUE SHIRT</div>
-                <div class="pc_2">26$</div>
-              </div>
-              <div class="overlay-div text-center">
-                <div class="overlay-content">
-                  <div class="button_block">
-                    <a href="#"><i class="pe-7s-like"></i></a>
-                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                    <a href="#"><i class="pe-7s-clock"></i></a>
-                  </div>
-                  <div class="add_to_cart">
-                    <i class="pe-7s-cart"></i> ADD TO CART
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-30">
-          <div class="product-item">
-            <div class="product_image">
-              <img src="{% static "images/Product_3.png" %}" alt="">
-              <div class="product_caption">
-                <div class="pc_1">Yellow Shirt</div>
-                <div class="pc_2">21$</div>
-              </div>
-              <div class="overlay-div text-center">
-                <div class="overlay-content">
-                  <div class="button_block">
-                    <a href="#"><i class="pe-7s-like"></i></a>
-                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                    <a href="#"><i class="pe-7s-clock"></i></a>
-                  </div>
-                  <div class="add_to_cart">
-                    <i class="pe-7s-cart"></i> ADD TO CART
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-30">
-          <div class="product-item">
-            <div class="product_image">
-              <img src="{% static "images/Product_4.png" %}" alt="">
-              <div class="product_caption">
-                <div class="pc_1">Cool Lingerie</div>
-                <div class="pc_2">56$</div>
-              </div>
-              <div class="overlay-div text-center">
-                <div class="overlay-content">
-                  <div class="button_block">
-                    <a href="#"><i class="pe-7s-like"></i></a>
-                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                    <a href="#"><i class="pe-7s-clock"></i></a>
-                  </div>
-                  <div class="add_to_cart">
-                    <i class="pe-7s-cart"></i> ADD TO CART
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-30">
-          <div class="product-item">
-            <div class="product_image">
-              <img src="{% static "images/Product_4.png" %}" alt="">
-              <div class="product_caption">
-                <div class="pc_1">Cool Lingerie</div>
-                <div class="pc_2">56$</div>
-              </div>
-              <div class="overlay-div text-center">
-                <div class="overlay-content">
-                  <div class="button_block">
-                    <a href="#"><i class="pe-7s-like"></i></a>
-                    <a href="#"><i class="pe-7s-shuffle"></i></a>
-                    <a href="#"><i class="pe-7s-clock"></i></a>
-                  </div>
-                  <div class="add_to_cart">
-                    <i class="pe-7s-cart"></i> ADD TO CART
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-6 mb-30">
-         <div class="product_image">
-          <img src="{% static "images/Product_2.png" %}" alt="">
-          <div class="product_caption">
-            <div class="pc_1">Woman Shirt</div>
-            <div class="pc_2">31$</div>
-          </div>
-          <div class="overlay-div text-center">
-            <div class="overlay-content">
-              <div class="button_block">
-                <a href="#"><i class="pe-7s-like"></i></a>
-                <a href="#"><i class="pe-7s-shuffle"></i></a>
-                <a href="#"><i class="pe-7s-clock"></i></a>
-              </div>
-              <div class="add_to_cart">
-                <i class="pe-7s-cart"></i> ADD TO CART
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-6 mb-30">
-        <div class="product-item">
-          <div class="product_image">
-            <img src="{% static "images/Product_1.png" %}" alt="">
-            <div class="product_caption">
-              <div class="pc_1">BLUE SHIRT</div>
-              <div class="pc_2">26$</div>
-            </div>
-            <div class="overlay-div text-center">
-              <div class="overlay-content">
-                <div class="button_block">
-                  <a href="#"><i class="pe-7s-like"></i></a>
-                  <a href="#"><i class="pe-7s-shuffle"></i></a>
-                  <a href="#"><i class="pe-7s-clock"></i></a>
-                </div>
-                <div class="add_to_cart">
-                  <i class="pe-7s-cart"></i> ADD TO CART
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="col-md-4 col-6 mb-30">
-        <div class="product-item">
-          <div class="product_image">
-            <img src="{% static "images/Product_3.png" %}" alt="">
-            <div class="product_caption">
-              <div class="pc_1">Yellow Shirt</div>
-              <div class="pc_2">21$</div>
-            </div>
-            <div class="overlay-div text-center">
-              <div class="overlay-content">
-                <div class="button_block">
-                  <a href="#"><i class="pe-7s-like"></i></a>
-                  <a href="#"><i class="pe-7s-shuffle"></i></a>
-                  <a href="#"><i class="pe-7s-clock"></i></a>
-                </div>
-                <div class="add_to_cart">
-                  <i class="pe-7s-cart"></i> ADD TO CART
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-6 mb-30">
-        <div class="product-item">
-          <div class="product_image">
-            <img src="{% static "images/Product_4.png" %}" alt="">
-            <div class="product_caption">
-              <div class="pc_1">Cool Lingerie</div>
-              <div class="pc_2">56$</div>
-            </div>
-            <div class="overlay-div text-center">
-              <div class="overlay-content">
-                <div class="button_block">
-                  <a href="#"><i class="pe-7s-like"></i></a>
-                  <a href="#"><i class="pe-7s-shuffle"></i></a>
-                  <a href="#"><i class="pe-7s-clock"></i></a>
-                </div>
-                <div class="add_to_cart">
-                  <i class="pe-7s-cart"></i> ADD TO CART
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-6 mb-30">
-        <div class="product-item">
-          <div class="product_image">
-            <img src="{% static "images/Product_4.png" %}" alt="">
-            <div class="product_caption">
-              <div class="pc_1">Cool Lingerie</div>
-              <div class="pc_2">56$</div>
-            </div>
-            <div class="overlay-div text-center">
-              <div class="overlay-content">
-                <div class="button_block">
-                  <a href="#"><i class="pe-7s-like"></i></a>
-                  <a href="#"><i class="pe-7s-shuffle"></i></a>
-                  <a href="#"><i class="pe-7s-clock"></i></a>
-                </div>
-                <div class="add_to_cart">
-                  <i class="pe-7s-cart"></i> ADD TO CART
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
+
+    {% if topics.has_other_pages %}
+  <nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if topics.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ topics.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in topics.paginator.page_range %}
+        {% if topics.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if topics.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ topics.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
     {% endblock product__list %}

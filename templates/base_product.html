@@ -52,6 +52,12 @@
               <div class="mb-20">
 
               </div>
+              <form method='POST' action='{% url "Products:product_list" %}' class="form" id="price_refine"> {% csrf_token %}
+                <input type='hidden' name='product_id' value='{{ object.id }}' />
+                <input type='hidden' id='max_price' name='selected_color' value="" />
+                <input type='hidden' id='min_price' name='selected_size' value="" />  
+               <button type='submit'  class='btn btn-left btn-success'>Refine</button>
+              </form>
                </div>
             </div>
 

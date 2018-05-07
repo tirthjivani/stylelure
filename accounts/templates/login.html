@@ -13,7 +13,7 @@
                     <form method="post" novalidate>
                         {% csrf_token %}           
                         {% include 'includes/form.html' %}
-                       <button type="submit" class="btn-left">SIGN IN</button> <a href="{% url 'password_reset' %}"> Forgot Your Password?</a>
+                       <button type="submit" class="btn-left">SIGN IN</button> <a href="{% url 'accounts:password_reset' %}"> Forgot Your Password?</a>
                     </form>                             
                     <div class="field">* Required Fields</div>
                 </div>
@@ -33,7 +33,7 @@
                     </div>
             <div class="col-md-12" align="center" >
                 <div class="new-customers">
-                    <form action="{% url 'signup' %}">
+                    <form action="{% url 'accounts:signup' %}">
                     <h3>New Customers</h3>
                     <p>Creating an account has many benefits: check out faster, keep more than one address, track orders and more.</p>
                     <button type="submit" class="btn-left">Create an Account</button>

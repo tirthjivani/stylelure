@@ -29,30 +29,8 @@ from coupons.views import coupon_apply
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^login/$', auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name='login.html'), name='login'),
+    url(r'^account/',include('accounts.urls',namespace='accounts')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    url(r'^signup/', accounts_views.signup, name='signup'),
-    url(r'^myaccount/$', accounts_views.account_view, name='my_account'),
-    url(r'^myaccount/#data-step4/$', auth_views.PasswordChangeView.as_view(template_name='my_account.html'),
-    name='password_change'),
-    url(r'^settings/password/done/$',
-    auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
-    name='password_change_done'),
-    url(r'^logout/$', auth_views.LogoutView.as_view(), name='Logout'),
-    url(r'^reset/$', auth_views.PasswordResetView.as_view(
-        template_name='password_reset.html',
-        email_template_name='password_reset_email.html',
-        subject_template_name='password_reset_subject.txt'), name='password_reset'),
-    url(r'^reset/done/$', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
-        name='password_reset_done'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        auth_views.PasswordResetConfirmView.as_view(
-            template_name='password_reset_confirm.html'),
-        name='password_reset_confirm'),
-    url(r'^reset/complete/$',
-        auth_views.PasswordResetCompleteView.as_view(
-            template_name='password_reset_complete.html'),
-        name='password_reset_complete'),
     url(r'^contact/$', views.emailView, name='contact'),
     url(r'^address/$', checkout_address_create_view, name='address'),
     url(r'^address/update$', address_update, name='address_update'),
@@ -63,7 +41,7 @@ urlpatterns = [
     url(r'^contact/success$', views.successView, name='success'),
     url(r'^product/',include('Products.urls',namespace='Products')),
     url(r'^search/',include('search.urls',namespace='search')),
-    url(r'^review/', include('review.urls')),
+    # url(r'^review/', include('review.urls')),
     url(r'^cart/',include('cart.urls',namespace='cart')),
 ]
 

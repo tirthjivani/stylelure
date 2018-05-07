@@ -1,5 +1,13 @@
 $(document).ready(function() {
     /* ---- slick slider start ---- */
+
+     $(function() {
+      $('#example').barrating({
+        theme: 'fontawesome-stars-o',
+        readonly: true
+      });
+   });
+
     $('.sslider').slick({
         dots: false,
         infinite: true,

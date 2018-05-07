@@ -53,10 +53,7 @@ INSTALLED_APPS = [
     'social_django',
     'colorfield',
     'paypal.standard.ipn',
-    'hvad',
-    'review',
-    'user_media',
-    'generic_positions',
+   
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
