@@ -12,16 +12,20 @@ from orders.models import Order
 
 User = get_user_model()
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
 
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            return redirect('index')
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     else:
-        form = SignUpForm()
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+
+            if form.is_valid():
+                user = form.save()
+                auth_login(request, user)
+                return redirect('index')
+        else:
+            form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
 

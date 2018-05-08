@@ -237,9 +237,14 @@ $(document).ready(function() {
         var selected_size  = $(this).html()
        
         $('#size').val(selected_size)
-
+        
 
     });
+
+    $('select[name=quantity_cart]').on('change', function() {
+        $('#quantity').val(this.value)
+          // $('#quantity-form').submit()
+     })
 
     $('.main-box-color').on('click', 'div', function() {
         $('.main-box-color div').removeClass('active');

@@ -76,28 +76,33 @@
                     <td>
                       <div class="input-box select-dropdown">
                         <fieldset>
+                        <form method='POST' action='{% url "cart:update" %}' class="form" id="quantity-form"> 
+                            {% csrf_token %}
+                             <input type='hidden' name='product_id' value='{{ item.product.id }}'/>
+                             <input type='hidden' name='cart_item_id' value='{{ item.id }}' />
+                             <input type='hidden' name='quantity' value="" id='quantity'/>
+                        
                           <select data-id="100" class="quantity_cart option-drop" name="quantity_cart">
-                            <option selected="" value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            {% for j in '123456789' %}
+                           
+                         <option value="{{forloop.counter}}" {% if item.quantity == forloop.counter %} selected{% endif %}>{{forloop.counter}}</option>
+
+                            {% endfor %}
+                            
                           </select>
+                          </form>
                         </fieldset>
                       </div>
                     </td>
                     <td>
+
                       <div class="total-price price-box">
                         <span class="price">${{item.get_cost}}</span>
                       </div>
                     </td>
                     <td>
-
-                    <form method='POST' action='{% url "cart:delate" %}' class="form"> {% csrf_token %}
-                      <input type='hidden' name='product_id' value='{{ item.product.id }}' />
-                      <input type='hidden' name='cart_item_id' value='{{ item.id }}' />
-
-                    <button type='submit' class='btn btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
-                      </form>
+              {% include 'includes/delete-cart.html' %}
+                   
                     </td>
                   </tr>
                   {% endfor %}

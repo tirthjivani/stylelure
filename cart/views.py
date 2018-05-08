@@ -38,6 +38,16 @@ def cart_add(request):
         cart_obj, new_obj = Cart.objects.new_or_get(request)
         #print('a',Cart.items.all())
         
+        try:
+            qs = CartItem.objects.get(cart=cart_obj,
+                product=product_id,selected_color=selected_color,
+                selected_size=selected_size)
+            qs.quantity += 1
+            qs.save()
+
+        except CartItem.DoesNotExist:
+            CartItem.objects.create(product=product_obj,cart=cart_obj,
+            selected_color=selected_color,selected_size=selected_size)
         cart_id = request.session.get('cart_id')
         #print('a',item_list(id=cart_id))
         # print(product_id)
@@ -45,9 +55,7 @@ def cart_add(request):
         # if product_id in item_list(id=cart_id):            
         #     CartItem.objects.get(product_obj)
         # else:
-        CartItem.objects.create(product=product_obj,cart=cart_obj,
-            selected_color=selected_color,selected_size=selected_size)
-
+        # except
         # return redirect(product_obj.get_absolute_url())
     return redirect("cart:cart")
 
@@ -56,10 +64,15 @@ def cart_update(request):
     product_id = request.POST.get('product_id')
     cart_item_id = request.POST.get('cart_item_id')
     cart_id = request.session.get('cart_id')
+    quantity = request.POST.get('quantity')
+
     if product_id in item_list(id=cart_id):            
-        CartItem.objects.get(id=cart_item_id)
+        qs = CartItem.objects.get(id=cart_item_id)
+        qs.quantity=quantity
+        qs.save()
     else:
         pass
+    return redirect('cart:cart')
 
 
 

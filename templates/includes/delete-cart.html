@@ -1,0 +1,7 @@
+<form method='POST' action='{% url "cart:delate" %}' class="form"> 
+	{% csrf_token %}
+<input type='hidden' name='product_id' value='{{ item.product.id }}' />
+<input type='hidden' name='cart_item_id' value='{{ item.id }}' />
+
+<button type='submit' class='btn btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
+ </form>
