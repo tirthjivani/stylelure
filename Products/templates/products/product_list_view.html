@@ -1,0 +1,110 @@
+{% extends 'base_product.html' %}
+{% load static %}
+{% block stylesheets %}
+<link href="{% static "css/product_detail.css" %}"rel="stylesheet">{% endblock %}
+
+{% block product__list %}
+<div class="product-listing list-type">
+            <div class="row">
+             
+         
+           {% for product in topics %}
+              <div class="col-12">
+                <div class="shop-list-view">
+                  <div class="product-item">
+                   
+                  <div class="product-image"> <img src="{{ product.images.first.image.url }}" alt='a'/></div>
+                  </div>
+                  <div class="product-item-details">
+                    <div class="product-item-name"> 
+                      <a href="{{product.get_absolute_url}}">{{product.title|truncatechars:45}} </a> 
+                    </div>
+                   
+                    <div class="price-box"> <span class="price">${{ product.discounted_price }}</span> <del class="price old-price">${{ product.price|floatformat }}</del> </div>
+                    <p>{{ product.short_description }}</p>
+                    <div class="bottom-detail">
+              <div class="color-btn">
+                <div class="btn-btn">
+                  <h3> Color</h3>
+                  <div class="main-box-color">
+                    {% for  color in product.colors.all %}
+                    <div class="red-box" style="background-color:{{color.available_color}}"></div>
+                    {% endfor %}
+                  </div>
+                </div>
+               
+                {% if product.available_size  %}
+                <div class="center-btn">
+                  <h3>Select size <span>size guide</span></h3>
+                  <div class="main-box">
+                    <div class="box active {% if 'small' not in product.available_size %} disable {% endif %}">S</div>
+                    <div class="box {% if 'medium' not in product.available_size %} disable {%else%} {% endif %}">M</div>
+                    <div class="box {% if 'large' not in product.available_size %} disable{%else%} {% endif %}">L</div>
+                    <div class="box {% if 'extraLarge' not in product.available_size %} disable {% endif %}">XL</div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+                <form method='POST' action='{% url "cart:add" %}' class="form" id="add_cart_form"> {% csrf_token %}
+          <input type='hidden' name='product_id' value='{{ product.id }}' />
+          <input type='hidden' id='color' name='selected_color' value="" />
+          <input type='hidden' id='size' name='selected_size' value="" />
+          <div class="button-cart">
+         
+               <button type='submit'  class='btn btn-left btn-success'>ADD TO CART</button>
+
+         
+          <a href="#"><i class="fa fa-heart-o"></i></a>
+          </div>
+      </form>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            
+           
+            </div>
+             {% if topics.has_other_pages %}
+  <nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if topics.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ topics.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in topics.paginator.page_range %}
+        {% if topics.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if topics.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ topics.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
+          </div>
+          {% endblock product__list%}

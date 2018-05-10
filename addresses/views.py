@@ -73,7 +73,7 @@ def address_update(request):
     # print(shipping_address)
     # print(shipping_address)
     shipping_address = Address.objects.get(id=27)
-    
+    import pdb; pdb.set_trace()
     form1=ModelForm(instance=shipping_address)
     
     return render(request,'checkout.html',{'form1':form1})  

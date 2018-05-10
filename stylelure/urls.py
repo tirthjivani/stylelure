@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^search/',include('search.urls',namespace='search')),
     # url(r'^review/', include('review.urls')),
     url(r'^cart/',include('cart.urls',namespace='cart')),
+    url(r'^wishlist/',include('wishlist.urls',namespace='wishlist')),
 ]
 
 

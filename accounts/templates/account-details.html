@@ -1,0 +1,113 @@
+{% extends 'my_account.html' %}
+{% block my_account_content %}
+<div class="col-lg-3">
+          <div class="account-sidebar account-tab mb-sm-30">
+            <div class="dark-bg tab-title-bg">
+              <div class="heading-part">
+                <div class="sub-title"><span></span> My Account</div>
+              </div>
+            </div>
+            <div class="account-tab-inner">
+              <ul class="account-tab-stap">
+                <li id="step1" > <a href="{% url 'accounts:my_account' %}">My Dashboard<i class="fa fa-angle-right"></i> </a> </li>
+                <li id="step2" class="active"> <a href="{% url 'accounts:account' %}">Account Details<i class="fa fa-angle-right"></i> </a> </li>
+                <li id="step3"> <a href="javascript:void(0)">My Order List<i class="fa fa-angle-right"></i> </a> </li>
+                <li id="step4" > <a href="{% url 'accounts:password_change' %}">Change Password<i class="fa fa-angle-right"></i> </a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+<div id="data-step2" class="account-content" >
+            <div class="row">
+              <div class="col-12">
+                <form class="main-form full">
+              <div class="row">
+             {% include 'includes/form.html' %}
+              </div>
+            </form>
+                <div class="heading-part heading-bg mb-30">
+                  <h2 class="heading ma-0">Account Details</h2>
+                </div>
+              </div>
+            </div>
+            <div class="m-0">
+              <form class="main-form full">
+                <div class="mb-20">
+                  <div class="row">
+                    <div class="col-12 mb-20">
+                      <div class="heading-part">
+                        <h3 class="sub-heading">Shipping Address</h3>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Full Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="email" required placeholder="Email Address">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Company">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Contact Number">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Shipping Address">
+                        <span>Please provide the number and street.</span>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Shipping Landmark">
+                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box select-dropdown">
+                        <fieldset>
+                          <select name="shippingCountryId" class="option-drop" id="shippingcountryid">
+                            <option selected="" value="">Select Country</option>
+                            <option  value="">in</option>
+
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box select-dropdown">
+                        <fieldset>
+                          <select name="shippingstateId" class="option-drop" id="shippingstateid">
+                            <option value="">Select a State</option>
+
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Select City">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-box">
+                        <input type="text" required placeholder="Postcode/zip">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+          {% endblock %}

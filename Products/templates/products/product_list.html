@@ -3,6 +3,8 @@
 
 
           {% block product__list %}
+           <div class="product-listing">
+        <div class="inner-listing">
           <div class="row">
              {% for product in topics %}
             <div class="col-md-4 col-6 mb-30">
@@ -24,17 +26,14 @@
                     
                     
                   </div>
-                   <form method='POST' action='{% url "cart:add" %}' class="form" id="direct_add_cart_form"> {% csrf_token %}
-          <input type='hidden' name='product_id' value='{{ product.id }}' />
-          <input type='hidden' id='color' name='selected_color' value="" />
-          <input type='hidden' id='size' name='selected_size' value="" />
-
-              
-      
-                  <button type="submit" class=""><div class="add_to_cart"> 
+                     <form method='POST' action='{% url "cart:add" %}' class="form" id="direct_add_cart_form"> {% csrf_token %}
+            <input type='hidden' name='product_id' value='{{ product.id }}' />
+            <input type='hidden' id='color' name='selected_color' value="" />
+            <input type='hidden' id='size' name='selected_size' value="" />
+                    <button type="submit" class=""><div class="add_to_cart"> 
                     <i class="pe-7s-cart"></i> ADD TO CART
                   </div></button>
-</form>
+             </form>
                 </div>
               </div>
 
@@ -85,4 +84,6 @@
     </ul>
   </nav>
 {% endif %}
+  </div>
+</div>
     {% endblock product__list %}

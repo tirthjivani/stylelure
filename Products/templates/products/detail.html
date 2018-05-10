@@ -106,19 +106,28 @@
       </div>
     <form method='POST' action='{% url "cart:add" %}' class="form" id="add_cart_form"> {% csrf_token %}
           <input type='hidden' name='product_id' value='{{ object.id }}' />
-          <input type='hidden' id='color' name='selected_color' value="" />
-          <input type='hidden' id='size' name='selected_size' value="" />
+          <input type='hidden' class='color' name='selected_color' value="" />
+          <input type='hidden' class='size' name='selected_size' value="" />
           <div class="button-cart">
-          {% if object in cart_obj.products.all %}
-            <a href="" class="btn-left">In cart</a>
-          <button type='submit' class='btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
-          {% else %}
+       
                <button type='submit'  class='btn btn-left btn-success'>ADD TO CART</button>
 
-          {% endif %}
-          <a href="#"><i class="fa fa-heart-o"></i></a>
+      
           </div>
       </form>
+
+       <form method='POST' action='{% url "wishlist:add" %}' class="form" id="add_wishlist_form"> {% csrf_token %}
+          <input type='hidden' name='product_id' value='{{ object.id }}' />
+          <input type='hidden' class='color' name='selected_color' value="" />
+          <input type='hidden' class='size' name='selected_size' value="" />
+         <div class="button-cart">
+       
+
+          <i class="fa fa-heart-o" id='wishlist_icon' ></i>
+         
+          
+      </form>
+
 
     </div>
   </div>

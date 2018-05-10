@@ -13,17 +13,19 @@ def coupon_apply(request):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     form = CouponApplyForm(request.POST)
+    order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
     if form.is_valid():
         code = form.cleaned_data['code']
         try:
             coupon = Coupon.objects.get(code__iexact=code,
                                     valid_from__lte=now,
                                     valid_to__gte=now,
-                                    active=True)
-            order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
+                                    active=True)           
             print(coupon.id)
             order_obj.coupon=coupon
             order_obj.save()
         except Coupon.DoesNotExist:
+            order_obj.coupon=None
+            order_obj.save()
             request.session['coupon_id'] = None
     return redirect('overview')

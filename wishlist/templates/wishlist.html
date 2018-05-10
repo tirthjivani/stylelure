@@ -1,0 +1,116 @@
+{% extends 'base_account.html' %}
+{% load static %}
+{% block account_content %}
+
+{% block  bread-crumb-block %}
+<div class="banner inner-banner1 ">
+  <div class="container">
+    <section class="banner-detail center-xs">
+      <h1 class="banner-title">Wishlist</h1>
+      <div class="bread-crumb right-side float-none-xs">
+        <ul>
+          <li><a href="index.html">Home</a>/</li>
+          <li><span>Wishlist</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock bread-crumb-block %}
+
+<section class="ptb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="cart-item-table commun-table">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Descriotion</th>
+                  <th>Price</th>
+                  
+                  <th>Stock Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                 {% for item in wishlist.wishlist_items.all %}
+                <tr>
+                  <td>
+                    <a href="{{item.product.get_absolute_url}}">
+                    <div class="product-image"><img alt="stylelure" src="{{ item.product.images.first.image.url }}"></div>
+                    </a>
+                  </td>
+                  <td>
+                    <div class="product-title">
+                    <a href="{{item.product.get_absolute_url}}">{{item.product.title|truncatechars:25}}</a>
+                      
+                    </div>
+                      <div class="color-btn">
+                      {% if item.selected_color %}
+                    <div class="btn-btn">
+                      <div class="cart-main-box-color">
+                        <div class="cart-red-box" style="background-color:{{item.selected_color}}"></div>
+                      </div>
+                    </div>
+                    {%endif%}
+
+                    {% if item.selected_size %}
+                    <div class="cart-center-btn">
+                      <div class="main-box">
+                        <div class="box">{{item.selected_size}}</div>
+                      </div>
+                    </div>
+                    {%endif%}
+                  </div>
+                  </td>
+                  <td>
+                    <ul>
+                      <li>
+                        <div class="base-price price-box"> <span class="price">${{ item.product.discounted_price|floatformat }}</span> </div>
+                      </li>
+                    </ul>
+                  </td>
+                
+                  <td>
+                    <div class="total-price price-box">
+                      <span class="price">In Stock</span>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="cart.html">
+                      <i title="Shopping Cart" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </a>
+                 <form method='POST' action='{% url "wishlist:delate" %}' class="form"> 
+                    {% csrf_token %}
+                  <input type='hidden' name='product_id' value='{{ item.product.id }}' />
+                  <input type='hidden' name='wishlist_item_id' value='{{ item.id }}' />
+
+                  <button type='submit' class='btn btn-link'> <i title="Remove Item From Cart" data-id="100" type='submit' class="fa fa-trash cart-remove-item"></i></button>
+                   </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-30">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mt-30">
+            <a href="shop.html" class="btn btn-color">
+              <span><i class="fa fa-angle-left"></i></span>Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

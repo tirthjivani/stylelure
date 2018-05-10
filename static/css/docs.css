@@ -1685,6 +1685,30 @@
      display: inherit;
 }
 .btn-left{font-size:14px; line-height:24px; width:150px; height:50px; background-color:#46bfa9; border:none; color:#fff; border-radius:5px;}
+
+.shop-list-view {
+     margin-bottom: 30px;
+     display: inline-block;
+}
+.shop-list-view .product-item {
+     float: left;
+     width: 280px;
+     margin-right: 20px;
+}
+.shop-list-view .product-item-name {
+     font-size: 16px;
+}
+.shop-list-view .price-box {
+     margin: 3px 0 15px;
+     float: none;
+}
+.shop-list-view .bottom-detail {
+     display: inline-block;
+}
+.shop-list-view .product-item-details, .product-detail-main .product-item-details {
+     margin-top: 0;
+}
+
 /* content End -------------------------------------------------- */
 /* footer Start -------------------------------------------------- */
  #footer {

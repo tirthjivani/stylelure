@@ -133,7 +133,7 @@ def checkout_home(request):
 
     # print(order_obj.billing_address)
     context = {
-          'coupon_apply_form':coupon_apply_form,
+        'form':coupon_apply_form,
         "object": order_obj,
         "billing_profile": billing_profile,
         "guest_form": guest_form,

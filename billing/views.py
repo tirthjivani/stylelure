@@ -49,7 +49,7 @@ def payment_process(request):
         'amount': '%.2f' % order_obj.get_total_price_after_discount().quantize(Decimal('.01')),
         'item_name': 'Order {}'.format(order_obj.order_id),
         'invoice': str(order_obj.order_id),
-        'currency_code': 'INR',
+        'currency_code': 'USD',
         'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
         'return_url': 'http://{}{}'.format(host, reverse('payment:done')),
         'cancel_return': 'http://{}{}'.format(host, reverse('payment:canceled')),

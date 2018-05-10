@@ -137,11 +137,13 @@
                     </table>
                   </div>
                 </div>
-                <div> <form action="{% url "apply" %}" method="post">
-        {{ coupon_apply_form }}
-        <input type="submit" class="btn " value="Apply"></input>
-        {% csrf_token %}
-    </form></div>
+                <div> 
+              <form action="{% url "apply" %}" method="post">
+                {{ form }}
+                <input type="submit" class="btn-left mb-5" value="Apply"></input>
+                {% csrf_token %}
+              </form >
+              </div>
                 <div class="cart-total-table commun-table mb-30">
                   <div class="table-responsive">
                     <table class="table">

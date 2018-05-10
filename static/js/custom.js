@@ -203,20 +203,15 @@ $(document).ready(function() {
         $('.account-tab-stap li').removeClass('active');
         $(this).addClass('active');
 
-        $(".account-content").fadeOut();
-        var currentLiID = $(this).attr('id');
-        $("#data-" + currentLiID).fadeIn();
-        return false;
+        
     });
 
-    $(".tab-menu ul li a").click(function() {
-        var opne_id = $(this).attr("id");
-        $(".tab-menu ul li").removeClass("active");
-        $(this).parent("li").addClass("active");
-        $(".tab-detalis").slideUp();
-        $("." + opne_id + "-box").slideDown();
-    });
+    
     /* Price-range */
+
+    $(".account-tab-stap li").click(function(){
+        location.href = $(this).find("a").attr("href");
+        });
 
     $("#slider-range").slider({
         range: true,
@@ -236,7 +231,7 @@ $(document).ready(function() {
         $(this).addClass('active');
         var selected_size  = $(this).html()
        
-        $('#size').val(selected_size)
+        $('.size').val(selected_size)
         
 
     });
@@ -250,14 +245,14 @@ $(document).ready(function() {
         $('.main-box-color div').removeClass('active');
         $(this).addClass('active');
         var selected_color = $(this).css("background-color")
-        $('#color').val(selected_color)  
+        $('.color').val(selected_color)  
 
     });
 
   
      $('#add_cart_form').submit(function(event){
 
-     if($('#color').val() != '' && $('#size').val() != '' ){      
+     if($('.color').val() != '' && $('#size').val() != '' ){      
        return;  
     }   
     if($('#color').val() == ''){
@@ -267,7 +262,7 @@ $(document).ready(function() {
             theme: "supervan",
           })
       }
-      if($('#size').val() == ''){
+      if($('.size').val() == ''){
     $.alert({
             title: "Oops!",
             content: "You Forgot to Select Size",
@@ -277,6 +272,29 @@ $(document).ready(function() {
     event.preventDefault();
    });
 
+$('#add_wishlist_form').click(function(event){
+
+     if($('.color').val() != '' && $('#size').val() != '' ){      
+       return;  
+    }   
+    if($('#color').val() == ''){
+    $.alert({
+            title: "Oops!",
+            content: "You Forgot to Select Color",
+            theme: "supervan",
+          })
+      }
+      if($('.size').val() == ''){
+    $.alert({
+            title: "Oops!",
+            content: "You Forgot to Select Size",
+            theme: "modern",
+          })
+     }
+     $('#add_wishlist_form').submit()
+    // event.preventDefault();
+
+   });
   
 
 })

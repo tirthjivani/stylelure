@@ -68,11 +68,11 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="view">
-                  <div class="list-types grid active "> <a href="#">
+                  <div class="list-types grid  "> <a href="{% url 'Products:product_list' %}">
                     <div class="grid-icon list-types-icon"></div>
                   </a>
                 </div>
-                <div class="list-types list"> <a href="#">
+                <div class="list-types list active"> <a href="{% url 'Products:product_list_view' %}">
                   <div class="list-icon list-types-icon"></div>
                 </a>
               </div>
@@ -82,12 +82,12 @@
         
         </div>
       </div>
-      <div class="product-listing">
-        <div class="inner-listing">
-{% block product__list %}
+      {% block product__list %}
+     
+
+
+
 {% endblock product__list%}
-  </div>
-</div>
 </div>
 </div>
 </div>
