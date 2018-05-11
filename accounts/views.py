@@ -26,7 +26,7 @@ def signup(request):
 
             if form.is_valid():
                 user = form.save()
-                auth_login(request, user)
+                auth_login(request, user,backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('index')
         else:
             form = SignUpForm()
@@ -88,19 +88,52 @@ def account_view(request):
 #         else:
 #             return self.form_invalid(**{form_name: form})
 
-@method_decorator(login_required, name='dispatch')
-class UserUpdateView(UpdateView):
-    model = Address
-    # fields['email'].widget.attrs['readonly'] = True
-    # fields = ('first_name', 'last_name', 'email','country' )
-    form_class = AddressForm
+# @method_decorator(login_required, name='dispatch')
+# class UserUpdateView(UpdateView):
+#     model = Address
+#     # fields['email'].widget.attrs['readonly'] = True
+#     # fields = ('first_name', 'last_name', 'email','country' )
+#     form_class = AddressForm
 
-    # form_class.fields['email'].widget.attrs['readonly'] = True
-    template_name = 'account-details.html'
-    success_url = reverse_lazy('account')
+#     # form_class.fields['email'].widget.attrs['readonly'] = True
+#     template_name = 'account-details.html'
+#     success_url = reverse_lazy('account')
 
-    def get_object(self):
-        return self.request.user
+#     def get_object(self):
+#         return self.request.user
 
-    def get_initial(self):
-        return { 'country': 'india', 'state':'Gujarat' }
+#     def get_initial(self):
+#         return { 'country': 'india', 'state':'Gujarat' }
+
+def user_address_update(request):   
+    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+    print(billing_profile)
+    address_qs = None
+    if billing_profile is not None:
+        if request.user.is_authenticated():
+            address_qs = Address.objects.filter(billing_profile=billing_profile) 
+        try:
+            shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
+        except Address.DoesNotExist:
+            print("Show message to user, Address is gone?")
+            return redirect("cart:cart")
+        try:   
+            billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
+        except Address.DoesNotExist:
+            print(" Address is gone?")
+            return redirect("cart:cart")
+        # shipping_address = Address.objects.get(id=27)
+        # import pdb; pdb.set_trace()
+        form1=AddressForm(prefix='form1',instance=shipping_address,data=request.POST or None )
+        form2=AddressForm(prefix='form2',instance=billing_address,data=request.POST or None)
+
+        if request.method=='POST':
+            import pdb; pdb.set_trace()
+            if form2.is_valid():
+                form2.save()
+            if form1.is_valid():
+                form1.save()
+                
+
+    
+    return render(request,'account-details.html',{'form1':form1,'form2':form2})  

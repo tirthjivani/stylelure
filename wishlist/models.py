@@ -19,7 +19,7 @@ class WishlistManager(models.Manager):
             new_obj = False
             wishlist_obj = qs.first()
             print(wishlist_obj)
-            request.session['wishlist_id'] = wishlist_obj.id
+            # request.session['wishlist_id'] = wishlist_obj.id
 
             if request.user.is_authenticated() and wishlist_obj.user is None:
                 wishlist_obj.user = request.user

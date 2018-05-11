@@ -2,7 +2,7 @@ from django import forms
 # from django.contrib.auth import authenticate, login, get_user_model
 from localflavor.in_.forms import INStateSelect,INStateField,INAadhaarNumberField,INZipCodeField
 from django_countries.fields import CountryField
-from .models import Address
+from .models import Address as Add
 
 
 class AddressForm(forms.ModelForm):
@@ -20,7 +20,7 @@ class AddressForm(forms.ModelForm):
     # country=CountryField()
 
     class Meta:
-        model= Address
-        fields=['first_name', 'last_name', 'phone_number',
+        model   = Add
+        fields  =['first_name', 'last_name', 'phone_number',
                 'address_line_1','address_line_2','country','state','postal_code','city'
                   ]

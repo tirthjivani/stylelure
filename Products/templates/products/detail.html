@@ -70,15 +70,18 @@
             {% endfor %}
           </div>
         </div>
+
+        {% if 'a' in object_size or 'e' in object_size %}
         <div class="center-btn">
           <h3>Select size <span>size guide</span></h3>
           <div class="main-box">
-            <div class="box active {% if 'small' not in object_size %} disable {% endif %}">S</div>
+            <div class="box {% if 'small' not in object_size %} disable {% endif %}">S</div>
             <div class="box {% if 'medium' not in object_size %} disable {%else%} {% endif %}">M</div>
             <div class="box {% if 'large' not in object_size %} disable{%else%} {% endif %}">L</div>
             <div class="box {% if 'extraLarge' not in object_size %} disable {% endif %}">XL</div>
           </div>
         </div>
+        {% endif %}
       </div>
       <div class="Categories-box">
         <div class="address">
@@ -104,7 +107,7 @@
           </div>
         </div>
       </div>
-    <form method='POST' action='{% url "cart:add" %}' class="form" id="add_cart_form"> {% csrf_token %}
+    <form method='POST' action='{% url "cart:add" %}' class="form add_cart_form"> {% csrf_token %}
           <input type='hidden' name='product_id' value='{{ object.id }}' />
           <input type='hidden' class='color' name='selected_color' value="" />
           <input type='hidden' class='size' name='selected_size' value="" />

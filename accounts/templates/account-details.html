@@ -18,12 +18,11 @@
           </div>
         </div>
         <div class="col-lg-9">
-<div id="data-step2" class="account-content" >
+          <div id="data-step2" class="account-content" >
             <div class="row">
               <div class="col-12">
                 <form class="main-form full">
               <div class="row">
-             {% include 'includes/form.html' %}
               </div>
             </form>
                 <div class="heading-part heading-bg mb-30">
@@ -32,7 +31,8 @@
               </div>
             </div>
             <div class="m-0">
-              <form class="main-form full">
+              <form  method="post" class="main-form full">
+                {% csrf_token %}
                 <div class="mb-20">
                   <div class="row">
                     <div class="col-12 mb-20">
@@ -41,71 +41,24 @@
                       </div>
                       <hr>
                     </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Full Name">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="email" required placeholder="Email Address">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Company">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Contact Number">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Shipping Address">
-                        <span>Please provide the number and street.</span>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Shipping Landmark">
-                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box select-dropdown">
-                        <fieldset>
-                          <select name="shippingCountryId" class="option-drop" id="shippingcountryid">
-                            <option selected="" value="">Select Country</option>
-                            <option  value="">in</option>
-
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box select-dropdown">
-                        <fieldset>
-                          <select name="shippingstateId" class="option-drop" id="shippingstateid">
-                            <option value="">Select a State</option>
-
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Select City">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-box">
-                        <input type="text" required placeholder="Postcode/zip">
-                      </div>
-                    </div>
+                    {% include 'includes/aad_form.html' with form=form1 %}
+            
                   </div>
                 </div>
+                 <div class="mb-20">
+                  <div class="row">
+                    <div class="col-12 mb-20">
+                      <div class="heading-part">
+                        <h3 class="sub-heading">Billing Address</h3>
+                      </div>
+                      <hr>
+                    </div>
+                    {% include 'includes/aad_form.html' with form=form1 %}
+            
+                  </div>
+                </div>
+
+                 <button type="submit" class="btn-left">Save</button>
               </form>
             </div>
           </div>

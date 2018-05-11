@@ -13,7 +13,7 @@ def checkout_address_create_view(request):
         form2 = AddressForm(request.POST,prefix='form2')  
         # import pdb; pdb.set_trace()
         if form1.is_valid():
-            print(request.POST)
+            # print(request.POST)
             instance = form1.save(commit=False)
             billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
             print('hii',billing_profile)
@@ -29,7 +29,7 @@ def checkout_address_create_view(request):
                 return redirect("home")
 
         if form2.is_valid():
-            print(request.POST)
+            # print(request.POST)
             instance = form2.save(commit=False)
             billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
             if billing_profile is not None:
@@ -39,12 +39,15 @@ def checkout_address_create_view(request):
                 instance.save()
                 # request.session[address_type + "_address_id"] = instance.id
                # print(address_type + "_address_id")
+                import pdb; pdb.set_trace()
+                if instance.address_type != None:
+                    return redirect('order:overview')
             else:
                 print("Error here")
                 return redirect("home")
 
         # else:
-        #     # Do something in case if form is not valid
+        #    
         #     raise Http404
 
     else:
@@ -54,28 +57,36 @@ def checkout_address_create_view(request):
 
 
 def address_update(request):   
-    # billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
-    # print(billing_profile)
-    # address_qs = None
-    # if billing_profile is not None:
-    #     if request.user.is_authenticated():
-    #         address_qs = Address.objects.filter(billing_profile=billing_profile) 
-    #     try:
-    #         shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
-    #     except Address.DoesNotExist:
-    #         print("Show message to user, Address is gone?")
-    #         return redirect("cart:cart")
-    #     try:   
-    #         billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
-    #     except Address.DoesNotExist:
-    #         print(" Address is gone?")
-    #         return redirect("cart:cart")
-    # print(shipping_address)
-    # print(shipping_address)
-    shipping_address = Address.objects.get(id=27)
-    import pdb; pdb.set_trace()
-    form1=ModelForm(instance=shipping_address)
+    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+    print(billing_profile)
+    address_qs = None
+    if billing_profile is not None:
+        if request.user.is_authenticated():
+            address_qs = Address.objects.filter(billing_profile=billing_profile) 
+        try:
+            shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
+        except Address.DoesNotExist:
+            print("Show message to user, Address is gone?")
+            return redirect("cart:cart")
+        try:   
+            billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
+        except Address.DoesNotExist:
+            print(" Address is gone?")
+            return redirect("cart:cart")
+        # shipping_address = Address.objects.get(id=27)
+        # import pdb; pdb.set_trace()
+        form1=AddressForm(prefix='form1',instance=shipping_address,data=request.POST or None )
+        form2=AddressForm(prefix='form2',instance=billing_address,data=request.POST or None)
+
+        if request.method=='POST':
+            import pdb; pdb.set_trace()
+            if form2.is_valid():
+                form2.save()
+            if form1.is_valid():
+                form1.save()
+                return redirect('address')
+
     
-    return render(request,'checkout.html',{'form1':form1})  
+    return render(request,'checkout.html',{'form1':form1,'form2':form2})  
  
     

@@ -47,9 +47,9 @@ class Order(models.Model):
     total               = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     active              = models.BooleanField(default=True)
     coupon              = models.ForeignKey(Coupon,related_name='orders', null=True,blank=True)
-    updated        = models.DateTimeField(auto_now=True)
-    created_date   = models.DateTimeField(auto_now_add=True)
-    discount = models.IntegerField(default=0,validators=[MinValueValidator(0),MaxValueValidator(100)])
+    updated             = models.DateTimeField(auto_now=True)
+    created_date        = models.DateTimeField(auto_now_add=True)
+    discount            = models.IntegerField(default=0,validators=[MinValueValidator(0),MaxValueValidator(100)])
 
     def __str__(self):
         return self.order_id

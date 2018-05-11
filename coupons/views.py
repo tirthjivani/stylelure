@@ -28,4 +28,4 @@ def coupon_apply(request):
             order_obj.coupon=None
             order_obj.save()
             request.session['coupon_id'] = None
-    return redirect('overview')
+    return redirect('order:overview')

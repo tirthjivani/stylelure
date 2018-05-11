@@ -1,12 +1,12 @@
 $(document).ready(function() {
     /* ---- slick slider start ---- */
 
-     $(function() {
-      $('#example').barrating({
-        theme: 'fontawesome-stars-o',
-        readonly: true
-      });
-   });
+    $(function() {
+        $('#example').barrating({
+            theme: 'fontawesome-stars-o',
+            readonly: true
+        });
+    });
 
     $('.sslider').slick({
         dots: false,
@@ -130,11 +130,11 @@ $(document).ready(function() {
         infinite: true,
         asNavFor: '.slider-big'
     });
- /* ---- slick slider end ---- */
+    /* ---- slick slider end ---- */
 
 
     var searchForm = $(".search-form")
-    var searchInput = searchForm.find("[name='q']") 
+    var searchInput = searchForm.find("[name='q']")
     var typingTimer;
     var typingInterval = 500
     var searchBtn = searchForm.find("[type='submit']")
@@ -203,15 +203,15 @@ $(document).ready(function() {
         $('.account-tab-stap li').removeClass('active');
         $(this).addClass('active');
 
-        
+
     });
 
-    
+
     /* Price-range */
 
-    $(".account-tab-stap li").click(function(){
+    $(".account-tab-stap li").click(function() {
         location.href = $(this).find("a").attr("href");
-        });
+    });
 
     $("#slider-range").slider({
         range: true,
@@ -229,72 +229,100 @@ $(document).ready(function() {
     $('.main-box').on('click', 'div', function() {
         $('.main-box div').removeClass('active');
         $(this).addClass('active');
-        var selected_size  = $(this).html()
-       
+        var selected_size = $(this).html()
         $('.size').val(selected_size)
-        
+
 
     });
 
     $('select[name=quantity_cart]').on('change', function() {
         $('#quantity').val(this.value)
-          // $('#quantity-form').submit()
-     })
+        $('#quantity-form').submit()
+    })
 
     $('.main-box-color').on('click', 'div', function() {
         $('.main-box-color div').removeClass('active');
         $(this).addClass('active');
         var selected_color = $(this).css("background-color")
-        $('.color').val(selected_color)  
+        $('.color').val(selected_color)
 
     });
 
-  
-     $('#add_cart_form').submit(function(event){
 
-     if($('.color').val() != '' && $('#size').val() != '' ){      
-       return;  
-    }   
-    if($('#color').val() == ''){
-    $.alert({
-            title: "Oops!",
-            content: "You Forgot to Select Color",
-            theme: "supervan",
-          })
-      }
-      if($('.size').val() == ''){
-    $.alert({
-            title: "Oops!",
-            content: "You Forgot to Select Size",
-            theme: "modern",
-          })
-     }
-    event.preventDefault();
-   });
 
-$('#add_wishlist_form').click(function(event){
+    $(".add_to_cart").on("click", function(event) {
+        var myModal = $(this).find('input[name=product_id]').val()
+        console.log(myModal)
+        $('#a' + myModal).modal('show');
+        console.log(myModal)
+        //               $.confirm({
+        //     title: 'Prompt!',
+        //     content: '' +
+        //     '<div class="color-btn">'+
+        //         '<div class="btn-btn" >'+
+        //          '<h3> Color</h3>'+ 
+        //           '<div class="main-box-color">'+
+        //             '{% for  color in object.colors.all %}'+
+        //             '<div class="red-box" style="background-color:{{color.available_color}}"></div>'+
+        //             '{% endfor %}'+
+        //           '</div></div><div class="center-btn"><h3>Select size <span>size guide</span></h3>'+
 
-     if($('.color').val() != '' && $('#size').val() != '' ){      
-       return;  
-    }   
-    if($('#color').val() == ''){
-    $.alert({
-            title: "Oops!",
-            content: "You Forgot to Select Color",
-            theme: "supervan",
-          })
-      }
-      if($('.size').val() == ''){
-    $.alert({
-            title: "Oops!",
-            content: "You Forgot to Select Size",
-            theme: "modern",
-          })
-     }
-     $('#add_wishlist_form').submit()
-    // event.preventDefault();
+        //         ' <div class="main-box">'+
+        //           '<div class="box active {% if "small" not in object_size %} disable {% endif %}">S</div>'+
+        //          '<div class="box {% if "medium" not in object_size %} disable {%else%} {% endif %}">M</div>'+
+        //            '<div class="box {% if "large" not in object_size %} disable{%else%} {% endif %}">L</div>'+
+        //            '<div class="box {% if "extraLarge" not in object_size %} disable {% endif %}">XL</div>' +
+        //            ' </div> </div> </div>',
 
-   });
-  
+        // });
+    });
+
+    $('.add_cart_form').submit(function(event) {
+
+        if ($('.color').val() != '' && $('.size').val() != '') {
+            return;
+        }
+
+        if ($('.color').val() == '') {
+            $.alert({
+                title: "Oops!",
+                content: "You Forgot to Select Color",
+                theme: "supervan",
+            })
+        }
+        if ($('.size').val() == '') {
+            $.alert({
+                title: "Oops!",
+                content: "You Forgot to Select Size",
+                theme: "modern",
+            })
+        }
+        event.preventDefault();
+    });
+
+    $('#add_wishlist_form').click(function(event) {
+
+        if ($('.color').val() != '' && $('.size').val() != '') {
+            return;
+        }
+        if ($('.color').val() == '') {
+            $.alert({
+                title: "Oops!",
+                content: "You Forgot to Select Color",
+                theme: "supervan",
+            })
+        }
+        if ($('.size').val() == '') {
+            $.alert({
+                title: "Oops!",
+                content: "You Forgot to Select Size",
+                theme: "modern",
+            })
+        }
+        $('#add_wishlist_form').submit()
+        // event.preventDefault();
+
+    });
+
 
 })

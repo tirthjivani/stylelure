@@ -107,7 +107,7 @@
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
+                                  <span class="info-deta">{{item.quantity}}</span> </div>
                               </div>
                             </div>
                             <div class="color-btn">
@@ -139,9 +139,14 @@
                 </div>
                 <div> 
               <form action="{% url "apply" %}" method="post">
+                {% csrf_token %}
+                {% if object.coupon != None %}
+                <input type="hidden" name="code" id='coupon' value="{{ object.coupon}}">
+                
+                {% else %}
                 {{ form }}
                 <input type="submit" class="btn-left mb-5" value="Apply"></input>
-                {% csrf_token %}
+                {% endif %}                               
               </form >
               </div>
                 <div class="cart-total-table commun-table mb-30">
@@ -155,15 +160,15 @@
                       <tbody>
                         <tr>
                           <td>Item(s) Subtotal</td>
-                          <td><div class="price-box"> <span class="price">{{object.get_total}}</span> </div></td>
+                          <td><div class="price-box"> <span class="price">${{object.cart.total}}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Shipping</td>
-                          <td><div class="price-box"> <span class="price">$0.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">$5.99</span> </div></td>
                         </tr>
                         <tr>
                           <td><b>Amount Payable</b></td>
-                          <td><div class="price-box"> <span class="price"><b>{{object.get_total_price_after_discount}}</b></span> </div></td>
+                          <td><div class="price-box"> <span class="price"><b>${{object.get_total_price_after_discount}}</b></span> </div></td>
                         </tr>
                       </tbody>
                     </table>

@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(redirect_authenticated_user=True,template_name='login.html'), name='login'),
     url(r'^signup/', accounts_views.signup, name='signup'),
 	url(r'^myaccount/$', accounts_views.account_view, name='my_account'),
-    url(r'^myaccount/account/$', accounts_views.UserUpdateView.as_view(),name='account'),
+    url(r'^myaccount/account/$', accounts_views.user_address_update,name='account'),
     url(r'^myaccount/order_details/$', accounts_views.account_view, name='order_details'),
     url(r'^myaccount/password_change/$', auth_views.PasswordChangeView.as_view(template_name='password_change.html'),
     name='password_change'),
