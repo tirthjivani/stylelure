@@ -26,7 +26,7 @@
         <div class="checkout-step mb-40">
           <ul>
             <li>
-              <a href="checkout.html">
+                <a href="{% url 'address' %}">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">1</div>
@@ -34,8 +34,8 @@
                 <span>Shipping</span>
               </a>
             </li>
-            <li>
-              <a href="order-overview.html">
+            <li >
+              <a href="{% url 'order:overview' %}">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">2</div>
@@ -44,7 +44,7 @@
               </a>
             </li>
             <li class="active">
-              <a href="payment.html">
+              <a href="{% url 'payment:process' %}">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">3</div>
@@ -52,8 +52,8 @@
                 <span>Payment</span>
               </a>
             </li>
-            <li>
-              <a href="order-complete.html">
+            <li >
+              <a href="#">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">4</div>

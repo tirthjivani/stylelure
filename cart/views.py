@@ -34,7 +34,7 @@ def cart_add(request):
             return redirect("cart:cart")
         cart_obj, new_obj = Cart.objects.new_or_get(request)
         #print('a',Cart.items.all())
-        
+
         try:
             qs = CartItem.objects.get(cart=cart_obj,
                 product=product_id,selected_color=selected_color,
@@ -42,7 +42,7 @@ def cart_add(request):
             qs.quantity += 1
             qs.cart.subtotal+=qs.product.discounted_price
             qs.cart.count+=1
-            qs.cart.save()            
+            qs.cart.save()
             qs.save()
 
         except CartItem.DoesNotExist:
@@ -52,7 +52,7 @@ def cart_add(request):
         #print('a',item_list(id=cart_id))
         # print(product_id)
         # import pdb; pdb.set_trace()
-        # if product_id in item_list(id=cart_id):            
+        # if product_id in item_list(id=cart_id):
         #     CartItem.objects.get(product_obj)
         # else:
         # except
@@ -66,9 +66,12 @@ def cart_update(request):
     cart_id = request.session.get('cart_id')
     quantity = request.POST.get('quantity')
 
-    if product_id in item_list(id=cart_id):            
+    if product_id in item_list(id=cart_id):
         qs = CartItem.objects.get(id=cart_item_id)
         qs.quantity=quantity
+        qs.cart.subtotal+=qs.product.discounted_price
+        qs.cart.count+=1
+        qs.cart.save()   
         qs.save()
     else:
         pass
@@ -85,12 +88,12 @@ def cart_remove(request):
     # print('as',cart_id)
     # print(product_id)
     # import pdb; pdb.set_trace()
-    if product_id in item_list(id=cart_id): 
-        CartItem.objects.filter(id=cart_item_id).all().delete()   
+    if product_id in item_list(id=cart_id):
+        CartItem.objects.filter(id=cart_item_id).all().delete()
     return redirect('cart:cart')
 
 product_list=[]
-def item_list(id):        
+def item_list(id):
     item_count = Cart.objects.filter(id=id).first().items.all().count()
     for i in range(item_count):
         product_=str(Cart.objects.filter(id=id).first().items.all()[i].product_id)
@@ -105,8 +108,8 @@ def item_list(id):
 #     cart_obj, cart_created = Cart.objects.new_or_get(request)
 #     order_obj = None
 #     if cart_created or cart_obj.items.count() == 0:
-#         return redirect("cart:cart")  
-    
+#         return redirect("cart:cart")
+
 #     guest_form = GuestForm()
 #     coupon_apply_form = CouponApplyForm()
 
@@ -116,20 +119,20 @@ def item_list(id):
 #     if billing_profile is not None:
 #         if request.user.is_authenticated():
 #             address_qs = Address.objects.filter(billing_profile=billing_profile)
-#         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)  
+#         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
 #         try:
 #             order_obj.shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
 #         except Address.DoesNotExist:
 #             print("Show message to user, Address is gone?")
 #             return redirect("cart:cart")
-#         try:   
-#             order_obj.billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
+#         try:
+#             order_obj.billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing')
 #         except Address.DoesNotExist:
 #             print(" Address is gone?")
 #             return redirect("cart:cart")
 #         if order_obj.billing_address or order_obj.shipping_address:
 #             order_obj.save()
-    
+
 
 #     # print(order_obj.billing_address)
 #     context = {

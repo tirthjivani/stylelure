@@ -16,46 +16,56 @@
     </section>
   </div>
 </div>
-<!-- Bread Crumb END -->
 
-<!-- CONTAIN START -->
 <section class="checkout-section ptb-70">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="checkout-step mb-40">
           <ul>
-            <li> <a href="checkout.html">
-              <div class="step">
-                <div class="line"></div>
-                <div class="circle">1</div>
-              </div>
-              <span>Shipping</span> </a> </li>
-            <li> <a href="order-overview.html">
-              <div class="step">
-                <div class="line"></div>
-                <div class="circle">2</div>
-              </div>
-              <span>Order Overview</span> </a> </li>
-            <li> <a href="payment.html">
-              <div class="step">
-                <div class="line"></div>
-                <div class="circle">3</div>
-              </div>
-              <span>Payment</span> </a> </li>
-            <li class="active"> <a href="order-complete.html">
-              <div class="step">
-                <div class="line"></div>
-                <div class="circle">4</div>
-              </div>
-              <span>Order Complete</span> </a> </li>
+            <li>
+                <a href="{% url 'address' %}">
+                <div class="step">
+                  <div class="line"></div>
+                  <div class="circle">1</div>
+                </div>
+                <span>Shipping</span>
+              </a>
+            </li>
+            <li >
+              <a href="{% url 'order:overview' %}">
+                <div class="step">
+                  <div class="line"></div>
+                  <div class="circle">2</div>
+                </div>
+                <span>Order Overview</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'payment:process' %}">
+                <div class="step">
+                  <div class="line"></div>
+                  <div class="circle">3</div>
+                </div>
+                <span>Payment</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="{% url 'payment:done' %}">
+                <div class="step">
+                  <div class="line"></div>
+                  <div class="circle">4</div>
+                </div>
+                <span>Order Complete</span>
+              </a>
+            </li>
             <li>
               <div class="step">
                 <div class="line"></div>
               </div>
             </li>
           </ul>
-          <hr>
+         <hr>
         </div>
         <div class="checkout-content">
           <div class="row">
@@ -102,7 +112,7 @@
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Quantity: </label>
-                                  <span class="info-deta">1</span>
+                                  <span class="info-deta">{{ item.quantity }}</span>
                                 </div>
                               </div>
                             </div>
@@ -152,7 +162,7 @@
                   <div class="print-btn">
                     <button onclick="printDiv('form-print')" class="btn btn-color" type="button">Print</button>
                     <div class="right-side float-none-xs mt-sm-30">
-                      <a class="btn btn-black" href="shop.html">
+                      <a class="btn btn-black" href="{% url 'Products:product_list' %}">
                         <span><i class="fa fa-angle-left"></i></span>Continue Shopping
                       </a>
                     </div>

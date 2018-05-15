@@ -33,7 +33,7 @@
                 </a>
               </li>
               <li class="active">
-                <a href="order-overview.html">
+                <a href="{% url 'order:overview' %}">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
@@ -42,7 +42,7 @@
                 </a>
               </li>
               <li>
-                <a href="payment.html">
+                <a href="{% url 'payment:process' %}">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li>
-                <a href="order-complete.html">
+                <a href="#">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
@@ -137,16 +137,17 @@
                     </table>
                   </div>
                 </div>
-                <div> 
+                <div>
               <form action="{% url "apply" %}" method="post">
                 {% csrf_token %}
                 {% if object.coupon != None %}
-                <input type="hidden" name="code" id='coupon' value="{{ object.coupon}}">
-                
+                <label for="id_code">Coupon:</label>
+                <input type="text" name="code" id='coupon' value="{{ object.coupon}}">
+                <input type="submit" class=" btn-left btn-success mb-5 disabled" value="Applied"></input>
                 {% else %}
                 {{ form }}
                 <input type="submit" class="btn-left mb-5" value="Apply"></input>
-                {% endif %}                               
+                {% endif %}
               </form >
               </div>
                 <div class="cart-total-table commun-table mb-30">

@@ -33,7 +33,7 @@
               </a>
             </li>
             <li>
-              <a href="order-overview.html">
+              <a href="#">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">2</div>
@@ -42,7 +42,7 @@
               </a>
             </li>
             <li>
-              <a href="payment.html">
+              <a href="#">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">3</div>
@@ -51,7 +51,7 @@
               </a>
             </li>
             <li>
-              <a href="order-complete.html">
+              <a href="#">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">4</div>
@@ -86,7 +86,7 @@
                     </div>
                     <hr>
                   </div>
-                  {% include 'includes/aad_form.html' with form=form1 %}                  
+                  {% include 'includes/aad_form.html' with form=form1 %}
                 </div>
                 <div class="billing row">
                   <div class="col-12 mb-20">
@@ -106,7 +106,7 @@
                   </div>
                   <div class="col-md-12">
                     <button type='submit'  class='btn btn-left btn-success'>Submit</button>
-                    <a href="order-overview.html" class="btn btn-color right-side">Next</a>
+                    <a href="{% url 'order:overview' %}" class="btn btn-color right-side">Next</a>
                   </div>
                 </div>
               </form>
