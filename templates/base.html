@@ -12,18 +12,18 @@
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
   <!-- Custom styles-->
-  <link href="{% static "css/docs.css" %}" rel="stylesheet" type="text/css">
-  <link href="{% static "css/font-icon.css" %}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.css" %}"/>
-  <link rel="stylesheet" href="{% static "css/fontawesome-stars-o.css" %}">
+  <link href='{% static "css/docs.css" %}' rel="stylesheet" type="text/css">
+  <link href='{% static "css/font-icon.css" %}' rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href='{% static "css/slick.css" %}'/>
+  <link rel="stylesheet" type="text/css" href='{% static "css/font-awesome.min.css" %}'>
+  <link rel="stylesheet" type="text/css" href='{% static "css/slick-theme.css" %}'/>
+  <link rel="stylesheet" type="text/css" href='{% static "css/jquery-ui.css" %}' />
+  <link rel="stylesheet" href='{% static "css/fontawesome-stars-o.css" %}'>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
  {% block stylesheets %} {% endblock %}
-<script src="{% static "js/modernizr-2.8.0.min.js" %}"></script>
+<script src='{% static "js/modernizr-2.8.0.min.js" %}'></script>
 
 </head>
 
@@ -353,5 +353,15 @@
 <script src="{% static "js/bootstrap.min.js" %}"></script>
     <!-- Custom JavaScript -->
 <script src="{% static "js/custom.js" %}"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
 </body>
 </html>

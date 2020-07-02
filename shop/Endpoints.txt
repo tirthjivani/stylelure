@@ -1,0 +1,8 @@
+
+#Function index
+featured_product = Product.objects.all().featured()
+cart_obj, new_obj = Cart.objects.new_or_get(request)
+    context={
+    "featured_product":featured_product,
+    "cart":cart_obj
+    }

@@ -1,0 +1,11 @@
+
+#Function checkout_address_create_view
+billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+
+#Function address_update
+billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+address_qs = Address.objects.filter(billing_profile=billing_profile)
+shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
+billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 
+    

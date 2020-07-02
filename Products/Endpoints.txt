@@ -1,0 +1,12 @@
+
+#Function product_list
+categories = Category.objects.all()
+products_list = Product.objects.filter(active=True)
+
+#Function product_list_view
+categories = Category.objects.all()
+products_list = Product.objects.filter(active=True)
+
+#Function product_detail
+instance = Product.objects.get_by_id(id)
+cart_obj, new_obj = Cart.objects.new_or_get(request)

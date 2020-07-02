@@ -1,0 +1,6 @@
+
+#Function search_product_list
+categories = Category.objects.all()
+products_list = Product.objects.filter(active=True)
+search = Product.objects.search(query)
+search = Product.objects.all().featured()

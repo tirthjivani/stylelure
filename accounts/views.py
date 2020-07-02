@@ -16,7 +16,6 @@ from addresses.models import Address
 
 User = get_user_model()
 
-
 def signup(request):
     if request.user.is_authenticated:
         return redirect('index')

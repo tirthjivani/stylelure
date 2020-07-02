@@ -1,0 +1,15 @@
+
+#Function wishlist_home
+wishlist_obj, new_obj = Wishlist.objects.new_or_get(request)
+   
+#Function wishlist_add 
+product_obj = Product.objects.get(id=product_id)
+wishlist_obj, new_obj = Wishlist.objects.new_or_get(request)
+qs = WishlistItem.objects.get(wishlist=wishlist_obj,
+                product=product_id,selected_color=selected_color,
+                selected_size=selected_size)
+WishlistItem.objects.create(product=product_obj,wishlist=wishlist_obj,
+WishlistItem.objects.create(product=product_obj,wishlist=wishlist_obj,
+            
+#Functions wishlist_update
+qs = WishlistItem.objects.get(id=wishlist_item_id)

@@ -1,0 +1,8 @@
+
+#Function overview
+cart_obj, cart_created = Cart.objects.new_or_get(request)
+billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+address_qs = Address.objects.filter(billing_profile=billing_profile)
+order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)  
+order_obj.shipping_address = Address.objects.get(billing_profile=billing_profile.id,address_type='shipping')
+order_obj.billing_address = Address.objects.get(billing_profile=billing_profile.id,address_type='billing') 

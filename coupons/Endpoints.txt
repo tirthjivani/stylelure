@@ -1,0 +1,9 @@
+
+#Function coupon_apply
+cart_obj, cart_created = Cart.objects.new_or_get(request)
+billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
+coupon = Coupon.objects.get(code__iexact=code,
+                                    valid_from__lte=now,
+                                    valid_to__gte=now,
+                                    active=True) 

@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'localflavor',
     'social_django',
     'colorfield',
-    'paypal.standard.ipn',
    
 ]
 
@@ -116,8 +115,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'WiYP9onzUdOm_GPwPnf-uCUp'
 
 
 SOCIAL_AUTH_GITHUB_KEY = '7a693ef1e124c41437d0'
-
 SOCIAL_AUTH_GITHUB_SECRET = 'cb640d129c297781f9068ff3a5f045c7aefbeb6c'
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -172,8 +171,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-PAYPAL_RECEIVER_EMAIL = 'dev.asp.myyoga@gmail.com'
-PAYPAL_TEST = True
 
 
 STATIC_URL = '/static/'

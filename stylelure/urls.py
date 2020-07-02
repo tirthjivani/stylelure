@@ -37,7 +37,6 @@ urlpatterns = [
     url(r'^order/',include('orders.urls',namespace='order')),
     #url(r'^order/overview$', checkout_home, name='overview'),
     url(r'^apply/$',coupon_apply, name='apply'),
-    url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^payment/',include('billing.urls',namespace='payment')),
     url(r'^contact/success$', views.successView, name='success'),
     url(r'^product/',include('Products.urls',namespace='Products')),
