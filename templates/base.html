@@ -24,6 +24,41 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
  {% block stylesheets %} {% endblock %}
 <script src='{% static "js/modernizr-2.8.0.min.js" %}'></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAU9BYqQK8s_JjJGxFs5aeia74ox57N6e0",
+    authDomain: "lucid-arch-243509.firebaseapp.com",
+    databaseURL: "https://lucid-arch-243509.firebaseio.com",
+    projectId: "lucid-arch-243509",
+    storageBucket: "lucid-arch-243509.appspot.com",
+    messagingSenderId: "661341093747",
+    appId: "1:661341093747:web:1c56cabb140bcf44620f06",
+    measurementId: "G-Y7GT0RVNK7"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script type="text/javascript">
+  var firebaseRef = new Firebase("https://lucid-arch-243509.firebaseio.com");
+  firebaseRef.child('.info/connected').on('value', function(connectedSnap) {
+    if (connectedSnap.val() === true) {
+      console.log("connected")
+    } else {
+      console.log("notconnected")
+    }
+  });
+</script>
+
 
 </head>
 
@@ -363,5 +398,16 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
+
+<script type="text/javascript">
+  var firebaseRef = new Firebase('http://INSTANCE.firebaseio.com');
+  firebaseRef.child('.info/connected').on('value', function(connectedSnap) {
+    if (connectedSnap.val() === true) {
+      console.log("connected")
+    } else {
+      console.log("notconnected")
+    }
+  });
+</script>
 </body>
 </html>

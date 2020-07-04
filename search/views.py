@@ -3,10 +3,15 @@ from django.shortcuts import render
 from Products.models import Product,Category
 # Create your views here.
 
+from firebase import firebase
+firebase = firebase.FirebaseApplication('https://lucid-arch-243509.firebaseio.com', None)
+result = firebase.get('/', None)
+
 def search_product_list(request, category_slug=None):
     category = None
     search=None
     categories = Category.objects.all()
+    print (result)
     #search = Product.objects.all().featured()
     products_list = Product.objects.filter(active=True)
     if category_slug:
